@@ -39,13 +39,16 @@ Dựa trên **Evidence Map** và **Problem Hypothesis**, nhóm xác định 3 đ
 
 ---
 
-### ❓ Big 3 Questions (3 Câu hỏi chính đào sâu theo Big 3):
+### ❓ Bộ 6 Câu hỏi phỏng vấn khám phá (Chuẩn The Mom Test — Đi theo tiến trình thực tế):
 
-| STT | Điều cần học | Câu hỏi sẽ dùng trong phỏng vấn |
-| :---: | :--- | :--- |
-| **Q1** | *Workaround & Ma sát khi lưu trữ* | **"Ngay tại khoảnh khắc nhận ra mình chưa hiểu đoạn đó trong bài, bạn đã làm những hành động gì tiếp theo để xử lý hoặc lưu lại thắc mắc đó?"** |
-| **Q2** | *Mức độ nghiêm trọng & Rào cản bối cảnh (Câu hỏi đáng sợ)* | **"Sau buổi học đó, bạn đã làm cách nào để hỏi giảng viên/trợ giảng về phần khúc mắc đó? Chuyện gì đã xảy ra trong quá trình bạn tìm cách giải thích cho giảng viên hiểu bạn đang mắc ở đâu?"** |
-| **Q3** | *Hậu quả thực tế* | **"Việc gặp khúc mắc ở phần kiến thức đó (dù đã hỏi được hay chưa hỏi được) đã ảnh hưởng cụ thể như thế nào đến việc làm bài tập hay kết quả bài kiểm tra sau đó của bạn?"** |
+| STT | Trọng tâm kiểm tra | Câu hỏi phỏng vấn chi tiết | Mục tiêu khai thác Evidence |
+| :---: | :--- | :--- | :--- |
+| **Q1** | **Bối cảnh thực tế (Story Opener)** | *"Kể mình nghe về lần gần nhất (trong 7 ngày qua) bạn đang nghe giảng hoặc tự xem bài học và gặp phải một khái niệm/đoạn kiến thức khiến bạn lúng túng hoặc chưa hiểu?"* | Neo ứng viên vào một sự kiện có thật, bài học cụ thể, tránh nói lý thuyết suông. |
+| **Q2** | **Hành vi xử lý tức thời (Workaround)** | *"Ngay tại khoảnh khắc nhận ra mình không hiểu đoạn đó trong bài, bạn đã làm gì cụ thể để ghi nhớ hoặc lưu lại thắc mắc đó?"* | Bóc tách cách học viên tự xoay sở hiện tại (chụp ảnh, viết nháp, mở tab Notion, hay cố nhớ trong đầu). |
+| **Q3** | **Sự đứt mạch & Ma sát (Friction)** | *"Trong lúc bạn thực hiện việc ghi chú/lưu lại thắc mắc đó, luồng nghe giảng của bạn bị ảnh hưởng như thế nào? Có điều gì gây bất tiện hoặc làm đứt mạch không?"* | Đo lường mức độ khó chịu và ảnh hưởng của thao tác lưu trữ thủ công đến sự tập trung. |
+| **Q4** | **Rào cản bối cảnh khi hỏi (Context Gap)** | *"Sau buổi học đó, khi bạn tìm cách hỏi giảng viên/trợ giảng, bạn đã làm thế nào để họ hiểu đúng bạn đang mắc ở đoạn nào? Quá trình trao đổi đó diễn ra ra sao?"* | Kiểm tra xem việc thiếu vị trí/slide/video có khiến việc hỏi đáp trở nên cồng kềnh, mất thời gian không. |
+| **Q5** | **Hành vi bỏ cuộc (Pain Validation — Câu hỏi đáng sợ)** | *"Đã bao giờ bạn có thắc mắc trong bài học nhưng sau đó quyết định KHÔNG hỏi giảng viên nữa chưa? Điều gì cụ thể đã khiến bạn bỏ qua không hỏi?"* | Xác thực xem nỗi đau 'ngại diễn đạt lại hoàn cảnh' có thực sự khiến học viên từ bỏ việc hỏi không. |
+| **Q6** | **Hậu quả thực tế (Consequence)** | *"Việc những khúc mắc đó chưa được giải đáp kịp thời (hoặc mất nhiều thời gian hỏi lại) đã ảnh hưởng cụ thể như thế nào đến bài tập hay kết quả học tập sau đó của bạn?"* | Đo lường mức độ nghiêm trọng của hậu quả (sai bài tập, điểm kém, hổng kiến thức) để định giá giá trị bài toán. |
 
 ---
 
@@ -86,6 +89,5 @@ Dựa trên **Evidence Map** và **Problem Hypothesis**, nhóm xác định 3 đ
 
 | Thành viên | Vai trò phụ trách | Đối tượng phỏng vấn dự kiến | Thời gian thực hiện |
 | :--- | :--- | :--- | :--- |
-| **Giáp Quốc Anh** | **Lead Interviewer** (Dẫn dắt phỏng vấn & Đặt câu hỏi Big 3 / Probe) | 02 Sinh viên ĐH đang học các môn chuyên ngành/lập trình (tự học qua LMS/video) | Buổi sáng Day 18 |
-| **Thành viên nhóm 2** | **Note-taker** (Ghi chép nguyên văn lời kể, trích dẫn Evidence, bấm giờ) | 01 Học viên khóa học trực tuyến (vừa hoàn thành module tuần qua) | Buổi chiều Day 18 |
-| **Thành viên nhóm 3** | **Observer** (Quan sát phản ứng, kiểm soát bẫy phỏng vấn, nhắc nhở Anchor/Deflect) | 01 Sinh viên chuẩn bị thi cuối kỳ vừa trải qua tuần ôn tập | Buổi tối Day 18 |
+| **Giáp Quốc Anh** | **Lead Interviewer** (Dẫn dắt phỏng vấn & Đặt câu hỏi Big 3 / Probe) | 01 Sinh viên ĐH đang học các môn chuyên ngành/lập trình (tự học qua LMS/video) | Buổi sáng Day 17 |
+| **Thành viên nhóm 2** | **Note-taker** (Ghi chép nguyên văn lời kể, trích dẫn Evidence, bấm giờ) | 01 Học viên khóa học trực tuyến (vừa hoàn thành module tuần qua) | Buổi sáng Day 17 |
