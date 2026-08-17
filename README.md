@@ -7,57 +7,86 @@
 ## 1. Solution — Gỡ solution khỏi hình thức cụ thể
 
 ### 📌 Case đã chọn:
-**Case B — AI Notes: Personal Learning Notes**
+**Vấn đề note lại kiến thức chưa hiểu trong khi học (Note thắc mắc kèm ngữ cảnh học tập)**
 
 ---
 
 ### 📝 Ghi lại Directive nguyên văn:
 
-> *"Trong khi học, học viên có thể highlight một đoạn nội dung, đánh dấu “Chưa hiểu”, hoặc viết một câu hỏi hay ghi chú ngắn.*  
-> *Khi bài học kết thúc, AI Notes kết hợp những dấu vết này với nội dung bài để tạo một bản ghi chú có cấu trúc. Học viên có thể chỉnh sửa và xác nhận trước khi lưu."*
+> **Solution directive:**  
+> *"Một công cụ/nút bấm giúp người học ghi lại thắc mắc sau khi kết thúc buổi học và gửi cho giảng viên."*
 
 ---
 
 ### 🔍 Trả lời các câu hỏi dẫn dắt:
 
 1. **Câu nào trong directive đang mô tả giao diện, tên feature hoặc công nghệ?**
-   - **Giao diện & Thao tác UI cụ thể:** *"highlight một đoạn nội dung"*, *"đánh dấu 'Chưa hiểu'"*, *"viết một câu hỏi hay ghi chú ngắn"*, *"chỉnh sửa và xác nhận trước khi lưu"*.
-   - **Tên Feature cụ thể:** *"AI Notes"*.
-   - **Công nghệ / Hành động đóng khung (AI-specific label):** *"AI Notes kết hợp những dấu vết này với nội dung bài"*, *"AI action: Chọn lọc, nhóm và tổ chức thông tin"*.
+   - **Giao diện & Thành phần cụ thể:** *"Một công cụ / nút bấm"*, *"gửi cho giảng viên sau khi kết thúc buổi học"*.
 
 2. **Nếu bỏ tên nút, màn hình và AI action, khả năng cần tạo ra là gì?**
-   - **Khả năng ghi nhận tín hiệu tương tác:** Thu thập các điểm lưu ý, thắc mắc, phân đoạn quan trọng và phản hồi cá nhân của người học trong quá trình tiếp nhận nội dung.
-   - **Khả năng liên kết & tổng hợp tri thức:** Kết nối các tín hiệu/dấu vết tương tác cá nhân với ngữ cảnh nội dung gốc để cấu trúc hóa lại thành tài liệu tóm tắt/ôn tập hoàn chỉnh.
-   - **Khả năng kiểm soát tri thức (Human-in-the-loop):** Cho phép người học rà soát, hiệu chỉnh và cá nhân hóa nội dung tổng hợp trước khi lưu trữ vào kho kiến thức.
+   - Khả năng thu thập, lưu trữ ngữ cảnh (thời điểm, nội dung, slide/video) và truyền đạt các thắc mắc phát sinh của người học đến người dạy sau giờ học, không làm gián đoạn luồng tiếp thu kiến thức.
 
 3. **Nhóm có đang mặc định cách triển khai được giao là cách duy nhất không?**
-   - **Có.** Nhóm có thể đang vô tình bị đóng khung vào các giả định triển khai cố định:
-     - **Về Trigger:** Mặc định chỉ kích hoạt *khi kết thúc bài học* (thực tế có thể tổng hợp theo yêu cầu bất kỳ lúc nào - on-demand, tổng hợp theo chương/module, hoặc tạo bộ ôn tập sau 1 tuần).
-     - **Về Phương thức nhập (Input/UI):** Mặc định phải là *bôi đen text (highlight)* hoặc bấm nút gắn cờ *'Chưa hiểu'* trên web đọc tài liệu (thực tế người học có thể thu âm giọng nói, chụp ảnh ghi chú viết tay, bài giảng video/podcast).
-     - **Về Định dạng đầu ra (Output):** Mặc định là một *bản ghi chú văn bản* (thực tế có thể là bộ câu hỏi Flashcard Spaced Repetition, sơ đồ tư duy Mindmap, danh sách hành động/Checklist, hoặc bài tập củng cố cá nhân hóa).
-     - **Về Cơ chế xử lý:** Mặc định phải gọi một *AI feature đơn lẻ* (thực tế có thể là pipeline xử lý dữ liệu kết hợp Rule-based context extraction + LLM).
+   - **Có.** Directive đang mặc định phải là một *"nút bấm"* hoặc một *"công cụ riêng biệt"*, và chỉ kích hoạt *"sau khi kết thúc buổi học"*.
+   - *Thực tế:* Có thể triển khai qua phím tắt nhanh, tiện ích mở rộng (browser extension), tự động ghim timestamp/slide khi người học gõ ghi chú, hoặc tổng hợp câu hỏi theo từng chương/phần học.
 
 4. **Capability có thể được mô tả mà không dùng tên feature không?**
-   - **Hoàn toàn có thể.** Năng lực được mô tả tập trung vào giá trị chuyển đổi từ **Tín hiệu tương tác học tập + Ngữ cảnh bài học** sang **Hệ thống tài liệu ôn tập có cấu trúc và có thể kiểm soát bởi người học**, không phụ thuộc vào tên gọi "AI Notes" hay thành phần UI cụ thể.
+   - **Hoàn toàn có thể.** Mô tả tập trung vào năng lực thu thập dữ liệu ngữ cảnh và kênh truyền tải thông tin hai chiều giữa người học và giảng viên.
 
 ---
 
-### 🎯 Solution Directive vs. Capability Trung Tính:
+### 🎯 Capability trung tính (Neutral Capability):
 
-#### 📌 Solution Directive:
-> *"Trong khi học, học viên có thể highlight một đoạn nội dung, đánh dấu “Chưa hiểu”, hoặc viết một câu hỏi hay ghi chú ngắn. Khi bài học kết thúc, AI Notes kết hợp những dấu vết này với nội dung bài để tạo một bản ghi chú có cấu trúc. Học viên có thể chỉnh sửa và xác nhận trước khi lưu."*
-
-#### 💡 Capability Trung Tính:
-> **"Khả năng thu thập các dấu vết tương tác và thắc mắc của người học, liên kết với ngữ cảnh nội dung bài học để tự động tổng hợp thành tài liệu ôn tập có cấu trúc, đồng thời cho phép người học xem xét và tinh chỉnh theo nhu cầu cá nhân."**
+> **"Khả năng thu thập, lưu trữ ngữ cảnh (thời điểm, nội dung) và truyền đạt các thắc mắc phát sinh của người học đến người dạy sau giờ học, không làm gián đoạn luồng tiếp thu."**
 
 ---
 
-### 📊 Bảng phân tích cấu trúc thành phần:
+## 2. Change — Làm lộ chuỗi thay đổi được kỳ vọng
 
-| Thành phần | Solution đã mô tả (Hình thức cụ thể) | Bóc tách & Mở rộng Capability (Bản chất trung tính) |
+### 📈 Các thay đổi được kỳ vọng:
+1. **Đối với người học:** Không bị quên mất mình định hỏi gì sau khi kết thúc bài học.
+2. **Đối với giảng viên:** Hiểu rõ sinh viên đang không hiểu ở đoạn nào (slide nào, phút thứ mấy) thay vì nhận một câu hỏi chung chung, mơ hồ.
+3. **Đối với tương tác chung:** Tăng sự tương tác chủ động giữa người học và giảng viên, giảm đáng kể rào cản tâm lý "ngại hỏi".
+
+---
+
+## 3. Actor — Xác định các nhóm người có liên quan
+
+| Nhóm người (Actor) | Họ đang làm gì? | Pain hoặc hậu quả có thể có | Họ hưởng lợi thế nào? |
+| :--- | :--- | :--- | :--- |
+| **Học viên (Learner / Student)** | Đang nghe giảng / tự học và cố gắng hiểu bài. | Quên mất câu hỏi, ngại diễn đạt lại vì khó mô tả ngữ cảnh, dẫn đến hổng kiến thức. | Được giải đáp kịp thời, hiểu bài sâu hơn. |
+| **Giảng viên / Trợ giảng (Instructor / TA)** | Tiếp nhận và giải đáp câu hỏi của sinh viên. | Mất thời gian hỏi ngược lại sinh viên xem vướng mắc ở đoạn nào, trả lời sai trọng tâm. | Tiết kiệm thời gian hỗ trợ, nắm bắt được phần kiến thức sinh viên hay mắc lỗi. |
+
+---
+
+## 4. Situation & Job — User đang cố làm gì trong tình huống nào?
+
+### 📍 Mô tả Situation & Job:
+Khi đang theo dõi bài giảng (video/tài liệu) và gặp một khái niệm khó, người học đang cố lưu lại thắc mắc đó để nhờ giải đáp sau bằng cách mở một tab note khác, gõ ra giấy, hoặc cố nhớ trong đầu. Tuy nhiên họ bắt đầu gặp vướng mắc ở chỗ việc chuyển đổi qua lại làm đứt mạch học, và lúc note lại không đính kèm được slide/đoạn video tương ứng khiến lúc hỏi lại rất khó diễn đạt.
+
+### 🎯 JTBD Hypothesis (Giả thuyết Job-to-be-Done):
+> *"Khi đang học và gặp khúc mắc, tôi muốn lưu lại ngay câu hỏi kèm theo chính xác vị trí bài học (ngữ cảnh), để có thể hỏi giảng viên một cách rõ ràng và nhận được câu trả lời đi thẳng vào vấn đề."*
+
+---
+
+## 5. Pain — Viết các cách giải thích cạnh tranh
+
+- **Pain Hypothesis A (Tập trung vào người học):**  
+  Khi đang học, người học gặp khó khăn trong việc ghi chú lại câu hỏi vì thao tác lưu trữ thủ công làm mất bối cảnh bài học, dẫn đến hậu quả là họ thường lười không hỏi nữa hoặc hỏi lủng củng khiến vấn đề không được giải quyết.
+
+- **Pain Hypothesis B (Tập trung vào giảng viên):**  
+  Khi tiếp nhận câu hỏi hỗ trợ, giảng viên gặp khó khăn trong việc đưa ra câu trả lời ngay vì sinh viên đặt câu hỏi quá chung chung và thiếu bối cảnh, dẫn đến việc họ phải tốn gấp đôi thời gian để trao đổi qua lại xác minh.
+
+- **👉 Giả thuyết nhóm chọn để điều tra trước:** **Giả thuyết A**.
+- **💡 Lý do chọn:** Vấn đề bắt nguồn từ quá trình lưu trữ của người học. Nếu giải quyết được việc người học tạo ra một "note" có chất lượng cao (đủ ngữ cảnh), thì nỗi đau B của giảng viên cũng sẽ tự động được giải quyết.
+
+---
+
+## 6. Evidence — Xác định điều cần tìm trước khi viết câu hỏi
+
+| Cần kiểm tra | Evidence làm nhóm tin hơn | Evidence làm nhóm nghi ngờ hoặc bác bỏ |
 | :--- | :--- | :--- |
-| **Trigger** | Học viên hoàn thành bài học | Khi hoàn thành bài học, theo yêu cầu chủ động (on-demand), hoặc định kỳ ôn tập |
-| **Input** | Nội dung bài, highlights, điểm “Chưa hiểu”, câu hỏi và ghi chú cá nhân | Dữ liệu nội dung gốc + Tập hợp các tín hiệu tương tác/thắc mắc của người học đa phương thức |
-| **Processing (Core Action)** | AI Notes: Chọn lọc, nhóm và tổ chức thông tin | Trích xuất ngữ cảnh, đối chiếu thắc mắc với nội dung gốc, phân loại và tái cấu trúc thông tin |
-| **Output** | Bản ghi chú cá nhân có cấu trúc | Tài liệu ôn tập có cấu trúc (Summary, Flashcard, Mindmap, Q&A Checklist cá nhân) |
-| **User Control** | Học viên chỉnh sửa và xác nhận trước khi lưu | Cơ chế Human-in-the-loop: xem xét, sửa đổi, bổ sung và xác thực tri thức trước khi lưu trữ |
+| **Situation có thật** | Học viên có thể kể lại chi tiết 1 lần gần nhất muốn hỏi giảng viên nhưng không biết hỏi thế nào. | Học viên báo rằng luôn hiểu bài trên lớp, hoặc nếu không hiểu thì tra Google là ra. |
+| **Pain có ý nghĩa** | Học viên thừa nhận từng bỏ qua không hỏi nữa vì ngại diễn đạt lại hoàn cảnh lúc đó. | Học viên thoải mái chat trực tiếp với giảng viên mọi lúc và thấy việc này rất dễ dàng. |
+| **Workaround tồn tại** | Đang phải dùng cách chụp ảnh màn hình, lưu link, gửi vào Zalo "truyền file" hoặc note nháp ra sổ. | Không hề có hành động cố gắng lưu lại câu hỏi nào. |
+| **Consequence tồn tại** | Sai bài tập phần đó, hoặc điểm thấp do hổng kiến thức kéo dài. | Cuối kỳ xem lại slide vẫn qua môn bình thường. |
