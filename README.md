@@ -7,56 +7,57 @@
 ## 1. Solution — Gỡ solution khỏi hình thức cụ thể
 
 ### 📌 Case đã chọn:
-**Hệ thống AI Agent tự động hóa phân tích yêu cầu và thiết kế mô hình dữ liệu (AI Data Modeling / Data Warehouse Assistant)**
+**Case B — AI Notes: Personal Learning Notes**
 
 ---
 
-### 📝 Ghi nhận & Phân tích Directive
+### 📝 Ghi lại Directive nguyên văn:
 
-#### 1. Solution Directive (Nguyên văn theo yêu cầu ban đầu):
-> *"Xây dựng một màn hình Dashboard có nút bấm 'AI Smart Generate', khi người dùng bấm vào và tải lên file SQL DDL, một popup chatbot AI (sử dụng GPT-4) sẽ tự động sinh sơ đồ ERD trực quan (dùng Mermaid.js) gồm các bảng Fact và Dimension kèm theo thanh trượt kéo thả độ tin cậy để người dùng duyệt mô hình."*
+> *"Trong khi học, học viên có thể highlight một đoạn nội dung, đánh dấu “Chưa hiểu”, hoặc viết một câu hỏi hay ghi chú ngắn.*  
+> *Khi bài học kết thúc, AI Notes kết hợp những dấu vết này với nội dung bài để tạo một bản ghi chú có cấu trúc. Học viên có thể chỉnh sửa và xác nhận trước khi lưu."*
 
 ---
 
 ### 🔍 Trả lời các câu hỏi dẫn dắt:
 
 1. **Câu nào trong directive đang mô tả giao diện, tên feature hoặc công nghệ?**
-   - **Mô tả giao diện (UI Elements):** *"màn hình Dashboard"*, *"nút bấm"*, *"popup chatbot"*, *"thanh trượt kéo thả"*, *"sơ đồ trực quan"*.
-   - **Tên Feature cụ thể:** *"'AI Smart Generate'"*.
-   - **Công nghệ/Framework cụ thể:** *"file SQL DDL"*, *"sử dụng GPT-4"*, *"Mermaid.js"*.
+   - **Giao diện & Thao tác UI cụ thể:** *"highlight một đoạn nội dung"*, *"đánh dấu 'Chưa hiểu'"*, *"viết một câu hỏi hay ghi chú ngắn"*, *"chỉnh sửa và xác nhận trước khi lưu"*.
+   - **Tên Feature cụ thể:** *"AI Notes"*.
+   - **Công nghệ / Hành động đóng khung (AI-specific label):** *"AI Notes kết hợp những dấu vết này với nội dung bài"*, *"AI action: Chọn lọc, nhóm và tổ chức thông tin"*.
 
 2. **Nếu bỏ tên nút, màn hình và AI action, khả năng cần tạo ra là gì?**
-   - Khả năng **tiếp nhận thông tin cấu trúc dữ liệu nguồn** (schema/metadata).
-   - Khả năng **suy luận, chuẩn hóa và chuyển đổi cấu trúc dữ liệu nguồn thành cấu trúc dữ liệu đa chiều (Fact/Dimension)** phục vụ nhu cầu phân tích (OLAP).
-   - Khả năng **đánh giá mức độ phù hợp/độ tin cậy** của mô hình đề xuất và **cho phép người dùng kiểm soát, tinh chỉnh** kết quả.
+   - **Khả năng ghi nhận tín hiệu tương tác:** Thu thập các điểm lưu ý, thắc mắc, phân đoạn quan trọng và phản hồi cá nhân của người học trong quá trình tiếp nhận nội dung.
+   - **Khả năng liên kết & tổng hợp tri thức:** Kết nối các tín hiệu/dấu vết tương tác cá nhân với ngữ cảnh nội dung gốc để cấu trúc hóa lại thành tài liệu tóm tắt/ôn tập hoàn chỉnh.
+   - **Khả năng kiểm soát tri thức (Human-in-the-loop):** Cho phép người học rà soát, hiệu chỉnh và cá nhân hóa nội dung tổng hợp trước khi lưu trữ vào kho kiến thức.
 
 3. **Nhóm có đang mặc định cách triển khai được giao là cách duy nhất không?**
-   - **Có.** Directive ban đầu đang mặc định rằng:
-     - Phải có *giao diện Web/Dashboard* với *nút bấm* và *popup chatbot*.
-     - Phải dùng *GPT-4* và render bằng *Mermaid.js*.
-     - Đầu vào bắt buộc phải là *file SQL DDL*.
-   - **Thực tế có nhiều cách triển khai khác:**
-     - *Phương thức tiếp nhận:* Có thể qua REST API, CLI tool, CI/CD pipeline, kết nối trực tiếp database (JDBC/ODBC) thay vì chỉ upload file DDL qua Web UI.
-     - *Xử lý suy luận:* Có thể kết hợp Rule-based engine + Heuristic + Semantic Parser + bất kỳ LLM nào (OpenAI, Claude, Local LLM/Gemini).
-     - *Tương tác & Duyệt:* Có thể xuất ra file cấu hình (YAML/JSON/DBML), code review PR, hoặc giao diện bảng tính (data grid) thay vì thanh trượt hay chatbot.
+   - **Có.** Nhóm có thể đang vô tình bị đóng khung vào các giả định triển khai cố định:
+     - **Về Trigger:** Mặc định chỉ kích hoạt *khi kết thúc bài học* (thực tế có thể tổng hợp theo yêu cầu bất kỳ lúc nào - on-demand, tổng hợp theo chương/module, hoặc tạo bộ ôn tập sau 1 tuần).
+     - **Về Phương thức nhập (Input/UI):** Mặc định phải là *bôi đen text (highlight)* hoặc bấm nút gắn cờ *'Chưa hiểu'* trên web đọc tài liệu (thực tế người học có thể thu âm giọng nói, chụp ảnh ghi chú viết tay, bài giảng video/podcast).
+     - **Về Định dạng đầu ra (Output):** Mặc định là một *bản ghi chú văn bản* (thực tế có thể là bộ câu hỏi Flashcard Spaced Repetition, sơ đồ tư duy Mindmap, danh sách hành động/Checklist, hoặc bài tập củng cố cá nhân hóa).
+     - **Về Cơ chế xử lý:** Mặc định phải gọi một *AI feature đơn lẻ* (thực tế có thể là pipeline xử lý dữ liệu kết hợp Rule-based context extraction + LLM).
 
 4. **Capability có thể được mô tả mà không dùng tên feature không?**
-   - **Hoàn toàn có thể.** Khi mô tả dưới dạng capability, ta tập trung vào **đầu vào (Input) -> Năng lực chuyển đổi lõi (Core Processing/Transformation) -> Đầu ra (Output) & Cơ chế kiểm soát (Governance/Control)** mà không gắn chặt vào bất kỳ thành phần UI hay công nghệ cụ thể nào.
+   - **Hoàn toàn có thể.** Năng lực được mô tả tập trung vào giá trị chuyển đổi từ **Tín hiệu tương tác học tập + Ngữ cảnh bài học** sang **Hệ thống tài liệu ôn tập có cấu trúc và có thể kiểm soát bởi người học**, không phụ thuộc vào tên gọi "AI Notes" hay thành phần UI cụ thể.
 
 ---
 
-### 🎯 Capability trung tính (Neutral Capability):
+### 🎯 Solution Directive vs. Capability Trung Tính:
 
-> **"Khả năng phân tích định nghĩa cấu trúc dữ liệu nguồn, tự động đề xuất mô hình dữ liệu đa chiều (Fact/Dimension) kèm căn cứ đánh giá, và hỗ trợ người dùng xem xét, điều chỉnh mô hình theo mục tiêu phân tích."**
+#### 📌 Solution Directive:
+> *"Trong khi học, học viên có thể highlight một đoạn nội dung, đánh dấu “Chưa hiểu”, hoặc viết một câu hỏi hay ghi chú ngắn. Khi bài học kết thúc, AI Notes kết hợp những dấu vết này với nội dung bài để tạo một bản ghi chú có cấu trúc. Học viên có thể chỉnh sửa và xác nhận trước khi lưu."*
+
+#### 💡 Capability Trung Tính:
+> **"Khả năng thu thập các dấu vết tương tác và thắc mắc của người học, liên kết với ngữ cảnh nội dung bài học để tự động tổng hợp thành tài liệu ôn tập có cấu trúc, đồng thời cho phép người học xem xét và tinh chỉnh theo nhu cầu cá nhân."**
 
 ---
 
-### 📊 Bảng so sánh đối chiếu:
+### 📊 Bảng phân tích cấu trúc thành phần:
 
-| Tiêu chí | Solution Directive (Hình thức cụ thể) | Capability Trung Tính (Bản chất năng lực) |
+| Thành phần | Solution đã mô tả (Hình thức cụ thể) | Bóc tách & Mở rộng Capability (Bản chất trung tính) |
 | :--- | :--- | :--- |
-| **Giao diện / Kênh tiếp cận** | Nút bấm, popup chatbot, màn hình dashboard | Độc lập giao diện (hỗ trợ Web, CLI, API, Pipeline) |
-| **Đầu vào (Input)** | Bắt buộc upload file SQL DDL | Mọi định dạng mô tả cấu trúc dữ liệu (DDL, Schema JSON, Database Catalog, v.v.) |
-| **Công nghệ xử lý** | Ép cứng GPT-4, Mermaid.js | Động cơ chuyển đổi & đề xuất mô hình (Rule Engine / AI / Multi-LLM) |
-| **Kiểm soát & Đánh giá** | Thanh trượt kéo thả trong popup | Cơ chế lượng giá mức độ tin cậy và cho phép người dùng điều chỉnh/xác nhận |
-| **Mục tiêu cốt lõi** | Trình diễn tính năng AI trên UI | Tự động hóa và chuẩn hóa quy trình thiết kế mô hình dữ liệu phân tích |
+| **Trigger** | Học viên hoàn thành bài học | Khi hoàn thành bài học, theo yêu cầu chủ động (on-demand), hoặc định kỳ ôn tập |
+| **Input** | Nội dung bài, highlights, điểm “Chưa hiểu”, câu hỏi và ghi chú cá nhân | Dữ liệu nội dung gốc + Tập hợp các tín hiệu tương tác/thắc mắc của người học đa phương thức |
+| **Processing (Core Action)** | AI Notes: Chọn lọc, nhóm và tổ chức thông tin | Trích xuất ngữ cảnh, đối chiếu thắc mắc với nội dung gốc, phân loại và tái cấu trúc thông tin |
+| **Output** | Bản ghi chú cá nhân có cấu trúc | Tài liệu ôn tập có cấu trúc (Summary, Flashcard, Mindmap, Q&A Checklist cá nhân) |
+| **User Control** | Học viên chỉnh sửa và xác nhận trước khi lưu | Cơ chế Human-in-the-loop: xem xét, sửa đổi, bổ sung và xác thực tri thức trước khi lưu trữ |
