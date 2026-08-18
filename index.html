@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trợ Lý Học Tập AI (OpenAI Powered) - Đọc Slide PDF & Tương Tác Trực Tiếp</title>
+  <meta name="description"
+    content="Nền tảng học tập thông minh tích hợp OpenAI API: Đọc Slide PDF, bôi đen văn bản để AI giải thích theo slide, AI tạo câu hỏi trắc nghiệm động, và tổng hợp thắc mắc gửi giảng viên.">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF.js library & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- jsPDF library to generate pre-loaded sample slide PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar">
+    <div class="brand-section">
+      <div class="logo-badge">
+        <i data-lucide="sparkles"></i>
+      </div>
+      <div class="doc-info">
+        <h1 id="pdfTitleDisplay">Chưa có tài liệu</h1>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="file-tag" id="pdfFileBadge">Chưa nạp file</span>
+          <span class="ai-status-tag" id="aiStatusBadge" title="Trạng thái kết nối OpenAI">
+            <span class="status-dot"></span> <span id="aiStatusText">OpenAI Sẵn sàng</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- OpenAI API Key Settings Button -->
+      <button class="btn-action-outline btn-api-key" id="btnOpenApiKeyModal" title="Cài đặt OpenAI API Key">
+        <i data-lucide="key" style="width: 14px; height: 14px; color: #facc15;"></i>
+        <span>OpenAI Key</span>
+      </button>
+
+      <!-- Upload PDF Button -->
+      <label class="btn-upload" for="pdfFileInput" title="Tải file PDF từ máy tính của bạn">
+        <i data-lucide="upload" style="width: 15px; height: 15px;"></i>
+        <span>Tải file PDF</span>
+      </label>
+      <input type="file" id="pdfFileInput" accept="application/pdf" style="display: none;">
+
+      <!-- Load Sample PDF Button -->
+      <button class="btn-action-outline" id="btnSamplePDF" title="Nạp Slide Mẫu Kinh tế Vi mô">
+        <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
+        <span>Slide Mẫu</span>
+      </button>
+
+      <!-- Bookmarks Drawer Trigger -->
+      <button class="btn-action-outline" id="btnOpenBookmarks" title="Xem danh sách thắc mắc đã đánh dấu">
+        <i data-lucide="bookmark" style="width: 15px; height: 15px;"></i>
+        <span>Thắc mắc đã lưu</span>
+        <span class="badge-counter" id="bookmarkCountBadge">0</span>
+      </button>
+
+      <!-- End of Session Submission -->
+      <button class="btn-primary" id="btnEndSession" title="Tổng hợp và gửi cho giảng viên cuối buổi">
+        <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+        <span>Gửi Giảng viên</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN WORKSPACE ================= -->
+  <main class="workspace-layout">
+
+    <!-- LEFT SIDEBAR: Page Navigation & Thumbnails -->
+    <aside class="sidebar-left">
+      <div class="sidebar-header">
+        <span>Mục lục Slide</span>
+        <span class="page-count-badge" id="totalPagesBadge">0 Trang</span>
+      </div>
+      <div class="page-list-container" id="pageListContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </aside>
+
+    <!-- CENTER AREA: PDF Document Viewer -->
+    <section class="pdf-viewer-section">
+
+      <!-- Top Control Bar (Hidden when empty) -->
+      <div class="viewer-toolbar" id="viewerToolbar" style="display: none;">
+        <div class="toolbar-group">
+          <button class="tool-btn" id="btnPrevPage" title="Trang trước (Phím Mũi tên trái)">
+            <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i>
+          </button>
+          <div class="page-indicator">
+            <span>Trang</span>
+            <input type="number" id="pageNumberInput" value="1" min="1" max="1"
+              style="width: 40px; text-align: center;">
+            <span id="pageTotalDisplay">/ 1</span>
+          </div>
+          <button class="tool-btn" id="btnNextPage" title="Trang sau (Phím Mũi tên phải)">
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
+          </button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+          <button class="tool-btn" id="btnZoomOut" title="Thu nhỏ">
+            <i data-lucide="minus" style="width: 14px; height: 14px;"></i>
+          </button>
+          <span class="zoom-level" id="zoomDisplay">120%</span>
+          <button class="tool-btn" id="btnZoomIn" title="Phóng to">
+            <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+          </button>
+          <button class="tool-btn" id="btnFitWidth" title="Vừa chiều ngang màn hình">
+            <i data-lucide="maximize-2" style="width: 14px; height: 14px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- PDF Canvas Viewport with Text Selection Layer -->
+      <div class="pdf-scroll-viewport" id="pdfScrollViewport">
+
+        <!-- Empty State (Shown initially before PDF is uploaded) -->
+        <div class="empty-state-card" id="emptyStateCard">
+          <div class="empty-icon-box">
+            <i data-lucide="file-up" style="width: 48px; height: 48px; color: #6366f1;"></i>
+          </div>
+          <h3>Chưa có Slide nào được mở</h3>
+          <p>Vui lòng tải lên file Slide PDF bài giảng từ máy tính của bạn hoặc chọn Nạp Slide Mẫu để bắt đầu học tập và
+            kích hoạt 3 tính năng AI.</p>
+
+          <div class="empty-actions">
+            <label class="btn-upload btn-empty-action" for="pdfFileInputEmpty">
+              <i data-lucide="upload" style="width: 16px; height: 16px;"></i>
+              <span>Tải file PDF từ máy</span>
+            </label>
+            <input type="file" id="pdfFileInputEmpty" accept="application/pdf" style="display: none;">
+
+            <button class="btn-action-outline btn-empty-action" id="btnSamplePDFEmpty">
+              <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+              <span>Nạp Slide Mẫu (Kinh tế Vi mô)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PDF Card (Hidden initially until loaded) -->
+        <div class="pdf-card" id="pdfCard" style="display: none;">
+          <div class="pdf-container" id="pdfContainer">
+            <canvas id="pdfCanvas"></canvas>
+            <div id="pdfTextLayer" class="textLayer"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT SIDEBAR: AI Companion & Live Notes Panel -->
+    <aside class="sidebar-right">
+      <div class="sidebar-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="bot" style="width: 16px; height: 16px; color: #818cf8;"></i>
+          <span>Trợ Lý Bài Giảng OpenAI</span>
+        </div>
+      </div>
+
+      <div class="ai-panel-body" id="aiPanelBody">
+        <div class="ai-welcome-box">
+          <div class="welcome-icon">
+            <i data-lucide="sparkles" style="width: 24px; height: 24px; color: #6366f1;"></i>
+          </div>
+          <h4>Hướng dẫn sử dụng</h4>
+          <p>Dùng chuột <strong>bôi đen bất kỳ đoạn chữ nào</strong> trên Slide PDF để kích hoạt 3 tính năng:</p>
+          <ul class="feature-bullets">
+            <li><strong>⚡ AI Giải thích:</strong> OpenAI đọc cả slide để giải đáp phần bôi đen.</li>
+            <li><strong>❓ Tạo câu hỏi:</strong> OpenAI sinh câu hỏi trắc nghiệm mới mỗi lần bấm.</li>
+            <li><strong>📝 Gửi giảng viên:</strong> Lưu nháp câu hỏi để gửi vào cuối giờ.</li>
+          </ul>
+        </div>
+
+        <div class="slide-context-summary-card">
+          <div class="summary-card-header">
+            <i data-lucide="file-search" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+            <span>Nội dung Slide hiện tại</span>
+          </div>
+          <div class="slide-context-text" id="slideContextText">
+            Chưa có tài liệu. Vui lòng tải file PDF để trích xuất nội dung slide.
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ================= FLOATING AI ACTION TOOLBAR ================= -->
+  <div class="floating-toolbar" id="floatingToolbar">
+    <button class="float-btn btn-feature-1" id="btnTriggerFeature1"
+      title="AI đọc toàn bộ slide và giải thích phần bôi đen">
+      <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
+      <span>AI Giải thích</span>
+    </button>
+    <button class="float-btn btn-feature-2" id="btnTriggerFeature2"
+      title="AI tạo câu hỏi trắc nghiệm mới tương ứng với phần bôi đen">
+      <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i>
+      <span>Tạo câu hỏi</span>
+    </button>
+    <button class="float-btn btn-feature-3" id="btnTriggerFeature3"
+      title="Lưu nháp phần này vào danh sách gửi Giảng viên">
+      <i data-lucide="bookmark-plus" style="width: 14px; height: 14px;"></i>
+      <span>Gửi giảng viên</span>
+    </button>
+  </div>
+
+  <!-- ================= FEATURE 1 POPOVER: AI GIẢI THÍCH ================= -->
+  <div class="ai-popover" id="popoverFeature1">
+    <div class="popover-header">
+      <div class="popover-title">
+        <i data-lucide="sparkles" style="width: 16px; height: 16px; color: #818cf8;"></i>
+        <span>AI Giải thích (Tổng hợp theo Slide)</span>
+      </div>
+      <button class="btn-close-modal" id="btnCloseFeature1" title="Đóng">
+        <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+      </button>
+    </div>
+
+    <div class="popover-body">
+      <div class="selected-badge" id="feat1SelectedTerm">Từ khóa: ...</div>
+
+      <!-- Loading indicator -->
+      <div class="ai-loading-box" id="feat1Loading" style="display: none;">
+        <div class="spinner"></div>
+        <span>OpenAI đang đọc toàn bộ slide và tổng hợp giải thích...</span>
+      </div>
+
+      <div id="feat1ContentArea">
+        <div class="explanation-main" id="feat1SummaryText">
+          Đang tổng hợp thông tin từ toàn bộ slide...
+        </div>
+
+        <div class="explanation-keypoints">
+          <div class="section-title">📌 Phân tích trong ngữ cảnh slide:</div>
+          <ul id="feat1KeypointsList"></ul>
+        </div>
+
+        <div class="evidence-box" id="feat1EvidenceBox">
+          <i data-lucide="info" style="width: 13px; height: 13px;"></i>
+          <span id="feat1EvidenceText">Tổng hợp từ toàn bộ nội dung Trang X của Slide.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="popover-footer">
+      <button class="btn-secondary" id="btnCloseFeature1Footer">Đóng</button>
+      <button class="btn-action-send-gv" id="btnFeat1ToInstructor">
+        <i data-lucide="bookmark-plus" style="width: 13px; height: 13px;"></i>
+        <span>Vẫn chưa hiểu? Lưu gửi GV</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= FEATURE 2 MODAL: TẠO CÂU HỎI ĐỘNG ================= -->
+  <div class="ai-popover quiz-modal" id="popoverFeature2">
+    <div class="popover-header"
+      style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(3, 105, 161, 0.08));">
+      <div class="popover-title" style="color: #7dd3fc;">
+        <i data-lucide="help-circle" style="width: 16px; height: 16px; color: #38bdf8;"></i>
+        <span>Câu Hỏi Kiểm Tra Kiến Thức (OpenAI)</span>
+      </div>
+      <button class="btn-close-modal" id="btnCloseFeature2" title="Đóng">
+        <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+      </button>
+    </div>
+
+    <div class="popover-body">
+      <div class="quiz-term-tag" id="feat2SelectedTerm">Nội dung: ...</div>
+
+      <!-- Loading indicator -->
+      <div class="ai-loading-box" id="feat2Loading" style="display: none;">
+        <div class="spinner"></div>
+        <span>OpenAI đang sinh câu hỏi trắc nghiệm mới...</span>
+      </div>
+
+      <div id="feat2ContentArea">
+        <div class="quiz-question-title" id="feat2QuestionText">Đang sinh câu hỏi...</div>
+
+        <div class="quiz-options-list" id="feat2OptionsList">
+          <!-- 4 Options dynamically injected -->
+        </div>
+
+        <div class="quiz-feedback-card" id="feat2FeedbackCard">
+          <div id="feat2FeedbackTitle"></div>
+          <div id="feat2FeedbackDetail"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popover-footer">
+      <button class="btn-generate-new" id="btnFeat2GenerateNew"
+        title="Sinh một câu hỏi hoàn toàn khác cho cùng từ khóa này">
+        <i data-lucide="refresh-cw" style="width: 13px; height: 13px;"></i>
+        <span>Tạo câu hỏi khác</span>
+      </button>
+
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-secondary" id="btnCloseFeature2Footer">Bỏ qua</button>
+        <button class="btn-action-send-gv" id="btnFeat2ToInstructor">
+          <i data-lucide="bookmark-plus" style="width: 13px; height: 13px;"></i>
+          <span>Lưu gửi GV</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= OPENAI API KEY SETTINGS MODAL ================= -->
+  <div class="modal-backdrop" id="apiKeyModal">
+    <div class="modal-box" style="max-width: 520px;">
+      <div class="modal-box-header">
+        <div class="modal-title-group">
+          <h2>
+            <i data-lucide="key" style="color: #facc15;"></i>
+            Cài Đặt OpenAI API Key
+          </h2>
+          <p>Nhập OpenAI API Key của bạn để sử dụng mô hình AI trực tiếp.</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseApiKeyModal">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-box-body" style="gap: 16px;">
+        <div class="input-group">
+          <label for="apiKeyInput"
+            style="font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; display: block;">
+            OpenAI API Key (sk-...):
+          </label>
+          <div style="position: relative;">
+            <input type="password" id="apiKeyInput" placeholder="sk-proj-..." class="api-key-input">
+            <button type="button" id="btnToggleKeyVisibility" class="btn-toggle-eye" title="Hiện / Ẩn Key">
+              <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
+            </button>
+          </div>
+          <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block;">
+            💡 API Key được lưu an toàn trong trình duyệt của bạn (LocalStorage) và gọi trực tiếp tới OpenAI.
+          </span>
+        </div>
+
+        <div class="input-group">
+          <label for="modelSelect"
+            style="font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; display: block;">
+            Mô hình OpenAI:
+          </label>
+          <select id="modelSelect" class="api-key-input" style="padding: 10px 12px; cursor: pointer;">
+            <option value="gpt-4o-mini" selected>gpt-4o-mini (Khuyên dùng - Nhanh &amp; Tiết kiệm)</option>
+            <option value="gpt-4o">gpt-4o (Thông minh cao cấp)</option>
+            <option value="gpt-3.5-turbo">gpt-3.5-turbo (Cơ bản)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-box-footer">
+        <button class="btn-secondary" id="btnRemoveKey" style="color: #f87171;">Xóa Key</button>
+        <button class="btn-confirm-send" id="btnSaveApiKey">
+          <i data-lucide="check" style="width: 15px; height: 15px;"></i>
+          <span>Lưu &amp; Kích Hoạt</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ================= FEATURE 3 MODAL: TỔNG HỢP GỬI GIẢNG VIÊN ================= -->
+  <div class="modal-backdrop" id="endSessionModal">
+    <div class="modal-box">
+      <div class="modal-box-header">
+        <div class="modal-title-group">
+          <h2>
+            <i data-lucide="clipboard-list" style="color: #10b981;"></i>
+            Tổng Hợp Danh Sách Thắc Mắc Gửi Giảng Viên
+          </h2>
+          <p>Xem lại, chỉnh sửa hoặc xóa bớt các câu hỏi bạn đã đánh dấu trước khi gửi chính thức.</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseSessionModal">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-box-body">
+        <div class="human-in-the-loop-alert">
+          <i data-lucide="check-circle" style="width: 18px; height: 18px; color: #10b981; flex-shrink: 0;"></i>
+          <div>
+            <strong>Bạn có toàn quyền kiểm soát:</strong> Bạn có thể gõ chỉnh sửa trực tiếp nội dung câu hỏi trong ô
+            nhập bên dưới hoặc bấm nút <em>"Xóa câu này"</em> nếu bạn đã tự hiểu ra trong quá trình học.
+          </div>
+        </div>
+
+        <div class="bookmarks-list" id="bookmarksReviewList">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <div class="modal-box-footer">
+        <button class="btn-secondary" id="btnCloseSessionModalFooter">Đóng (Tiếp tục học)</button>
+        <button class="btn-confirm-send" id="btnConfirmSendToInstructor">
+          <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+          <span>Xác nhận Gửi Giảng viên (<span id="submitCountBadge">0</span> câu hỏi)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+
+</html>
