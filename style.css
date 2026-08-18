@@ -131,10 +131,125 @@ body {
   font-size: 11px;
   background: var(--bg-surface-elevated);
   color: var(--text-highlight);
-  padding: 1px 8px;
+  padding: 2px 10px;
   border-radius: var(--radius-full);
   font-family: 'JetBrains Mono', monospace;
   border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.file-tag.tag-pptx {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border-color: rgba(249, 115, 22, 0.35);
+}
+
+.file-tag.tag-pdf {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.file-tag.tag-image {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.btn-sample-ppt:hover {
+  border-color: rgba(249, 115, 22, 0.45) !important;
+  background: rgba(249, 115, 22, 0.1) !important;
+}
+
+.btn-sample-img:hover {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+}
+
+.btn-tool-ocr {
+  background: rgba(56, 189, 248, 0.08) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  color: #38bdf8 !important;
+}
+.btn-tool-ocr:hover {
+  background: rgba(56, 189, 248, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
+}
+
+.btn-tool-vision {
+  background: rgba(168, 85, 247, 0.08) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  color: #c084fc !important;
+}
+.btn-tool-vision:hover {
+  background: rgba(168, 85, 247, 0.18) !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
+}
+
+.ocr-status-pill {
+  font-size: 11.5px;
+  font-weight: 500;
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ocr-status-pill.scanning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #fbbf24 !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  animation: pulseOcr 1.2s infinite ease-in-out;
+}
+
+.ocr-status-pill.ready {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #6ee7b7 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+@keyframes pulseOcr {
+  0%, 100% { opacity: 0.7; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.ocr-scanning-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.ocr-scan-line {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  box-shadow: 0 0 16px #38bdf8, 0 0 30px #38bdf8;
+  position: absolute;
+  top: 0;
+  animation: ocrScan 1.6s infinite ease-in-out;
+}
+
+@keyframes ocrScan {
+  0% { top: 0%; opacity: 0.8; }
+  50% { top: 100%; opacity: 1; }
+  100% { top: 0%; opacity: 0.8; }
+}
+
+.pdf-scroll-viewport.dragover {
+  border: 2px dashed #6366f1;
+  background: rgba(99, 102, 241, 0.05);
 }
 
 .ai-status-tag {

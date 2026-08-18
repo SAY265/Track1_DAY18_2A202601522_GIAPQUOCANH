@@ -7,13 +7,20 @@
   <title>Trợ Lý Học Tập AI (OpenAI Powered) - Đọc Slide PDF & Tương Tác Trực Tiếp</title>
   <meta name="description"
     content="Nền tảng học tập thông minh tích hợp OpenAI API: Đọc Slide PDF, bôi đen văn bản để AI giải thích theo slide, AI tạo câu hỏi trắc nghiệm động, và tổng hợp thắc mắc gửi giảng viên.">
-  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" href="style.css?v=2.4">
 
   <!-- PDF.js library & CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <!-- jsPDF library to generate pre-loaded sample slide PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- JSZip library for PowerPoint (PPTX) parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <!-- Tesseract.js for Optical Character Recognition (OCR) -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -45,17 +52,29 @@
         <span>OpenAI Key</span>
       </button>
 
-      <!-- Upload PDF Button -->
-      <label class="btn-upload" for="pdfFileInput" title="Tải file PDF từ máy tính của bạn">
+      <!-- Upload PDF / PPT / Image Button -->
+      <label class="btn-upload" for="pdfFileInput" title="Tải file Slide PDF, PowerPoint (PPT/PPTX) hoặc Ảnh bài giảng (PNG, JPG, WEBP) từ máy tính">
         <i data-lucide="upload" style="width: 15px; height: 15px;"></i>
-        <span>Tải file PDF</span>
+        <span>Tải Slide / Ảnh</span>
       </label>
-      <input type="file" id="pdfFileInput" accept="application/pdf" style="display: none;">
+      <input type="file" id="pdfFileInput" accept=".pdf, .pptx, .ppt, .png, .jpg, .jpeg, .webp, .bmp, image/*, application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-powerpoint" multiple style="display: none;">
 
       <!-- Load Sample PDF Button -->
-      <button class="btn-action-outline" id="btnSamplePDF" title="Nạp Slide Mẫu Kinh tế Vi mô">
-        <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
-        <span>Slide Mẫu</span>
+      <button class="btn-action-outline" id="btnSamplePDF" title="Nạp Slide Mẫu PDF Kinh tế Vi mô">
+        <i data-lucide="file-text" style="width: 15px; height: 15px; color: #818cf8;"></i>
+        <span>PDF Mẫu</span>
+      </button>
+
+      <!-- Load Sample PPT Button -->
+      <button class="btn-action-outline btn-sample-ppt" id="btnSamplePPT" title="Nạp Slide Mẫu PPTX Lập trình AI">
+        <i data-lucide="presentation" style="width: 15px; height: 15px; color: #fb923c;"></i>
+        <span>PPT Mẫu</span>
+      </button>
+
+      <!-- Load Sample Diagram/Image Button -->
+      <button class="btn-action-outline btn-sample-img" id="btnSampleImage" title="Nạp Slide Ảnh & Sơ đồ Kiến trúc AI (OCR)">
+        <i data-lucide="image" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+        <span>Ảnh & Sơ đồ</span>
       </button>
 
       <!-- Bookmarks Drawer Trigger -->
@@ -121,30 +140,57 @@
             <i data-lucide="maximize-2" style="width: 14px; height: 14px;"></i>
           </button>
         </div>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Image OCR & Vision AI Toolbar Tools -->
+        <div class="toolbar-group">
+          <button class="btn-action-outline btn-tool-ocr" id="btnRunOCR" title="AI Quét lại chữ từ hình ảnh (OCR)">
+            <i data-lucide="scan-text" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+            <span>Quét lại chữ</span>
+          </button>
+          <button class="btn-action-outline btn-tool-vision" id="btnVisionAI" title="OpenAI Vision: Phân tích sâu biểu đồ, sơ đồ và công thức trên slide">
+            <i data-lucide="eye" style="width: 14px; height: 14px; color: #a855f7;"></i>
+            <span>AI Đọc Sơ Đồ</span>
+          </button>
+          <span class="ocr-status-pill" id="ocrStatusPill" title="Trạng thái tự động phân tích hình ảnh và nhận diện OCR">
+            <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i>
+            <span id="ocrStatusPillText">OCR Tự động: Sẵn sàng</span>
+          </span>
+        </div>
       </div>
 
       <!-- PDF Canvas Viewport with Text Selection Layer -->
       <div class="pdf-scroll-viewport" id="pdfScrollViewport">
 
-        <!-- Empty State (Shown initially before PDF is uploaded) -->
+        <!-- Empty State (Shown initially before PDF / PPT / Image is uploaded) -->
         <div class="empty-state-card" id="emptyStateCard">
           <div class="empty-icon-box">
-            <i data-lucide="file-up" style="width: 48px; height: 48px; color: #6366f1;"></i>
+            <i data-lucide="image" style="width: 48px; height: 48px; color: #6366f1;"></i>
           </div>
-          <h3>Chưa có Slide nào được mở</h3>
-          <p>Vui lòng tải lên file Slide PDF bài giảng từ máy tính của bạn hoặc chọn Nạp Slide Mẫu để bắt đầu học tập và
-            kích hoạt 3 tính năng AI.</p>
+          <h3>Chưa có Slide hoặc Ảnh bài giảng nào</h3>
+          <p>Vui lòng tải lên file Slide <strong>PDF</strong>, <strong>PowerPoint (PPT / PPTX)</strong> hoặc <strong>Hình ảnh (PNG, JPG, WEBP)</strong> từ máy tính để bắt đầu học tập tương tác với AI.</p>
 
           <div class="empty-actions">
-            <label class="btn-upload btn-empty-action" for="pdfFileInputEmpty">
+            <label class="btn-upload btn-empty-action" for="pdfFileInputEmpty" title="Tải file PDF, PPTX hoặc Ảnh từ máy tính">
               <i data-lucide="upload" style="width: 16px; height: 16px;"></i>
-              <span>Tải file PDF từ máy</span>
+              <span>Tải file PDF / PPT / Ảnh từ máy</span>
             </label>
-            <input type="file" id="pdfFileInputEmpty" accept="application/pdf" style="display: none;">
+            <input type="file" id="pdfFileInputEmpty" accept=".pdf, .pptx, .ppt, .png, .jpg, .jpeg, .webp, .bmp, image/*, application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-powerpoint" multiple style="display: none;">
 
-            <button class="btn-action-outline btn-empty-action" id="btnSamplePDFEmpty">
-              <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
-              <span>Nạp Slide Mẫu (Kinh tế Vi mô)</span>
+            <button class="btn-action-outline btn-empty-action" id="btnSamplePDFEmpty" title="Nạp Slide Mẫu PDF Kinh tế Vi mô">
+              <i data-lucide="file-text" style="width: 16px; height: 16px; color: #818cf8;"></i>
+              <span>Nạp Slide PDF (Kinh tế)</span>
+            </button>
+
+            <button class="btn-action-outline btn-empty-action" id="btnSamplePPTEmpty" title="Nạp Slide Mẫu PPTX Lập trình AI">
+              <i data-lucide="presentation" style="width: 16px; height: 16px; color: #fb923c;"></i>
+              <span>Nạp Slide PPT (Lập trình AI)</span>
+            </button>
+
+            <button class="btn-action-outline btn-empty-action" id="btnSampleImageEmpty" title="Nạp Slide Ảnh Sơ đồ Kiến trúc AI (OCR)">
+              <i data-lucide="image" style="width: 16px; height: 16px; color: #38bdf8;"></i>
+              <span>Nạp Slide Ảnh & Sơ đồ (OCR)</span>
             </button>
           </div>
         </div>
@@ -416,7 +462,7 @@
   </div>
 
   <!-- Main JavaScript File -->
-  <script src="app.js"></script>
+  <script src="app.js?v=2.4"></script>
 </body>
 
 </html>
