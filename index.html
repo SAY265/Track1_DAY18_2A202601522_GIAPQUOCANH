@@ -10,7 +10,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="style.css?v=2.4">
+  <link rel="stylesheet" href="style.css?v=8.0">
 
   <!-- PDF.js library & CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
@@ -59,22 +59,10 @@
       </label>
       <input type="file" id="pdfFileInput" accept=".pdf, .pptx, .ppt, .png, .jpg, .jpeg, .webp, .bmp, image/*, application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-powerpoint" multiple style="display: none;">
 
-      <!-- Load Sample PDF Button -->
-      <button class="btn-action-outline" id="btnSamplePDF" title="Nạp Slide Mẫu PDF Kinh tế Vi mô">
+      <!-- Load Sample Slide Button -->
+      <button class="btn-action-outline" id="btnSamplePDF" title="Nạp Slide Mẫu: Chương 1. Ma Trận – Định Thức – Hệ Phương Trình">
         <i data-lucide="file-text" style="width: 15px; height: 15px; color: #818cf8;"></i>
-        <span>PDF Mẫu</span>
-      </button>
-
-      <!-- Load Sample PPT Button -->
-      <button class="btn-action-outline btn-sample-ppt" id="btnSamplePPT" title="Nạp Slide Mẫu PPTX Lập trình AI">
-        <i data-lucide="presentation" style="width: 15px; height: 15px; color: #fb923c;"></i>
-        <span>PPT Mẫu</span>
-      </button>
-
-      <!-- Load Sample Diagram/Image Button -->
-      <button class="btn-action-outline btn-sample-img" id="btnSampleImage" title="Nạp Slide Ảnh & Sơ đồ Kiến trúc AI (OCR)">
-        <i data-lucide="image" style="width: 15px; height: 15px; color: #38bdf8;"></i>
-        <span>Ảnh & Sơ đồ</span>
+        <span>Slide Mẫu (Ma Trận)</span>
       </button>
 
       <!-- Bookmarks Drawer Trigger -->
@@ -143,6 +131,23 @@
 
         <div class="toolbar-divider"></div>
 
+        <!-- Mode Toggle: 1 Lần vs Nhiều Lần -->
+        <div class="toolbar-group selection-mode-group">
+          <span class="mode-title-tag"><i data-lucide="highlighter" style="width: 12px; height: 12px; color: #a855f7;"></i> Chế độ bôi đen:</span>
+          <div class="mode-switch-container">
+            <button class="btn-mode-toggle active" id="btnModeSingle" title="Bôi đen 1 lần: Tương tác ngay cho từng đoạn bôi đen">
+              <i data-lucide="mouse-pointer-click" style="width: 12px; height: 12px;"></i>
+              <span>1 Lần</span>
+            </button>
+            <button class="btn-mode-toggle" id="btnModeMulti" title="Bôi đen nhiều lần: Tự động gom nhiều đoạn bôi đen liên tiếp để tổng hợp câu hỏi">
+              <i data-lucide="layers" style="width: 12px; height: 12px;"></i>
+              <span>Nhiều Lần (Tự gom)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
         <!-- Image OCR & Vision AI Toolbar Tools -->
         <div class="toolbar-group">
           <button class="btn-action-outline btn-tool-ocr" id="btnRunOCR" title="AI Quét lại chữ từ hình ảnh (OCR)">
@@ -178,20 +183,54 @@
             </label>
             <input type="file" id="pdfFileInputEmpty" accept=".pdf, .pptx, .ppt, .png, .jpg, .jpeg, .webp, .bmp, image/*, application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-powerpoint" multiple style="display: none;">
 
-            <button class="btn-action-outline btn-empty-action" id="btnSamplePDFEmpty" title="Nạp Slide Mẫu PDF Kinh tế Vi mô">
+            <button class="btn-action-outline btn-empty-action" id="btnSamplePDFEmpty" title="Nạp Slide Mẫu: Chương 1. Ma Trận – Định Thức – Hệ Phương Trình">
               <i data-lucide="file-text" style="width: 16px; height: 16px; color: #818cf8;"></i>
-              <span>Nạp Slide PDF (Kinh tế)</span>
+              <span>Nạp Slide Mẫu: Chương 1. Ma Trận</span>
             </button>
+          </div>
+        </div>
 
-            <button class="btn-action-outline btn-empty-action" id="btnSamplePPTEmpty" title="Nạp Slide Mẫu PPTX Lập trình AI">
-              <i data-lucide="presentation" style="width: 16px; height: 16px; color: #fb923c;"></i>
-              <span>Nạp Slide PPT (Lập trình AI)</span>
-            </button>
-
-            <button class="btn-action-outline btn-empty-action" id="btnSampleImageEmpty" title="Nạp Slide Ảnh Sơ đồ Kiến trúc AI (OCR)">
-              <i data-lucide="image" style="width: 16px; height: 16px; color: #38bdf8;"></i>
-              <span>Nạp Slide Ảnh & Sơ đồ (OCR)</span>
-            </button>
+        <!-- Native Slide Card (Crisp Vector Typography - Zero Canvas Glitches) -->
+        <div class="slide-native-card" id="slideNativeCard" style="display: none;">
+          <div class="slide-native-header">
+            <div class="slide-native-title">CHƯƠNG 1. MA TRẬN – ĐỊNH THỨC – HỆ PHƯƠNG TRÌNH</div>
+          </div>
+          <div class="slide-native-grid">
+            <!-- Section 1 -->
+            <div class="slide-section-box sec-1">
+              <div class="sec-box-heading">1. Ma trận</div>
+              <div class="sec-box-item">• Khái niệm ma trận, kích thước m×n</div>
+              <div class="sec-box-item">• Các phép toán: cộng, trừ (cùng kích thước), nhân ma trận (đúng thứ tự)</div>
+              <div class="sec-box-item">• Ma trận chuyển vị A^T</div>
+            </div>
+            <!-- Section 2 -->
+            <div class="slide-section-box sec-2">
+              <div class="sec-box-heading">2. Định thức</div>
+              <div class="sec-box-item">• Định thức cấp 2, 3</div>
+              <div class="sec-box-item">• Tính bằng khai triển hoặc biến đổi sơ cấp</div>
+              <div class="sec-box-item">• Tính chất:</div>
+              <div class="sec-box-subitem">+ Đổi chỗ 2 dòng → đổi dấu định thức</div>
+              <div class="sec-box-subitem">+ Một dòng nhân k → định thức nhân k</div>
+              <div class="sec-box-subitem">+ Một dòng toàn 0 → định thức = 0</div>
+            </div>
+            <!-- Section 3 -->
+            <div class="slide-section-box sec-3">
+              <div class="sec-box-heading">3. Hạng ma trận</div>
+              <div class="sec-box-item">• Rank = số dòng (hoặc cột) độc lập tuyến tính</div>
+              <div class="sec-box-item">• Cách tìm: biến đổi sơ cấp về dạng bậc thang</div>
+              <div class="sec-box-item">• Ứng dụng: xét nghiệm hệ, xét phụ thuộc tuyến tính</div>
+            </div>
+            <!-- Section 4 -->
+            <div class="slide-section-box sec-4">
+              <div class="sec-box-heading">4. Hệ phương trình tuyến tính</div>
+              <div class="sec-box-item">• Hệ có nghiệm ⇔ rank(A) = rank(A|b)</div>
+              <div class="sec-box-item">• Hệ có nghiệm duy nhất ⇔ rank = số ẩn</div>
+              <div class="sec-box-item">• Vô nghiệm ⇔ rank(A) ≠ rank(A|b)</div>
+            </div>
+          </div>
+          <div class="slide-native-footer">
+            <span>Đại số Tuyến tính &bull; Chương 1: Ma trận, Định thức & Hệ phương trình</span>
+            <span>Slide Trang 1 / 1</span>
           </div>
         </div>
 
@@ -208,21 +247,34 @@
 
     <!-- RIGHT SIDEBAR: AI Companion & Live Notes Panel -->
     <aside class="sidebar-right">
-      <div class="sidebar-header">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <i data-lucide="bot" style="width: 16px; height: 16px; color: #818cf8;"></i>
-          <span>Trợ Lý Bài Giảng OpenAI</span>
-        </div>
+      <!-- Right Sidebar Tabs -->
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab-btn active" id="tabBtnAssistant" title="Trợ lý & Ngữ cảnh slide">
+          <i data-lucide="bot" style="width: 14px; height: 14px; color: #818cf8;"></i>
+          <span>Trợ Lý</span>
+        </button>
+        <button class="sidebar-tab-btn" id="tabBtnSnippets" title="Khay tổng hợp các đoạn bôi đen">
+          <i data-lucide="layers" style="width: 14px; height: 14px; color: #c084fc;"></i>
+          <span>Khay Bôi Đen</span>
+          <span class="badge-counter snippet-badge" id="snippetCountBadge">0</span>
+        </button>
+        <button class="sidebar-tab-btn" id="tabBtnHistory" title="Lưu trữ và xem lại các câu hỏi trắc nghiệm đã trả lời">
+          <i data-lucide="history" style="width: 14px; height: 14px; color: #10b981;"></i>
+          <span>Đã Trả Lời</span>
+          <span class="badge-counter history-badge" id="historyCountBadge">0</span>
+        </button>
       </div>
 
-      <div class="ai-panel-body" id="aiPanelBody">
+      <!-- Tab 1: AI Assistant & Context -->
+      <div class="ai-panel-body tab-panel active" id="tabContentAssistant">
         <div class="ai-welcome-box">
           <div class="welcome-icon">
             <i data-lucide="sparkles" style="width: 24px; height: 24px; color: #6366f1;"></i>
           </div>
           <h4>Hướng dẫn sử dụng</h4>
-          <p>Dùng chuột <strong>bôi đen bất kỳ đoạn chữ nào</strong> trên Slide PDF để kích hoạt 3 tính năng:</p>
+          <p>Dùng chuột <strong>bôi đen bất kỳ đoạn chữ nào</strong> trên Slide PDF để kích hoạt các tính năng:</p>
           <ul class="feature-bullets">
+            <li><strong>➕ Gom đoạn (+):</strong> Bôi đen nhiều lần ở các trang khác nhau để tổng hợp câu hỏi.</li>
             <li><strong>⚡ AI Giải thích:</strong> OpenAI đọc cả slide để giải đáp phần bôi đen.</li>
             <li><strong>❓ Tạo câu hỏi:</strong> OpenAI sinh câu hỏi trắc nghiệm mới mỗi lần bấm.</li>
             <li><strong>📝 Gửi giảng viên:</strong> Lưu nháp câu hỏi để gửi vào cuối giờ.</li>
@@ -239,12 +291,110 @@
           </div>
         </div>
       </div>
+
+      <!-- Tab 2: Multi-Highlight Snippet Collector & Question Synthesizer -->
+      <div class="ai-panel-body tab-panel" id="tabContentSnippets" style="display: none;">
+        <!-- Snippets Mode Control Banner -->
+        <div class="snippets-mode-banner">
+          <div class="mode-banner-info">
+            <span class="mode-status-pill" id="modeStatusBadge">Chế độ: <strong>1 Lần</strong></span>
+          </div>
+          <button class="btn-toggle-quick-mode" id="btnToggleQuickMode" title="Chuyển nhanh chế độ bôi đen">
+            <i data-lucide="repeat" style="width: 12px; height: 12px;"></i>
+            <span id="btnToggleQuickModeText">Bật Chế độ Nhiều Lần (Tự gom)</span>
+          </button>
+        </div>
+
+        <div class="snippets-panel-header">
+          <div class="panel-header-title">
+            <i data-lucide="bookmark" style="width: 16px; height: 16px; color: #c084fc;"></i>
+            <span>Đoạn Đã Bôi Đen (<span id="snippetCountText">0</span>)</span>
+          </div>
+          <button class="btn-clear-snippets" id="btnClearSnippets" title="Xóa tất cả các đoạn đã gom">
+            <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i>
+            <span>Xóa hết</span>
+          </button>
+        </div>
+
+        <!-- Snippets List -->
+        <div class="collected-snippets-container" id="collectedSnippetsList">
+          <!-- Dynamically Rendered -->
+        </div>
+
+        <!-- Synthesizer Action Buttons Container -->
+        <div class="synthesizer-actions-box" id="synthesizerActionsBox">
+          <div class="synth-actions-title">
+            <i data-lucide="sparkles" style="width: 14px; height: 14px; color: #c084fc;"></i>
+            <span>AI Tổng Hợp Từ Các Đoạn Đã Chọn</span>
+          </div>
+          <div class="synth-buttons-grid">
+            <button class="btn-synth-action btn-synth-quiz" id="btnSynthesizeQuiz" title="Tạo câu hỏi trắc nghiệm liên kết tất cả các đoạn đã chọn">
+              <i data-lucide="help-circle" style="width: 15px; height: 15px;"></i>
+              <span>❓ AI Tạo câu hỏi trắc nghiệm</span>
+            </button>
+            <button class="btn-synth-action btn-synth-instructor" id="btnSynthesizeInstructor" title="Tự động ghép nối các đoạn thành câu hỏi logic gửi giảng viên">
+              <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+              <span>📝 AI Soạn câu hỏi gửi Giảng viên</span>
+            </button>
+            <button class="btn-synth-action btn-synth-explain" id="btnSynthesizeExplain" title="AI phân tích sự liên quan và giải thích tổng quan">
+              <i data-lucide="zap" style="width: 15px; height: 15px;"></i>
+              <span>⚡ AI Giải thích mối liên hệ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Answered Quiz Storage & History Review -->
+      <div class="ai-panel-body tab-panel" id="tabContentHistory" style="display: none;">
+        <!-- Stats Summary Box -->
+        <div class="history-stats-bar">
+          <div class="history-stat-item">
+            <span class="stat-label">Tổng</span>
+            <span class="stat-val" id="statTotalAnswered">0</span>
+          </div>
+          <div class="history-stat-item stat-correct">
+            <span class="stat-label">Đúng</span>
+            <span class="stat-val" id="statCorrectCount">0</span>
+          </div>
+          <div class="history-stat-item stat-incorrect">
+            <span class="stat-label">Sai</span>
+            <span class="stat-val" id="statIncorrectCount">0</span>
+          </div>
+          <div class="history-stat-item">
+            <span class="stat-label">Tỷ lệ</span>
+            <span class="stat-val" id="statAccuracyPercent">0%</span>
+          </div>
+        </div>
+
+        <!-- Filter & Header Actions -->
+        <div class="history-panel-header">
+          <div class="history-filter-chips">
+            <button class="btn-filter-chip active" data-filter="all" id="btnFilterAll">Tất cả</button>
+            <button class="btn-filter-chip" data-filter="correct" id="btnFilterCorrect">✅ Đúng</button>
+            <button class="btn-filter-chip" data-filter="incorrect" id="btnFilterIncorrect">❌ Sai</button>
+          </div>
+          <button class="btn-clear-history" id="btnClearHistory" title="Xóa toàn bộ lịch sử câu đã trả lời">
+            <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i>
+            <span>Xóa</span>
+          </button>
+        </div>
+
+        <!-- Answered Quizzes List -->
+        <div class="quiz-history-container" id="quizHistoryList">
+          <!-- Dynamically injected -->
+        </div>
+      </div>
     </aside>
 
   </main>
 
   <!-- ================= FLOATING AI ACTION TOOLBAR ================= -->
   <div class="floating-toolbar" id="floatingToolbar">
+    <button class="float-btn btn-feature-collect" id="btnTriggerCollect"
+      title="Gom đoạn bôi đen này vào khay để tổng hợp nhiều câu hỏi">
+      <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i>
+      <span>Gom đoạn (+)</span>
+    </button>
     <button class="float-btn btn-feature-1" id="btnTriggerFeature1"
       title="AI đọc toàn bộ slide và giải thích phần bôi đen">
       <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
@@ -315,7 +465,7 @@
       style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(3, 105, 161, 0.08));">
       <div class="popover-title" style="color: #7dd3fc;">
         <i data-lucide="help-circle" style="width: 16px; height: 16px; color: #38bdf8;"></i>
-        <span>Câu Hỏi Kiểm Tra Kiến Thức (OpenAI)</span>
+        <span>Câu Hỏi Kiểm Tra Kiến Thức (1 Câu / Phần Bôi Đen)</span>
       </div>
       <button class="btn-close-modal" id="btnCloseFeature2" title="Đóng">
         <i data-lucide="x" style="width: 16px; height: 16px;"></i>
@@ -462,7 +612,7 @@
   </div>
 
   <!-- Main JavaScript File -->
-  <script src="app.js?v=2.4"></script>
+  <script src="app.js?v=8.0"></script>
 </body>
 
 </html>

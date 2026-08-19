@@ -8,149 +8,43 @@ if (window.pdfjsLib) {
 const SAMPLE_SLIDES = [
   {
     page: 1,
-    title: "CHƯƠNG 4: LÝ THUYẾT CUNG - CẦU & ĐỘ CO GIÃN",
-    subtitle: "1. Khái niệm Thị trường & Quy luật Cầu",
-    points: [
-      "Thị trường là tập hợp các cơ chế giúp người mua và người bán tương tác để trao đổi hàng hóa dịch vụ.",
-      "Quy luật Cầu: Khi giá bán của hàng hóa tăng lên (các yếu tố khác giữ nguyên), lượng cầu về hàng hóa đó sẽ giảm.",
-      "Đường cầu (D) dốc xuống từ trái sang phải phản ánh mối quan hệ nghịch biến giữa Giá cả (P) và Lượng cầu (Q)."
-    ]
-  },
-  {
-    page: 2,
-    title: "CHƯƠNG 4: LÝ THUYẾT CUNG - CẦU & ĐỘ CO GIÃN",
-    subtitle: "2. Khái niệm Độ co giãn của Cầu theo Giá (PED)",
-    points: [
-      "Độ co giãn của cầu theo giá (Ed) đo lường mức độ nhạy cảm của lượng cầu khi giá bán sản phẩm biến động.",
-      "Công thức: Ed = (% Thay đổi Lượng cầu) / (% Thay đổi Giá bán) = (ΔQ / Q) / (ΔP / P).",
-      "Do quy luật cầu nên Ed luôn mang giá trị âm, trong phân tích thực tiễn ta xét giá trị tuyệt đối |Ed|."
-    ]
-  },
-  {
-    page: 3,
-    title: "CHƯƠNG 4: LÝ THUYẾT CUNG - CẦU & ĐỘ CO GIÃN",
-    subtitle: "3. Phân loại các Mức độ Co giãn của Cầu",
-    points: [
-      "|Ed| > 1: Cầu co giãn nhiều (Elastic Demand) - Giá đổi ít làm lượng cầu đổi nhiều (hàng xa xỉ, nhiều hàng thay thế).",
-      "|Ed| < 1: Cầu co giãn ít (Inelastic Demand) - Hàng thiết yếu như thuốc men lương thực, người mua ít nhạy cảm với giá.",
-      "|Ed| = 1: Cầu co giãn đơn vị (Unitary Elasticity).",
-      "|Ed| = 0: Cầu hoàn toàn không co giãn (Perfectly Inelastic) - Đường cầu thẳng đứng."
-    ]
-  },
-  {
-    page: 4,
-    title: "CHƯƠNG 4: LÝ THUYẾT CUNG - CẦU & ĐỘ CO GIÃN",
-    subtitle: "4. Trường hợp Đặc biệt: Cầu co giãn hoàn toàn (Perfectly Elastic)",
-    points: [
-      "Cầu co giãn hoàn toàn (|Ed| = ∞): Người tiêu dùng chỉ sẵn sàng mua tại một mức giá thị trường duy nhất P0.",
-      "Chỉ cần tăng giá nhẹ lên trên P0 -> Lượng cầu lập tức giảm về bằng 0!",
-      "Biểu diễn hình học: Đường cầu D là một ĐƯỜNG THẲNG NẰM NGANG song song với trục hoành (trục sản lượng Q).",
-      "Ứng dụng: Doanh nghiệp trong thị trường cạnh tranh hoàn hảo (như nông sản, lúa mì tiêu chuẩn) là người chấp nhận giá."
-    ]
-  },
-  {
-    page: 5,
-    title: "CHƯƠNG 4: LÝ THUYẾT CUNG - CẦU & ĐỘ CO GIÃN",
-    subtitle: "5. Mối quan hệ giữa Độ co giãn và Tổng Doanh Thu (TR)",
-    points: [
-      "Tổng doanh thu của doanh nghiệp được tính bằng: TR = P × Q (Giá bán nhân Sản lượng tiêu thụ).",
-      "Khi Cầu co giãn nhiều (|Ed| > 1): Chiến lược GIẢM GIÁ sẽ giúp TĂNG TỔNG DOANH THU.",
-      "Khi Cầu co giãn ít (|Ed| < 1): Chiến lược TĂNG GIÁ sẽ giúp TĂNG TỔNG DOANH THU.",
-      "Khi Cầu co giãn hoàn toàn (|Ed| = ∞): Nâng giá bán sẽ khiến toàn bộ khách hàng rời bỏ và doanh thu về 0."
-    ]
-  }
-];
-
-// Rich Sample PowerPoint Presentation Slides (Data Structures & Algorithms for AI)
-const SAMPLE_PPT_SLIDES = [
-  {
-    page: 1,
-    title: "CẤU TRÚC DỮ LIỆU & GIẢI THUẬT CHO AI",
-    subtitle: "1. Tổng quan về Cấu trúc Dữ liệu & Đánh giá Độ phức tạp (Big-O)",
-    points: [
-      "Cấu trúc dữ liệu là cách tổ chức, quản lý và lưu trữ dữ liệu nhằm cho phép truy cập và chỉnh sửa hiệu quả.",
-      "Độ phức tạp thời gian O(1), O(log n), O(n), O(n log n), O(n²): Đánh giá tốc độ tăng trưởng của số phép toán khi dữ liệu đầu vào N mở rộng.",
-      "Trong AI & Deep Learning: Cấu trúc ma trận đa chiều (Tensors) và tính toán song song GPU là nền tảng cốt lõi."
-    ]
-  },
-  {
-    page: 2,
-    title: "CẤU TRÚC DỮ LIỆU & GIẢI THUẬT CHO AI",
-    subtitle: "2. Hash Table & Cơ chế Xử lý Xung đột",
-    points: [
-      "Hash Table ánh xạ các khóa (Keys) vào các chỉ số mảng bằng hàm băm (Hash Function) cho tốc độ tìm kiếm trung bình O(1).",
-      "Kỹ thuật giải quyết va chạm: Separate Chaining (sử dụng danh sách liên kết) và Open Addressing (Linear Probing, Double Hashing).",
-      "Ứng dụng trong LLM: Tra cứu Tokenizer Vocabulary (BPE/WordPiece) và lưu trữ Embedding Cache."
-    ]
-  },
-  {
-    page: 3,
-    title: "CẤU TRÚC DỮ LIỆU & GIẢI THUẬT CHO AI",
-    subtitle: "3. Cây Nhị Phân Tìm Kiếm (BST) & Cây Cân Bằng AVL / Red-Black",
-    points: [
-      "Cây Nhị Phân Tìm Kiếm (BST) duy trì tính chất: mọi nút con bên trái nhỏ hơn nút gốc, mọi nút con bên phải lớn hơn nút gốc.",
-      "Hiện tượng suy biến thành danh sách liên kết: Độ phức tạp xấu nhất thành O(n) nếu không có cơ chế tự cân bằng cây.",
-      "Cây AVL và Red-Black Tree duy trì độ cao h = O(log n) thông qua các phép quay cây (Rotations), bảo đảm truy vấn tối ưu."
-    ]
-  },
-  {
-    page: 4,
-    title: "CẤU TRÚC DỮ LIỆU & GIẢI THUẬT CHO AI",
-    subtitle: "4. Giải thuật Đồ thị (Graph): Duyệt BFS, DFS & Thuật toán Dijkstra",
-    points: [
-      "Đồ thị G = (V, E) mô hình hóa mạng lưới quan hệ phức tạp như Knowledge Graph, mạng nơ-ron và bản đồ giao thông.",
-      "Duyệt BFS (theo chiều rộng - dùng Queue) tìm đường đi ngắn nhất không trọng số; DFS (theo chiều sâu - dùng Stack/Đệ quy) khám phá toàn bộ không gian trạng thái.",
-      "Thuật toán Dijkstra (sử dụng Min-Heap / Priority Queue) tìm đường đi ngắn nhất có trọng số không âm với độ phức tạp O((V + E) log V)."
-    ]
-  },
-  {
-    page: 5,
-    title: "CẤU TRÚC DỮ LIỆU & GIẢI THUẬT CHO AI",
-    subtitle: "5. Vector Database & Thuật toán Tìm kiếm Tương tự (ANN / HNSW)",
-    points: [
-      "Vector Database lưu trữ các vector nhúng (Embeddings) nhiều chiều từ mô hình ngôn ngữ lớn (OpenAI Text-Embedding, BERT).",
-      "Thuật toán HNSW (Hierarchical Navigable Small World) cho phép tìm kiếm K láng giềng gần nhất (Approximate Nearest Neighbors) với thời gian O(log N).",
-      "Ứng dụng thực tế: Xây dựng hệ thống RAG (Retrieval-Augmented Generation), Semantic Search và Recommendation Engines."
-    ]
-  }
-];
-
-// Rich Sample Diagram & Image Presentation Slides (AI Architecture & Deep Learning OCR)
-const SAMPLE_IMAGE_SLIDES = [
-  {
-    page: 1,
-    title: "KIẾN TRÚC MÔ HÌNH TRANSFORMER & LARGE LANGUAGE MODEL (LLM)",
-    subtitle: "1. Cơ chế Self-Attention & Luồng Xử lý Dữ liệu Đa tầng",
-    diagramType: "transformer",
-    points: [
-      "Input Embeddings kết hợp Positional Encoding bảo toàn ngữ cảnh và vị trí tương đối của từng từ trong câu.",
-      "Multi-Head Attention tính toán phân phối Attention(Q, K, V) = softmax(QK^T / √d_k)V đồng thời trên nhiều không gian biểu diễn.",
-      "Feed Forward Network (FFN) kết hợp Layer Normalization và Residual Connections giúp mô hình hội tụ sâu.",
-      "Cơ chế Masked Multi-Head Attention trong Decoder ngăn mô hình nhìn trước các token tương lai khi sinh văn bản."
-    ]
-  },
-  {
-    page: 2,
-    title: "MẠNG NƠ-RON TÍCH CHẬP: CONVOLUTIONAL NEURAL NETWORK (CNN)",
-    subtitle: "2. Trích xuất Đặc trưng Hình ảnh (Feature Maps) & Thị giác Máy tính",
-    diagramType: "cnn",
-    points: [
-      "Convolution Layer áp dụng ma trận tích chập (Filter/Kernel) quét qua ảnh để phát hiện cạnh, góc và kết cấu không gian.",
-      "ReLU Activation Function loại bỏ giá trị âm, kích hoạt tính phi tuyến tính giúp mạng học các mẫu phức tạp.",
-      "Max Pooling Layer thu nhỏ kích thước không gian (Downsampling), giảm số lượng tham số và tăng tính bất biến với dịch chuyển.",
-      "Fully Connected Layer tổng hợp các đặc trưng trừu tượng để dự đoán xác suất phân loại đối tượng."
-    ]
-  },
-  {
-    page: 3,
-    title: "QUY TRÌNH HỌC TĂNG CƯỜNG TỪ PHẢN HỒI CON NGƯỜI (RLHF)",
-    subtitle: "3. Căn chỉnh An toàn & Nâng cao Chất lượng Trả lời của LLM (Alignment)",
-    diagramType: "rlhf",
-    points: [
-      "Giai đoạn 1: Supervised Fine-Tuning (SFT) huấn luyện mô hình nền tảng trên tập dữ liệu hướng dẫn chất lượng cao.",
-      "Giai đoạn 2: Reward Modeling (RM) huấn luyện mô hình chấm điểm đánh giá câu trả lời theo tiêu chuẩn con người.",
-      "Giai đoạn 3: Proximal Policy Optimization (PPO) tối ưu hóa chính sách sinh văn bản tối đa hóa điểm thưởng Reward.",
-      "Cơ chế KL-Divergence Penalty kiểm soát mô hình không bị trôi quá xa so với phân phối ban đầu."
+    title: "CHƯƠNG 1. MA TRẬN – ĐỊNH THỨC – HỆ PHƯƠNG TRÌNH",
+    sections: [
+      {
+        heading: "1. Ma trận",
+        items: [
+          "- Khái niệm ma trận, kích thước m×n",
+          "- Các phép toán: cộng, trừ (cùng kích thước), nhân ma trận (đúng thứ tự)",
+          "- Ma trận chuyển vị A^T"
+        ]
+      },
+      {
+        heading: "2. Định thức",
+        items: [
+          "- Định thức cấp 2, 3",
+          "- Tính bằng khai triển hoặc biến đổi sơ cấp",
+          "- Tính chất:",
+          "+ Đổi chỗ 2 dòng → đổi dấu định thức",
+          "+ Một dòng nhân k → định thức nhân k",
+          "+ Một dòng toàn 0 → định thức = 0"
+        ]
+      },
+      {
+        heading: "3. Hạng ma trận",
+        items: [
+          "- Rank = số dòng (hoặc cột) độc lập tuyến tính",
+          "- Cách tìm: biến đổi sơ cấp về dạng bậc thang",
+          "- Ứng dụng: xét nghiệm hệ, xét phụ thuộc tuyến tính"
+        ]
+      },
+      {
+        heading: "4. Hệ phương trình tuyến tính",
+        items: [
+          "- Hệ có nghiệm ⇔ rank(A) = rank(A|b)",
+          "- Hệ có nghiệm duy nhất ⇔ rank = số ẩn",
+          "- Vô nghiệm ⇔ rank(A) ≠ rank(A|b)"
+        ]
+      }
     ]
   }
 ];
@@ -160,15 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const state = {
     pdfDoc: null,
     currentPage: 1,
-    totalPages: 5,
-    currentScale: 1.25,
+    totalPages: 1,
+    currentScale: 1.0,
     isSamplePDF: true,
     fileType: 'pdf', // 'pdf' | 'pptx' | 'image'
-    pdfFileName: "Kinh-te-Vi-mo-Chuong-4.pdf",
-    currentSlidesData: null,
+    pdfFileName: "Chuong-1-Ma-Tran-Dinh-Thuc.pdf",
+    currentSlidesData: SAMPLE_SLIDES,
     currentSlideFullText: "",
     selectedText: "",
     selectedContext: "",
+    selectionMode: "single", // "single" (1 lần) | "multi" (nhiều lần - tự động gom)
+    collectedSnippets: [],
+    quizHistory: JSON.parse(localStorage.getItem('saved_quiz_history') || '[]'),
+    quizHistoryFilter: 'all', // 'all' | 'correct' | 'incorrect'
     bookmarks: [],
     questionHistoryCounter: 0,
     openAIKey: localStorage.getItem('user_openai_api_key') || '',
@@ -177,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // DOM Elements
+  const slideNativeCard = document.getElementById('slideNativeCard');
   const pdfCanvas = document.getElementById('pdfCanvas');
   const pdfTextLayer = document.getElementById('pdfTextLayer');
   const pdfContainer = document.getElementById('pdfContainer');
@@ -200,15 +99,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSampleImage = document.getElementById('btnSampleImage');
   const slideContextText = document.getElementById('slideContextText');
 
+  // Selection Mode Toggle Elements (1 Lần vs Nhiều Lần)
+  const btnModeSingle = document.getElementById('btnModeSingle');
+  const btnModeMulti = document.getElementById('btnModeMulti');
+  const modeStatusBadge = document.getElementById('modeStatusBadge');
+  const btnToggleQuickMode = document.getElementById('btnToggleQuickMode');
+  const btnToggleQuickModeText = document.getElementById('btnToggleQuickModeText');
+
   // OCR & Vision AI Toolbar Buttons
   const btnRunOCR = document.getElementById('btnRunOCR');
   const btnVisionAI = document.getElementById('btnVisionAI');
 
   // Floating Action Toolbar
   const floatingToolbar = document.getElementById('floatingToolbar');
+  const btnTriggerCollect = document.getElementById('btnTriggerCollect');
   const btnTriggerFeature1 = document.getElementById('btnTriggerFeature1');
   const btnTriggerFeature2 = document.getElementById('btnTriggerFeature2');
   const btnTriggerFeature3 = document.getElementById('btnTriggerFeature3');
+
+  // Right Sidebar Tab Elements & Multi-Highlight Synthesizer
+  const tabBtnAssistant = document.getElementById('tabBtnAssistant');
+  const tabBtnSnippets = document.getElementById('tabBtnSnippets');
+  const tabBtnHistory = document.getElementById('tabBtnHistory');
+  const tabContentAssistant = document.getElementById('tabContentAssistant');
+  const tabContentSnippets = document.getElementById('tabContentSnippets');
+  const tabContentHistory = document.getElementById('tabContentHistory');
+  const snippetCountBadge = document.getElementById('snippetCountBadge');
+  const snippetCountText = document.getElementById('snippetCountText');
+  const historyCountBadge = document.getElementById('historyCountBadge');
+  const btnClearSnippets = document.getElementById('btnClearSnippets');
+  const collectedSnippetsList = document.getElementById('collectedSnippetsList');
+  const synthesizerActionsBox = document.getElementById('synthesizerActionsBox');
+  const btnSynthesizeQuiz = document.getElementById('btnSynthesizeQuiz');
+  const btnSynthesizeInstructor = document.getElementById('btnSynthesizeInstructor');
+  const btnSynthesizeExplain = document.getElementById('btnSynthesizeExplain');
+
+  // Tab 3: Answered Quiz Storage Elements
+  const statTotalAnswered = document.getElementById('statTotalAnswered');
+  const statCorrectCount = document.getElementById('statCorrectCount');
+  const statIncorrectCount = document.getElementById('statIncorrectCount');
+  const statAccuracyPercent = document.getElementById('statAccuracyPercent');
+  const btnFilterAll = document.getElementById('btnFilterAll');
+  const btnFilterCorrect = document.getElementById('btnFilterCorrect');
+  const btnFilterIncorrect = document.getElementById('btnFilterIncorrect');
+  const btnClearHistory = document.getElementById('btnClearHistory');
+  const quizHistoryList = document.getElementById('quizHistoryList');
 
   // Feature 1: AI Explanation Popover Elements
   const popoverFeature1 = document.getElementById('popoverFeature1');
@@ -274,11 +209,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
   function init() {
     updateAIStatusBadge();
-    showEmptyState();
+    loadDefaultSampleSlide();
     updateBookmarkBadge();
     setupApiKeyListeners();
     setupEmptyStateListeners();
     setupToolActionListeners();
+    setupSelectionModeListeners();
+    setupSnippetBasketListeners();
+    setupQuizHistoryListeners();
+    renderCollectedSnippets();
+    renderQuizHistory();
     setupDragAndDrop();
     refreshIcons();
   }
@@ -305,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slideContextText.textContent = "Chưa có tài liệu. Vui lòng tải file PDF, PPTX hoặc Ảnh bài giảng để AI trích xuất nội dung.";
     viewerToolbar.style.display = 'none';
     pdfCard.style.display = 'none';
+    if (slideNativeCard) slideNativeCard.style.display = 'none';
     emptyStateCard.style.display = 'flex';
   }
 
@@ -318,25 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.value = '';
     });
 
-    // Empty state sample PDF button
-    btnSamplePDFEmpty.addEventListener('click', () => {
-      state.currentPage = 4;
-      loadDefaultEconomicsPDF();
-    });
-
-    // Empty state sample PPT button
-    if (btnSamplePPTEmpty) {
-      btnSamplePPTEmpty.addEventListener('click', () => {
-        state.currentPage = 1;
-        loadDefaultPPTSlides();
-      });
-    }
-
-    // Empty state sample Image button
-    if (btnSampleImageEmpty) {
-      btnSampleImageEmpty.addEventListener('click', () => {
-        state.currentPage = 1;
-        loadDefaultImageSlides();
+    // Empty state sample slide button
+    if (btnSamplePDFEmpty) {
+      btnSamplePDFEmpty.addEventListener('click', () => {
+        loadDefaultSampleSlide();
       });
     }
   }
@@ -692,122 +618,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Top Glowing Accent Line
     const accentGrad = ctx.createLinearGradient(80, 0, 1600, 0);
-    if (fileType === 'pptx') {
-      accentGrad.addColorStop(0, "#ea580c");
-      accentGrad.addColorStop(0.5, "#f97316");
-      accentGrad.addColorStop(1, "#fbbf24");
-    } else if (fileType === 'image') {
-      accentGrad.addColorStop(0, "#0284c7");
-      accentGrad.addColorStop(0.5, "#38bdf8");
-      accentGrad.addColorStop(1, "#a855f7");
-    } else {
-      accentGrad.addColorStop(0, "#4f46e5");
-      accentGrad.addColorStop(0.5, "#6366f1");
-      accentGrad.addColorStop(1, "#a855f7");
-    }
+    accentGrad.addColorStop(0, "#4f46e5");
+    accentGrad.addColorStop(0.5, "#6366f1");
+    accentGrad.addColorStop(1, "#38bdf8");
     ctx.fillStyle = accentGrad;
-    ctx.fillRect(80, 45, 1520, 8);
+    ctx.fillRect(80, 38, 1520, 6);
 
     // Slide Header / Chapter Title
-    ctx.font = "bold 26px 'Plus Jakarta Sans', -apple-system, sans-serif";
-    ctx.fillStyle = fileType === 'pptx' ? "#fb923c" : (fileType === 'image' ? "#38bdf8" : "#818cf8");
-    ctx.fillText(slide.title || "BÀI GIẢNG ĐIỆN TỬ", 80, 105);
-
-    // Subtitle / Heading
-    ctx.font = "bold 34px 'Plus Jakarta Sans', -apple-system, sans-serif";
+    ctx.font = "bold 32px 'Plus Jakarta Sans', -apple-system, sans-serif";
     ctx.fillStyle = "#ffffff";
-    const displaySubtitle = slide.subtitle || "";
-    if (displaySubtitle) {
-      wrapText(ctx, displaySubtitle, 80, 160, 1520, 42);
-    }
+    ctx.fillText(slide.title || "CHƯƠNG 1. MA TRẬN – ĐỊNH THỨC – HỆ PHƯƠNG TRÌNH", 80, 92);
 
-    const hasDiagram = !!slide.diagramType;
-    const hasImage = !!slide.imageElement;
-    const isSplitLayout = hasDiagram || hasImage;
+    // Render 4 Sections (2 Columns x 2 Rows Grid)
+    if (slide.sections && slide.sections.length >= 4) {
+      const colW = 735;
+      const colGap = 50;
+      const leftX = 80;
+      const rightX = leftX + colW + colGap;
 
-    const points = slide.points || [];
-    const count = points.length;
-    const startY = displaySubtitle ? 230 : 180;
-    const availableHeight = 990 - startY;
-    const contentWidth = isSplitLayout ? 740 : 1520;
-    const spacing = count > 4 ? 12 : 18;
-    const cardHeight = Math.min(130, Math.max(60, Math.floor((availableHeight - (count - 1) * spacing) / Math.max(count, 1))));
-    const fontSize = cardHeight >= 95 ? 23 : (cardHeight >= 70 ? 19 : 16);
-    const textOffsetTop = cardHeight >= 95 ? 26 : (cardHeight >= 70 ? 20 : 16);
+      // Section 1: 1. Ma trận (Left Top)
+      const sec1 = slide.sections[0];
+      drawSectionCard(ctx, leftX, 130, colW, 410, sec1, "#818cf8", "#6366f1");
 
-    let currentY = startY;
-    points.forEach((point) => {
-      // Background Card
-      drawRoundRect(
-        ctx, 
-        80, 
-        currentY, 
-        contentWidth, 
-        cardHeight, 
-        14, 
-        "#1e293b", 
-        "rgba(255, 255, 255, 0.08)", 
-        1
-      );
+      // Section 2: 2. Định thức (Left Bottom)
+      const sec2 = slide.sections[1];
+      drawSectionCard(ctx, leftX, 565, colW, 475, sec2, "#38bdf8", "#0284c7");
 
-      // Left Color Pill Accent
-      const pillColor = fileType === 'pptx' ? "#f97316" : (fileType === 'image' ? "#38bdf8" : "#6366f1");
-      drawRoundRect(ctx, 80, currentY, 8, cardHeight, 4, pillColor);
+      // Section 3: 3. Hạng ma trận (Right Top)
+      const sec3 = slide.sections[2];
+      drawSectionCard(ctx, rightX, 130, colW, 410, sec3, "#c084fc", "#9333ea");
 
-      // Bullet Circle
-      ctx.fillStyle = fileType === 'pptx' ? "#fb923c" : "#38bdf8";
-      ctx.beginPath();
-      ctx.arc(120, currentY + cardHeight / 2, 6, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Point Text
-      ctx.font = `500 ${fontSize}px 'Plus Jakarta Sans', -apple-system, sans-serif`;
-      ctx.fillStyle = "#f8fafc";
-      wrapText(ctx, point, 145, currentY + textOffsetTop + (fontSize / 2), contentWidth - 85, fontSize + 8);
-
-      currentY += cardHeight + spacing;
-    });
-
-    // Draw Right Column (Diagram or Image) if Split Layout
-    if (hasDiagram) {
-      drawSlideDiagram(ctx, slide.diagramType, 860, startY, 740, 760);
-    } else if (hasImage && slide.imageElement) {
-      const img = slide.imageElement;
-      drawRoundRect(ctx, 860, startY, 740, 760, 16, "#131d31", "rgba(56, 189, 248, 0.25)", 1.5);
-      const hR = 700 / img.width;
-      const vR = 720 / img.height;
-      const r = Math.min(hR, vR, 1);
-      const w = img.width * r;
-      const h = img.height * r;
-      const ix = 860 + (740 - w) / 2;
-      const iy = startY + (760 - h) / 2;
-      ctx.drawImage(img, ix, iy, w, h);
+      // Section 4: 4. Hệ phương trình tuyến tính (Right Bottom)
+      const sec4 = slide.sections[3];
+      drawSectionCard(ctx, rightX, 565, colW, 475, sec4, "#34d399", "#059669");
+    } else if (slide.points) {
+      // Fallback for standard list of bullet points
+      let currentY = 150;
+      const points = slide.points;
+      const cardHeight = Math.floor(830 / points.length) - 15;
+      points.forEach(pt => {
+        drawRoundRect(ctx, 80, currentY, 1520, cardHeight, 12, "#1e293b", "rgba(255, 255, 255, 0.08)", 1);
+        drawRoundRect(ctx, 80, currentY, 8, cardHeight, 4, "#6366f1");
+        ctx.font = "500 22px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillStyle = "#f8fafc";
+        wrapText(ctx, pt, 110, currentY + 35, 1450, 32);
+        currentY += cardHeight + 15;
+      });
     }
 
     // Footer Info
-    ctx.font = "19px 'Plus Jakarta Sans', -apple-system, sans-serif";
+    ctx.font = "18px 'Plus Jakarta Sans', -apple-system, sans-serif";
     ctx.fillStyle = "#94a3b8";
-    const footerLeftText = fileType === 'image' 
-      ? `Slide Ảnh & Sơ đồ Trí tuệ Nhân tạo &bull; Hỗ trợ OCR & OpenAI Vision` 
-      : (fileType === 'pptx' 
-          ? `Bài giảng PowerPoint (.pptx) &bull; Học tập tương tác thông minh`
-          : `Kinh tế Vi mô 101 - TS. Nguyễn Minh Đức - Bộ môn Kinh tế Học`);
-    ctx.fillText(footerLeftText, 80, 1030);
-    ctx.fillText(`Slide Trang ${slide.page} / ${totalSlides}`, 1420, 1030);
+    ctx.fillText("Đại số Tuyến tính &bull; Chương 1: Ma trận, Định thức & Hệ phương trình", 80, 1062);
+    ctx.fillText(`Slide Trang ${slide.page} / ${totalSlides}`, 1440, 1062);
 
     return canvas.toDataURL('image/png', 0.95);
   }
 
-  function createEconomicsPDFData() {
+  function drawSectionCard(ctx, x, y, width, height, section, titleColor, accentColor) {
+    // Card background
+    drawRoundRect(ctx, x, y, width, height, 14, "#1e293b", "rgba(255, 255, 255, 0.08)", 1);
+
+    // Left accent pill
+    drawRoundRect(ctx, x, y, 6, height, 3, accentColor);
+
+    // Section Heading
+    ctx.font = "bold 26px 'Plus Jakarta Sans', sans-serif";
+    ctx.fillStyle = titleColor;
+    ctx.fillText(section.heading, x + 28, y + 42);
+
+    // Section Items
+    let lineY = y + 84;
+    section.items.forEach(item => {
+      const isSubBullet = item.trim().startsWith('+');
+      const itemX = isSubBullet ? x + 55 : x + 28;
+      ctx.font = isSubBullet ? "500 20px 'Plus Jakarta Sans', sans-serif" : "500 21px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillStyle = isSubBullet ? "#94a3b8" : "#f1f5f9";
+      lineY = wrapText(ctx, item.trim(), itemX, lineY, width - 56, 32);
+      lineY += isSubBullet ? 8 : 12;
+    });
+  }
+
+  function createSamplePDFData() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({
-      orientation: 'landscape',
+      orientation: 'p',
       unit: 'pt',
       format: [840, 540]
     });
 
     SAMPLE_SLIDES.forEach((slide, idx) => {
-      if (idx > 0) doc.addPage([840, 540], 'landscape');
+      if (idx > 0) doc.addPage([840, 540], 'p');
       const imgData = renderSlideToImage(slide, SAMPLE_SLIDES.length, 'pdf');
       doc.addImage(imgData, 'PNG', 0, 0, 840, 540, undefined, 'FAST');
     });
@@ -815,62 +716,58 @@ document.addEventListener('DOMContentLoaded', () => {
     return doc.output('arraybuffer');
   }
 
-  function loadDefaultEconomicsPDF() {
+  function loadDefaultSampleSlide() {
     state.isSamplePDF = true;
     state.currentSlidesData = SAMPLE_SLIDES;
     state.fileType = 'pdf';
-    const pdfBytes = createEconomicsPDFData();
-    loadPDFDocument(pdfBytes, "Kinh-te-Vi-mo-Chuong-4.pdf", "Kinh tế Vi mô 101 - Bài giảng Cung Cầu");
-  }
+    state.currentPage = 1;
+    state.totalPages = 1;
+    state.pdfFileName = "Chuong-1-Ma-Tran-Dinh-Thuc.pdf";
 
-  function createPPTPDFData() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({
-      orientation: 'landscape',
-      unit: 'pt',
-      format: [840, 540]
-    });
+    // Set UI Header & Badges
+    pdfTitleDisplay.textContent = "Chương 1. Ma Trận – Định Thức – Hệ Phương Trình";
+    pdfFileBadge.textContent = "Slide Mẫu (Ma Trận)";
+    pdfFileBadge.className = "file-tag tag-pdf";
+    totalPagesBadge.textContent = "1 Trang";
+    pageNumberInput.value = 1;
+    pageTotalDisplay.textContent = "/ 1";
 
-    SAMPLE_PPT_SLIDES.forEach((slide, idx) => {
-      if (idx > 0) doc.addPage([840, 540], 'landscape');
-      const imgData = renderSlideToImage(slide, SAMPLE_PPT_SLIDES.length, 'pptx');
-      doc.addImage(imgData, 'PNG', 0, 0, 840, 540, undefined, 'FAST');
-    });
+    state.currentSlideFullText = `CHƯƠNG 1. MA TRẬN – ĐỊNH THỨC – HỆ PHƯƠNG TRÌNH
 
-    return doc.output('arraybuffer');
-  }
+1. Ma trận
+- Khái niệm ma trận, kích thước m×n
+- Các phép toán: cộng, trừ (cùng kích thước), nhân ma trận (đúng thứ tự)
+- Ma trận chuyển vị A^T
 
-  function loadDefaultPPTSlides() {
-    state.isSamplePDF = true;
-    state.currentSlidesData = SAMPLE_PPT_SLIDES;
-    state.fileType = 'pptx';
-    const pdfBytes = createPPTPDFData();
-    loadPDFDocument(pdfBytes, "Cau-Truc-Du-Lieu-AI.pptx", "Cấu trúc Dữ liệu & Giải thuật cho AI");
-  }
+2. Định thức
+- Định thức cấp 2, 3
+- Tính bằng khai triển hoặc biến đổi sơ cấp
+- Tính chất:
+  + Đổi chỗ 2 dòng → đổi dấu định thức
+  + Một dòng nhân k → định thức nhân k
+  + Một dòng toàn 0 → định thức = 0
 
-  function createImagePDFData() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({
-      orientation: 'landscape',
-      unit: 'pt',
-      format: [840, 540]
-    });
+3. Hạng ma trận
+- Rank = số dòng (hoặc cột) độc lập tuyến tính
+- Cách tìm: biến đổi sơ cấp về dạng bậc thang
+- Ứng dụng: xét nghiệm hệ, xét phụ thuộc tuyến tính
 
-    SAMPLE_IMAGE_SLIDES.forEach((slide, idx) => {
-      if (idx > 0) doc.addPage([840, 540], 'landscape');
-      const imgData = renderSlideToImage(slide, SAMPLE_IMAGE_SLIDES.length, 'image');
-      doc.addImage(imgData, 'PNG', 0, 0, 840, 540, undefined, 'FAST');
-    });
+4. Hệ phương trình tuyến tính
+- Hệ có nghiệm ⇔ rank(A) = rank(A|b)
+- Hệ có nghiệm duy nhất ⇔ rank = số ẩn
+- Vô nghiệm ⇔ rank(A) ≠ rank(A|b)`;
 
-    return doc.output('arraybuffer');
-  }
+    slideContextText.textContent = state.currentSlideFullText;
 
-  function loadDefaultImageSlides() {
-    state.isSamplePDF = true;
-    state.currentSlidesData = SAMPLE_IMAGE_SLIDES;
-    state.fileType = 'image';
-    const pdfBytes = createImagePDFData();
-    loadPDFDocument(pdfBytes, "So-Do-Kien-Truc-AI-OCR.png", "Sơ đồ & Kiến trúc Mô hình AI (OCR Powered)");
+    // Show Native Vector Slide Card (Zero image artifacts, 100% sharp text)
+    emptyStateCard.style.display = 'none';
+    pdfCard.style.display = 'none';
+    if (slideNativeCard) slideNativeCard.style.display = 'flex';
+    viewerToolbar.style.display = 'flex';
+
+    renderPageThumbnails();
+    refreshIcons();
+    showToastNotification("Đã nạp Slide Mẫu", "Chương 1: Ma Trận - Định Thức - Hệ Phương Trình");
   }
 
   // ----------------------------------------------------
@@ -1065,13 +962,13 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadSlidesDataAsPDF(slides, fileName, title, fileType = 'pptx') {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({
-      orientation: 'landscape',
+      orientation: 'p',
       unit: 'pt',
       format: [840, 540]
     });
 
     slides.forEach((slide, idx) => {
-      if (idx > 0) doc.addPage([840, 540], 'landscape');
+      if (idx > 0) doc.addPage([840, 540], 'p');
       const imgData = renderSlideToImage(slide, slides.length, fileType);
       doc.addImage(imgData, 'PNG', 0, 0, 840, 540, undefined, 'FAST');
     });
@@ -1576,12 +1473,14 @@ document.addEventListener('DOMContentLoaded', () => {
       pageTotalDisplay.textContent = `/ ${state.totalPages}`;
       pageNumberInput.max = state.totalPages;
 
-      // Show viewer & hide empty state
+      // Show viewer & hide empty state and native slide
       emptyStateCard.style.display = 'none';
+      if (slideNativeCard) slideNativeCard.style.display = 'none';
       viewerToolbar.style.display = 'flex';
-      pdfCard.style.display = 'block';
+      pdfCard.style.display = 'inline-flex';
 
       renderPageThumbnails();
+      await autoFitSlideViewport(false);
       await renderPDFPage(state.currentPage);
 
       // Auto-trigger OCR on initial load
@@ -1591,6 +1490,40 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error("Lỗi đọc PDF/PPT/Ảnh:", err);
       alert("Không thể hiển thị tài liệu này. Chi tiết: " + (err.message || err));
+    }
+  }
+
+  // ----------------------------------------------------
+  // Automatic Slide Alignment & Viewport Fitting
+  // ----------------------------------------------------
+  async function autoFitSlideViewport(shouldRender = true) {
+    if (!state.pdfDoc) return;
+    try {
+      const page = await state.pdfDoc.getPage(state.currentPage || 1);
+      const unscaledViewport = page.getViewport({ scale: 1.0 });
+      
+      const container = pdfScrollViewport;
+      if (!container) return;
+
+      const availWidth = Math.max(300, container.clientWidth - 50);
+      const availHeight = Math.max(200, container.clientHeight - 50);
+
+      const scaleX = availWidth / unscaledViewport.width;
+      const scaleY = availHeight / unscaledViewport.height;
+
+      // Calculate perfect proportional fit scale
+      let optimalScale = Math.min(scaleX, scaleY);
+      optimalScale = Math.max(0.4, Math.min(optimalScale, 1.8));
+      optimalScale = Math.round(optimalScale * 100) / 100;
+
+      state.currentScale = optimalScale;
+      zoomDisplay.textContent = `${Math.round(state.currentScale * 100)}%`;
+
+      if (shouldRender) {
+        await renderPDFPage(state.currentPage);
+      }
+    } catch (e) {
+      console.warn("Auto-fit scale calculation error:", e);
     }
   }
 
@@ -1623,6 +1556,11 @@ document.addEventListener('DOMContentLoaded', () => {
     pdfContainer.style.width = `${viewport.width}px`;
     pdfContainer.style.height = `${viewport.height}px`;
 
+    if (pdfCard) {
+      pdfCard.style.width = `${viewport.width}px`;
+      pdfCard.style.height = `${viewport.height}px`;
+    }
+
     // Render Canvas
     await page.render({
       canvasContext: ctx,
@@ -1637,9 +1575,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeSlides = state.currentSlidesData || (state.isSamplePDF ? SAMPLE_SLIDES : null);
     if (activeSlides && activeSlides[pageNumber - 1]) {
       const slide = activeSlides[pageNumber - 1];
-      const fullText = [slide.title, slide.subtitle, ...(slide.points || [])].filter(Boolean).join(" ");
-      state.currentSlideFullText = fullText;
-      slideContextText.textContent = `${slide.subtitle ? slide.subtitle + "\n" : ""}• ${(slide.points || []).join("\n• ")}`;
+      if (slide.sections) {
+        const textBlocks = [slide.title];
+        slide.sections.forEach(s => {
+          textBlocks.push(s.heading);
+          s.items.forEach(it => textBlocks.push(it));
+        });
+        state.currentSlideFullText = textBlocks.join("\n");
+        slideContextText.textContent = textBlocks.join("\n");
+      } else {
+        const fullText = [slide.title, slide.subtitle, ...(slide.points || [])].filter(Boolean).join(" ");
+        state.currentSlideFullText = fullText;
+        slideContextText.textContent = `${slide.subtitle ? slide.subtitle + "\n" : ""}• ${(slide.points || []).join("\n• ")}`;
+      }
       renderCustomTextLayer(slide, viewport, activeSlides.length);
 
       if (cachedOcr) {
@@ -1692,8 +1640,8 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshIcons();
   }
 
-  // Exact Vietnamese Text Overlay for Selection on Sample / PPT Slides
-  function renderCustomTextLayer(slide, viewport, totalSlides = 5) {
+  // Exact Vietnamese Text Overlay for Selection on Sample Slide (Chương 1. Ma Trận)
+  function renderCustomTextLayer(slide, viewport, totalSlides = 1) {
     pdfTextLayer.innerHTML = '';
     pdfTextLayer.style.width = `${viewport.width}px`;
     pdfTextLayer.style.height = `${viewport.height}px`;
@@ -1705,50 +1653,74 @@ document.addEventListener('DOMContentLoaded', () => {
     titleSpan.textContent = slide.title || "";
     titleSpan.style.position = 'absolute';
     titleSpan.style.left = `${40 * scale}px`;
-    titleSpan.style.top = `${38 * scale}px`;
-    titleSpan.style.fontSize = `${13 * scale}px`;
+    titleSpan.style.top = `${36 * scale}px`;
+    titleSpan.style.fontSize = `${16 * scale}px`;
     titleSpan.style.fontWeight = 'bold';
     titleSpan.style.color = 'transparent';
     pdfTextLayer.appendChild(titleSpan);
 
-    // Subtitle span
-    const displaySubtitle = slide.subtitle || "";
-    if (displaySubtitle) {
-      const subSpan = document.createElement('span');
-      subSpan.textContent = displaySubtitle;
-      subSpan.style.position = 'absolute';
-      subSpan.style.left = `${40 * scale}px`;
-      subSpan.style.top = `${68 * scale}px`;
-      subSpan.style.fontSize = `${18 * scale}px`;
-      subSpan.style.fontWeight = 'bold';
-      subSpan.style.color = 'transparent';
-      pdfTextLayer.appendChild(subSpan);
+    if (slide.sections && slide.sections.length >= 4) {
+      const colW = 367.5 * scale;
+      const leftX = 40 * scale;
+      const rightX = 435 * scale;
+
+      // Section 1: 1. Ma trận (Left Top)
+      renderSectionTextLayerSpans(slide.sections[0], leftX, 65 * scale, colW, 10.5 * scale, scale);
+
+      // Section 2: 2. Định thức (Left Bottom)
+      renderSectionTextLayerSpans(slide.sections[1], leftX, 282 * scale, colW, 10 * scale, scale);
+
+      // Section 3: 3. Hạng ma trận (Right Top)
+      renderSectionTextLayerSpans(slide.sections[2], rightX, 65 * scale, colW, 10.5 * scale, scale);
+
+      // Section 4: 4. Hệ phương trình tuyến tính (Right Bottom)
+      renderSectionTextLayerSpans(slide.sections[3], rightX, 282 * scale, colW, 10 * scale, scale);
+    } else if (slide.points) {
+      let currentY = 75 * scale;
+      slide.points.forEach((point) => {
+        const pSpan = document.createElement('span');
+        pSpan.textContent = point;
+        pSpan.style.position = 'absolute';
+        pSpan.style.left = `${40 * scale}px`;
+        pSpan.style.top = `${currentY}px`;
+        pSpan.style.width = `${760 * scale}px`;
+        pSpan.style.fontSize = `${11 * scale}px`;
+        pSpan.style.lineHeight = `1.4`;
+        pSpan.style.color = 'transparent';
+        pdfTextLayer.appendChild(pSpan);
+        currentY += 35 * scale;
+      });
     }
+  }
 
-    // Points spans with synchronized dynamic layout
-    const points = slide.points || [];
-    const count = points.length;
-    const startY = displaySubtitle ? 245 : 180;
-    const availableHeight = 1000 - startY;
-    const spacing = count > 5 ? 12 : (count > 3 ? 18 : 26);
-    const cardHeight = Math.min(115, Math.max(56, Math.floor((availableHeight - (count - 1) * spacing) / Math.max(count, 1))));
-    const fontSize = cardHeight >= 90 ? 25 : (cardHeight >= 70 ? 21 : 17);
+  function renderSectionTextLayerSpans(section, x, y, width, fontSize, scale) {
+    // Heading
+    const headSpan = document.createElement('span');
+    headSpan.textContent = section.heading;
+    headSpan.style.position = 'absolute';
+    headSpan.style.left = `${x + 14 * scale}px`;
+    headSpan.style.top = `${y + 12 * scale}px`;
+    headSpan.style.fontSize = `${fontSize * 1.25}px`;
+    headSpan.style.fontWeight = 'bold';
+    headSpan.style.color = 'transparent';
+    pdfTextLayer.appendChild(headSpan);
 
-    let currentY = startY;
-    points.forEach((point) => {
-      const pSpan = document.createElement('span');
-      pSpan.textContent = point;
-      pSpan.style.position = 'absolute';
-      pSpan.style.left = `${78 * scale}px`;
-      pSpan.style.top = `${(currentY * 0.5) * scale}px`;
-      pSpan.style.width = `${710 * scale}px`;
-      pSpan.style.minHeight = `${(cardHeight * 0.5) * scale}px`;
-      pSpan.style.fontSize = `${(fontSize * 0.5) * scale}px`;
-      pSpan.style.lineHeight = `1.4`;
-      pSpan.style.color = 'transparent';
-      pdfTextLayer.appendChild(pSpan);
+    let curY = y + 36 * scale;
+    section.items.forEach(item => {
+      const isSub = item.trim().startsWith('+');
+      const iSpan = document.createElement('span');
+      iSpan.textContent = item.trim();
+      iSpan.style.position = 'absolute';
+      iSpan.style.left = `${x + (isSub ? 26 : 14) * scale}px`;
+      iSpan.style.top = `${curY}px`;
+      iSpan.style.width = `${width - 24 * scale}px`;
+      iSpan.style.fontSize = `${fontSize}px`;
+      iSpan.style.lineHeight = `${fontSize * 1.45}px`;
+      iSpan.style.color = 'transparent';
+      pdfTextLayer.appendChild(iSpan);
 
-      currentY += cardHeight + spacing;
+      const estLines = Math.ceil(item.length / 34);
+      curY += (estLines * fontSize * 1.45) + (isSub ? 3 * scale : 6 * scale);
     });
   }
 
@@ -1805,10 +1777,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnFitWidth.addEventListener('click', () => {
-    const viewportWidth = document.getElementById('pdfScrollViewport').clientWidth;
-    state.currentScale = (viewportWidth - 80) / 840;
-    zoomDisplay.textContent = `${Math.round(state.currentScale * 100)}%`;
-    renderPDFPage(state.currentPage);
+    autoFitSlideViewport(true);
+  });
+
+  // Window Resize Auto-Alignment Handler (Debounced)
+  let resizeDebounceTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeDebounceTimer);
+    resizeDebounceTimer = setTimeout(() => {
+      if (state.pdfDoc && pdfCard && pdfCard.style.display !== 'none') {
+        autoFitSlideViewport(true);
+      }
+    }, 180);
   });
 
   // Upload Local File (PDF, PPTX/PPT, or Images)
@@ -1821,29 +1801,48 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnSamplePDF.addEventListener('click', () => {
-    state.currentPage = 4;
-    loadDefaultEconomicsPDF();
+    loadDefaultSampleSlide();
   });
 
-  if (btnSamplePPT) {
-    btnSamplePPT.addEventListener('click', () => {
-      state.currentPage = 1;
-      loadDefaultPPTSlides();
-    });
-  }
-
-  if (btnSampleImage) {
-    btnSampleImage.addEventListener('click', () => {
-      state.currentPage = 1;
-      loadDefaultImageSlides();
-    });
-  }
-
   // ----------------------------------------------------
-  // Text Selection & Floating Action Menu
+  // Text Selection & Floating Action Menu (Strictly Inside Slide)
   // ----------------------------------------------------
   document.addEventListener('mouseup', handleTextSelection);
   document.addEventListener('keyup', handleTextSelection);
+
+  function isSelectionInsideSlide(selection) {
+    if (!selection || !selection.rangeCount) return false;
+    const range = selection.getRangeAt(0);
+
+    const slideNative = document.getElementById('slideNativeCard');
+    const pdfCont = document.getElementById('pdfContainer');
+    const pdfTextL = document.getElementById('pdfTextLayer');
+    const pdfCardEl = document.getElementById('pdfCard');
+
+    const ancestor = range.commonAncestorContainer;
+    const startNode = range.startContainer;
+    const endNode = range.endContainer;
+
+    const getElement = (node) => (node && node.nodeType === 1 ? node : (node ? node.parentElement : null));
+    const ancestorEl = getElement(ancestor);
+    const startEl = getElement(startNode);
+    const endEl = getElement(endNode);
+
+    const isInsideTarget = (el) => {
+      if (!el) return false;
+      if (slideNative && slideNative.contains(el)) return true;
+      if (pdfCont && pdfCont.contains(el)) return true;
+      if (pdfTextL && pdfTextL.contains(el)) return true;
+      if (pdfCardEl && pdfCardEl.contains(el)) return true;
+      return false;
+    };
+
+    if (isInsideTarget(ancestorEl) || isInsideTarget(startEl) || isInsideTarget(endEl)) {
+      return true;
+    }
+
+    return false;
+  }
 
   function handleTextSelection(e) {
     if (
@@ -1859,8 +1858,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const selection = window.getSelection();
     const text = selection.toString().trim();
 
+    // STRICT CHECK: Only process selections strictly inside the slide!
+    // Selections outside the slide (sidebar, header, instructions) will NOT record or trigger popups
+    if (!isSelectionInsideSlide(selection)) {
+      if (!popoverFeature1.style.display || popoverFeature1.style.display === 'none') {
+        if (!popoverFeature2.style.display || popoverFeature2.style.display === 'none') {
+          floatingToolbar.style.display = 'none';
+        }
+      }
+      return;
+    }
+
     if (text.length >= 2) {
       state.selectedText = text;
+      
+      if (state.selectionMode === 'multi') {
+        // Auto-add to basket ONLY when selecting inside slide
+        addCurrentSelectionToSnippets(true);
+      }
+
       showFloatingToolbar(selection);
       return;
     }
@@ -1901,6 +1917,435 @@ document.addEventListener('DOMContentLoaded', () => {
     floatingToolbar.style.display = 'none';
     popoverFeature1.style.display = 'none';
     popoverFeature2.style.display = 'none';
+  }
+
+  // ----------------------------------------------------
+  // SELECTION MODE HANDLERS (1 LẦN VS NHIỀU LẦN)
+  // ----------------------------------------------------
+  function setupSelectionModeListeners() {
+    if (btnModeSingle) {
+      btnModeSingle.addEventListener('click', () => setSelectionMode('single'));
+    }
+    if (btnModeMulti) {
+      btnModeMulti.addEventListener('click', () => setSelectionMode('multi'));
+    }
+    if (btnToggleQuickMode) {
+      btnToggleQuickMode.addEventListener('click', () => {
+        const newMode = state.selectionMode === 'single' ? 'multi' : 'single';
+        setSelectionMode(newMode);
+      });
+    }
+  }
+
+  function setSelectionMode(mode) {
+    state.selectionMode = mode;
+    if (btnModeSingle && btnModeMulti) {
+      btnModeSingle.classList.toggle('active', mode === 'single');
+      btnModeMulti.classList.toggle('active', mode === 'multi');
+    }
+    if (modeStatusBadge) {
+      modeStatusBadge.innerHTML = mode === 'multi' 
+        ? 'Chế độ: <strong style="color: #c084fc;">Nhiều Lần (Tự gom)</strong>' 
+        : 'Chế độ: <strong style="color: #818cf8;">1 Lần (Đơn lẻ)</strong>';
+    }
+    if (btnToggleQuickModeText) {
+      btnToggleQuickModeText.textContent = mode === 'multi' 
+        ? 'Đổi sang Chế độ 1 Lần' 
+        : 'Bật Chế độ Nhiều Lần (Tự gom)';
+    }
+
+    if (mode === 'multi') {
+      showToastNotification(
+        "Chế độ Bôi đen Nhiều Lần: BẬT",
+        "Mỗi khi bạn bôi đen trên Slide, đoạn trích sẽ được tự động gom vào khay để tổng hợp câu hỏi."
+      );
+    } else {
+      showToastNotification(
+        "Chế độ Bôi đen 1 Lần: BẬT",
+        "Bạn có thể thao tác giải thích hoặc tạo câu hỏi tức thì cho từng đoạn bôi đen đơn lẻ."
+      );
+    }
+    refreshIcons();
+  }
+
+  // ----------------------------------------------------
+  // MULTI-HIGHLIGHT SNIPPET COLLECTOR & SYNTHESIZER
+  // ----------------------------------------------------
+  function setupSnippetBasketListeners() {
+    // Sidebar Tabs Switcher
+    if (tabBtnAssistant && tabBtnSnippets) {
+      tabBtnAssistant.addEventListener('click', () => switchSidebarTab('assistant'));
+      tabBtnSnippets.addEventListener('click', () => switchSidebarTab('snippets'));
+    }
+
+    // Floating Collect Button
+    if (btnTriggerCollect) {
+      btnTriggerCollect.addEventListener('click', () => {
+        addCurrentSelectionToSnippets(false);
+      });
+    }
+
+    // Clear All Snippets
+    if (btnClearSnippets) {
+      btnClearSnippets.addEventListener('click', () => {
+        if (state.collectedSnippets.length === 0) return;
+        if (confirm(`Bạn có chắc muốn xóa tất cả ${state.collectedSnippets.length} đoạn đã bôi đen khỏi khay?`)) {
+          state.collectedSnippets = [];
+          renderCollectedSnippets();
+          showToastNotification("Đã xóa khay bôi đen", "Khay thu thập đoạn bôi đen đã được dọn sạch.");
+        }
+      });
+    }
+
+    // Multi-Snippet AI Synthesize Actions
+    if (btnSynthesizeQuiz) {
+      btnSynthesizeQuiz.addEventListener('click', () => {
+        triggerMultiSnippetQuiz();
+      });
+    }
+
+    if (btnSynthesizeInstructor) {
+      btnSynthesizeInstructor.addEventListener('click', () => {
+        triggerMultiSnippetInstructorDraft();
+      });
+    }
+
+    if (btnSynthesizeExplain) {
+      btnSynthesizeExplain.addEventListener('click', () => {
+        triggerMultiSnippetExplanation();
+      });
+    }
+  }
+
+  function switchSidebarTab(tabName) {
+    const tabs = [
+      { name: 'assistant', btn: tabBtnAssistant, content: tabContentAssistant },
+      { name: 'snippets', btn: tabBtnSnippets, content: tabContentSnippets },
+      { name: 'history', btn: tabBtnHistory, content: tabContentHistory }
+    ];
+
+    tabs.forEach(t => {
+      if (t.btn && t.content) {
+        if (t.name === tabName) {
+          t.btn.classList.add('active');
+          t.content.style.display = 'flex';
+        } else {
+          t.btn.classList.remove('active');
+          t.content.style.display = 'none';
+        }
+      }
+    });
+    refreshIcons();
+  }
+
+  function addCurrentSelectionToSnippets(isAuto = false) {
+    const text = (state.selectedText || window.getSelection().toString()).trim();
+    if (!text || text.length < 2) {
+      if (!isAuto) alert("Vui lòng bôi đen một đoạn văn bản trên slide trước khi gom!");
+      return;
+    }
+
+    // Check duplicate
+    const exists = state.collectedSnippets.some(s => s.text.toLowerCase() === text.toLowerCase());
+    if (exists) {
+      if (!isAuto) {
+        showToastNotification("Đoạn bôi đen đã tồn tại", `"${text.slice(0, 35)}..." đã có sẵn trong Khay bôi đen.`);
+        switchSidebarTab('snippets');
+      }
+      return;
+    }
+
+    const timeNow = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+    const newSnippet = {
+      id: `snp-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      text: text,
+      page: state.currentPage,
+      fileName: state.pdfFileName || "Slide",
+      timestamp: timeNow
+    };
+
+    state.collectedSnippets.push(newSnippet);
+    renderCollectedSnippets();
+
+    if (!isAuto) {
+      floatingToolbar.style.display = 'none';
+      switchSidebarTab('snippets');
+      try {
+        window.getSelection()?.removeAllRanges();
+      } catch (e) {}
+    }
+
+    // Visual feedback
+    showToastNotification(
+      isAuto ? `⚡ Tự động gom đoạn #${state.collectedSnippets.length}` : `Đã gom đoạn bôi đen #${state.collectedSnippets.length}`,
+      `"${text.slice(0, 45)}${text.length > 45 ? '...' : ''}" (Trang ${state.currentPage})`
+    );
+  }
+
+  function renderCollectedSnippets() {
+    const count = state.collectedSnippets.length;
+    if (snippetCountBadge) snippetCountBadge.textContent = count;
+    if (snippetCountText) snippetCountText.textContent = count;
+
+    if (!collectedSnippetsList) return;
+    collectedSnippetsList.innerHTML = '';
+
+    const hasSnippets = count > 0;
+    if (btnSynthesizeQuiz) btnSynthesizeQuiz.disabled = !hasSnippets;
+    if (btnSynthesizeInstructor) btnSynthesizeInstructor.disabled = !hasSnippets;
+    if (btnSynthesizeExplain) btnSynthesizeExplain.disabled = !hasSnippets;
+    if (btnClearSnippets) btnClearSnippets.style.display = hasSnippets ? 'inline-flex' : 'none';
+
+    if (!hasSnippets) {
+      collectedSnippetsList.innerHTML = `
+        <div class="empty-snippets-box">
+          <i data-lucide="layers" style="width: 32px; height: 32px; color: #c084fc; opacity: 0.6;"></i>
+          <p><strong>Khay tổng hợp đang trống</strong></p>
+          <p style="font-size: 11px; color: var(--text-muted);">Bôi đen bất kỳ đoạn văn bản nào trên Slide và bấm nút <strong>"Gom đoạn (+)"</strong> để tổng hợp nhiều khái niệm cùng lúc.</p>
+        </div>
+      `;
+      refreshIcons();
+      return;
+    }
+
+    state.collectedSnippets.forEach((snp, idx) => {
+      const card = document.createElement('div');
+      card.className = 'snippet-card';
+      card.innerHTML = `
+        <div class="snippet-card-top">
+          <span class="snippet-page-chip">#${idx + 1} &bull; Trang ${snp.page}</span>
+          <button class="btn-remove-snippet" data-remove-id="${snp.id}" title="Xóa đoạn này">
+            <i data-lucide="x" style="width: 13px; height: 13px;"></i>
+          </button>
+        </div>
+        <div class="snippet-card-text">"${snp.text}"</div>
+      `;
+
+      card.querySelector('[data-remove-id]').addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteSnippet(snp.id);
+      });
+
+      collectedSnippetsList.appendChild(card);
+    });
+
+    refreshIcons();
+  }
+
+  function deleteSnippet(id) {
+    state.collectedSnippets = state.collectedSnippets.filter(s => s.id !== id);
+    renderCollectedSnippets();
+  }
+
+  // Multi-Snippet Synthesis: 1. Quiz Generation
+  async function triggerMultiSnippetQuiz() {
+    if (state.collectedSnippets.length === 0) {
+      alert("Vui lòng bôi đen và gom ít nhất 1 đoạn văn bản trước khi tạo câu hỏi tổng hợp!");
+      return;
+    }
+
+    state.questionHistoryCounter++;
+    const count = state.collectedSnippets.length;
+    const snippetBullets = state.collectedSnippets.map((s, i) => `(${i + 1}) [Trang ${s.page}]: "${s.text}"`).join("\n");
+    const pages = [...new Set(state.collectedSnippets.map(s => s.page))].join(", ");
+
+    feat2SelectedTerm.textContent = `Tổng hợp ${count} đoạn bôi đen (Trang ${pages}) - Lần #${state.questionHistoryCounter}`;
+
+    // Position modal
+    const rect = pdfCanvas.getBoundingClientRect();
+    positionPopup(popoverFeature2, rect);
+
+    if (state.openAIKey) {
+      feat2Loading.style.display = 'flex';
+      feat2ContentArea.style.display = 'none';
+
+      const systemPrompt = `Bạn là chuyên gia ra đề thi học tập xuất sắc. Nhiệm vụ của bạn là dựa vào ${count} đoạn văn bản học viên đã bôi đen từ slide bài giảng để tạo ra 1 câu hỏi trắc nghiệm 4 đáp án (A, B, C, D) chất lượng cao.
+Câu hỏi PHẢI kiểm tra sự liên kết logic, so sánh, đối chiếu hoặc nguyên nhân - kết quả giữa các đoạn văn bản này.
+Đảm bảo 1 đáp án đúng và 3 đáp án sai hợp lý.
+Trả về JSON theo cấu trúc:
+{
+  "question": "Nội dung câu hỏi trắc nghiệm tổng hợp",
+  "options": [
+    { "id": "A", "text": "Đáp án A", "isCorrect": false, "explanation": "Giải thích" },
+    { "id": "B", "text": "Đáp án B", "isCorrect": true, "explanation": "Giải thích vì sao đúng" },
+    { "id": "C", "text": "Đáp án C", "isCorrect": false, "explanation": "Giải thích" },
+    { "id": "D", "text": "Đáp án D", "isCorrect": false, "explanation": "Giải thích" }
+  ],
+  "overallExplanation": "Giải thích mối tương quan giữa các đoạn đã bôi đen"
+}`;
+
+      const userPrompt = `Danh sách ${count} đoạn văn bản học viên đã bôi đen:
+${snippetBullets}
+
+Ngữ cảnh trang hiện tại (Trang ${state.currentPage}):
+"${state.currentSlideFullText}"
+
+Hãy sinh 1 câu hỏi trắc nghiệm tổng hợp 4 đáp án mới lạ.`;
+
+      const response = await callOpenAI({ systemPrompt, userPrompt, jsonMode: true });
+      feat2Loading.style.display = 'none';
+      feat2ContentArea.style.display = 'block';
+
+      if (response) {
+        try {
+          const parsed = JSON.parse(response);
+          feat2QuestionText.textContent = parsed.question;
+          feat2FeedbackCard.className = 'quiz-feedback-card';
+          feat2FeedbackCard.style.display = 'none';
+          renderQuizOptions(parsed);
+          refreshIcons();
+          return;
+        } catch (e) {
+          console.error("Lỗi parse OpenAI Quiz JSON:", e);
+        }
+      }
+    }
+
+    // Local dynamic multi-concept fallback
+    feat2Loading.style.display = 'none';
+    feat2ContentArea.style.display = 'block';
+    
+    const combinedTerms = state.collectedSnippets.map(s => `"${s.text}"`).slice(0, 3).join(" và ");
+    const synthQuiz = {
+      question: `[Tổng hợp Kiến thức] Khi kết hợp và phân tích mối liên hệ giữa các nội dung ${combinedTerms} (Trang ${pages}), kết luận nào sau đây là CHÍNH XÁC NHẤT?`,
+      options: [
+        {
+          id: 'A',
+          text: `Các khái niệm này có mối liên hệ mật thiết, bổ trợ lẫn nhau trong việc phân tích toàn diện mô hình bài học.`,
+          isCorrect: true,
+          explanation: `Theo tài liệu bài giảng, việc liên kết các luận điểm tại Trang ${pages} giúp tạo nên bức tranh tổng thể về lý thuyết và ứng dụng thực tiễn.`
+        },
+        {
+          id: 'B',
+          text: `Các luận điểm này hoàn toàn mâu thuẫn và phủ định tính đúng đắn của nhau.`,
+          isCorrect: false,
+          explanation: `Các khái niệm trong bài giảng được xây dựng trên cùng hệ quy chiếu, không phủ định nhau.`
+        },
+        {
+          id: 'C',
+          text: `Chỉ có đoạn đầu tiên có giá trị thực tiễn, các phần bôi đen còn lại chỉ mang tính trang trí.`,
+          isCorrect: false,
+          explanation: `Tất cả các luận điểm được nêu đều là mắt xích quan trọng trong cấu trúc bài giảng.`
+        },
+        {
+          id: 'D',
+          text: `Không có bất kỳ mối liên hệ logic hay toán học nào giữa các khái niệm này.`,
+          isCorrect: false,
+          explanation: `Các phần bôi đen được kết nối qua các định luật và công thức nền tảng của bài học.`
+        }
+      ],
+      overallExplanation: `Phân tích tổng hợp từ ${count} đoạn bôi đen tại các Trang: ${pages}.`
+    };
+
+    // Shuffle options
+    for (let i = synthQuiz.options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [synthQuiz.options[i], synthQuiz.options[j]] = [synthQuiz.options[j], synthQuiz.options[i]];
+    }
+    const letters = ['A', 'B', 'C', 'D'];
+    synthQuiz.options.forEach((opt, idx) => { opt.id = letters[idx]; });
+
+    feat2QuestionText.textContent = synthQuiz.question;
+    feat2FeedbackCard.className = 'quiz-feedback-card';
+    feat2FeedbackCard.style.display = 'none';
+    renderQuizOptions(synthQuiz);
+    refreshIcons();
+  }
+
+  // Multi-Snippet Synthesis: 2. Instructor Question Note
+  function triggerMultiSnippetInstructorDraft() {
+    if (state.collectedSnippets.length === 0) {
+      alert("Vui lòng bôi đen và gom ít nhất 1 đoạn văn bản trước khi soạn câu hỏi gửi giảng viên!");
+      return;
+    }
+
+    const count = state.collectedSnippets.length;
+    const pages = [...new Set(state.collectedSnippets.map(s => s.page))].join(", ");
+    const snippetListText = state.collectedSnippets.map((s, i) => `${i + 1}. [Trang ${s.page}]: "${s.text}"`).join("\n");
+    
+    const termTitle = `Tổng hợp thắc mắc ${count} đoạn bôi đen (Trang ${pages})`;
+    const customNote = `Kính gửi Thầy/Cô, em đang học bài giảng ${state.pdfFileName || ""} và có thắc mắc cần Thầy/Cô giải đáp về mối liên kết giữa ${count} luận điểm sau:\n\n${snippetListText}\n\nThầy/Cô vui lòng hướng dẫn giúp em cách xâu chuỗi logic và ứng dụng thực tiễn của các khái niệm này ạ.`;
+
+    saveToBookmarks(termTitle, customNote);
+    showToastNotification(
+      "Đã soạn xong câu hỏi gửi Giảng viên",
+      `Đã tổng hợp ${count} đoạn bôi đen thành câu hỏi hoàn chỉnh trong danh sách thắc mắc đã lưu.`
+    );
+  }
+
+  // Multi-Snippet Synthesis: 3. Explanation of Relationships
+  async function triggerMultiSnippetExplanation() {
+    if (state.collectedSnippets.length === 0) {
+      alert("Vui lòng bôi đen và gom ít nhất 1 đoạn văn bản trước khi giải thích mối liên hệ!");
+      return;
+    }
+
+    const count = state.collectedSnippets.length;
+    const pages = [...new Set(state.collectedSnippets.map(s => s.page))].join(", ");
+    const snippetBullets = state.collectedSnippets.map((s, i) => `(${i + 1}) [Trang ${s.page}]: "${s.text}"`).join("\n");
+
+    feat1SelectedTerm.textContent = `Tổng hợp mối liên hệ ${count} đoạn bôi đen (Trang ${pages})`;
+
+    // Position popover
+    const rect = pdfCanvas.getBoundingClientRect();
+    positionPopup(popoverFeature1, rect);
+
+    if (state.openAIKey) {
+      feat1Loading.style.display = 'flex';
+      feat1ContentArea.style.display = 'none';
+
+      const systemPrompt = `Bạn là trợ lý giảng dạy AI cấp cao. Học viên đã bôi đen ${count} đoạn văn bản quan trọng trong slide bài giảng.
+Nhiệm vụ của bạn là phân tích MỐI QUAN HỆ HỆ THỐNG, điểm tương đồng, sự khác biệt và cách kết hợp các luận điểm này lại với nhau một cách dễ hiểu, mạch lạc.
+Trả về JSON thuần:
+{
+  "summary": "Tóm tắt mối quan hệ cốt lõi giữa các đoạn trong 2 câu",
+  "keypoints": [
+    "Liên kết 1: Tính chất tương tác trực tiếp",
+    "Liên kết 2: Ứng dụng khi kết hợp cùng nhau",
+    "Liên kết 3: Lưu ý quan trọng để tránh nhầm lẫn"
+  ]
+}`;
+
+      const userPrompt = `Các đoạn học viên đã bôi đen:
+${snippetBullets}
+
+Slide hiện tại:
+"${state.currentSlideFullText}"`;
+
+      const response = await callOpenAI({ systemPrompt, userPrompt, jsonMode: true });
+      feat1Loading.style.display = 'none';
+      feat1ContentArea.style.display = 'block';
+
+      if (response) {
+        try {
+          const parsed = JSON.parse(response);
+          feat1SummaryText.textContent = parsed.summary || "Đã tổng hợp mối quan hệ giữa các đoạn bôi đen.";
+          feat1KeypointsList.innerHTML = '';
+          (parsed.keypoints || []).forEach(kp => {
+            const li = document.createElement('li');
+            li.innerHTML = kp;
+            feat1KeypointsList.appendChild(li);
+          });
+          feat1EvidenceText.textContent = `OpenAI tổng hợp từ ${count} đoạn bôi đen trên các Trang: ${pages}.`;
+          refreshIcons();
+          return;
+        } catch (e) {
+          console.error("Lỗi parse JSON:", e);
+        }
+      }
+    }
+
+    // Local smart fallback
+    feat1Loading.style.display = 'none';
+    feat1ContentArea.style.display = 'block';
+    feat1SummaryText.textContent = `Tổng hợp mối liên hệ logic giữa ${count} đoạn văn bản đã bôi đen tại các Trang: ${pages}:`;
+    feat1KeypointsList.innerHTML = `
+      <li><strong>Mối liên hệ khái niệm:</strong> Các đoạn bôi đen cấu thành các mặt khác nhau của cùng một chủ đề bài giảng, giúp bổ sung ngữ cảnh cho nhau.</li>
+      <li><strong>Quy luật tác động:</strong> Khi một yếu tố thay đổi, các yếu tố liên quan được bôi đen sẽ có xu hướng biến thiên theo quy luật tương quan trong mô hình.</li>
+      <li><strong>Ứng dụng tổng hợp:</strong> Nắm vững liên kết này giúp học viên giải quyết nhanh các bài tập tình huống và câu hỏi trắc nghiệm phức hợp.</li>
+    `;
+    feat1EvidenceText.textContent = `Tổng hợp thông minh từ ${count} đoạn bôi đen đã gom (Trang ${pages}).`;
+    refreshIcons();
   }
 
   // ----------------------------------------------------
@@ -1967,17 +2412,248 @@ Trả về định dạng JSON thuần:
       }
     }
 
-    // Local smart fallback
+    // In-depth Pedagogical Explanation Engine for Linear Algebra Concepts
     feat1Loading.style.display = 'none';
     feat1ContentArea.style.display = 'block';
-    feat1SummaryText.textContent = `Dựa trên toàn bộ nội dung Trang ${state.currentPage}, "${term}" được giải thích như sau:`;
-    feat1KeypointsList.innerHTML = `
-      <li><strong>Bản chất cốt lõi:</strong> Trong ngữ cảnh của slide này, "${term}" phản ánh luận điểm trọng tâm mà bài học muốn truyền tải.</li>
-      <li><strong>Mối liên hệ trong slide:</strong> Khái niệm này tương tác trực tiếp với các ý chính: <em>${slideContext.slice(0, 110)}...</em></li>
-      <li><strong>Ứng dụng &amp; Lưu ý:</strong> Giúp học viên nắm chắc bản chất, phục vụ phân tích các tình huống thực tế và bài tập kiểm tra.</li>
-    `;
-    feat1EvidenceText.textContent = `Tổng hợp từ toàn bộ nội dung văn bản Trang ${state.currentPage} (${state.pdfFileName}).`;
+
+    const detailExp = getDetailedExplanationForTerm(term, slideContext, state.currentPage);
+    feat1SummaryText.innerHTML = detailExp.summary;
+    feat1KeypointsList.innerHTML = '';
+    detailExp.keypoints.forEach(kp => {
+      const li = document.createElement('li');
+      li.innerHTML = kp;
+      feat1KeypointsList.appendChild(li);
+    });
+    feat1EvidenceText.textContent = detailExp.evidence;
     refreshIcons();
+  }
+
+  // ----------------------------------------------------
+  // Chuyên Sâu: Knowledge Base & Semantic Matcher cho Đại Số Tuyến Tính
+  // ----------------------------------------------------
+  function getDetailedExplanationForTerm(term, slideContext, pageNum) {
+    const t = term.toLowerCase().trim();
+
+    // 1. Định thức cấp 2, 3
+    if (t.includes("định thức cấp 2") || t.includes("định thức cấp 3") || (t.includes("định thức") && (t.includes("2") || t.includes("3") || t.includes("cấp")))) {
+      return {
+        summary: `<strong>Định thức cấp 2 và cấp 3</strong> là các đại lượng vô hướng số thực đặc trưng cho ma trận vuông cấp 2 và cấp 3:`,
+        keypoints: [
+          `<strong>Định thức cấp 2:</strong> Cho ma trận A = [[a, b], [c, d]], giá trị định thức là <code>det(A) = ad - bc</code> (tích các phần tử trên đường chéo chính trừ tích đường chéo phụ). Về mặt hình học, trị tuyệt đối |det(A)| biểu diễn <em>diện tích hình bình hành</em> tạo bởi 2 vector cột trong không gian 2D.`,
+          `<strong>Định thức cấp 3:</strong> Cho ma trận vuông 3×3, định thức được tính nhanh bằng <em>Quy tắc đường chéo Sarrus</em> (cộng tích 3 đường chéo thuận trừ tích 3 đường chéo nghịch) hoặc khai triển Laplace theo một dòng/cột bất kỳ: <code>det(A) = a₁₁A₁₁ + a₁₂A₁₂ + a₁₃A₁₃</code>. Về mặt hình học: |det(A)| là <em>thể tích khối hộp</em> tạo bởi 3 vector cột trong không gian 3D.`,
+          `<strong>Ý nghĩa cốt lõi:</strong> <code>det(A) ≠ 0</code> là điều kiện cần và đủ để ma trận A khả nghịch (tồn tại ma trận nghịch đảo A⁻¹) và hệ phương trình Cramer có nghiệm duy nhất.`
+        ],
+        evidence: `Mục 2. 'Định thức' trên slide Chương 1.`
+      };
+    }
+
+    // 2. Khai triển hoặc biến đổi sơ cấp
+    if (t.includes("khai triển") || (t.includes("biến đổi sơ cấp") && t.includes("định thức"))) {
+      return {
+        summary: `<strong>Phương pháp tính định thức bằng Khai triển Laplace và Biến đổi sơ cấp</strong> đưa về dạng ma trận tam giác:`,
+        keypoints: [
+          `<strong>Khai triển Laplace:</strong> Cho phép hạ bậc định thức cấp n về tổng các định thức con cấp (n - 1) nhân với phần bù đại số <code>A_ij = (-1)^{i+j} M_ij</code>.`,
+          `<strong>Biến đổi sơ cấp tối ưu:</strong> Sử dụng phép cộng dòng <code>d_i ← d_i + k·d_j</code> (phép toán này KHÔNG làm thay đổi giá trị định thức) để tạo ra một dòng hoặc cột có nhiều số 0 nhất có thể trước khi khai triển.`,
+          `<strong>Đưa về ma trận tam giác:</strong> Khi khử Gauss đưa ma trận về dạng tam giác trên hoặc tam giác dưới, định thức bằng đúng tích các phần tử trên đường chéo chính: <code>det(A) = a₁₁ · a₂₂ ··· a_nn</code>.`
+        ],
+        evidence: `Mục 2. 'Tính bằng khai triển hoặc biến đổi sơ cấp' trên slide Chương 1.`
+      };
+    }
+
+    // 3. Đổi chỗ 2 dòng → đổi dấu định thức
+    if (t.includes("đổi chỗ 2 dòng") || t.includes("đổi dấu định thức") || (t.includes("đổi chỗ") && t.includes("dòng"))) {
+      return {
+        summary: `<strong>Tính chất phản xứng (Antisymmetric) của Định thức</strong> khi hoán vị dòng hoặc cột:`,
+        keypoints: [
+          `<strong>Quy tắc đổi dấu:</strong> Khi hoán vị vị trí của 2 dòng bất kỳ (<code>d_i ↔ d_j</code>) hoặc 2 cột bất kỳ của ma trận vuông A, định thức của ma trận mới B sẽ bị đảo dấu: <code>det(B) = -det(A)</code>.`,
+          `<strong>Số lần hoán vị:</strong> Nếu thực hiện k lần đổi chỗ dòng/cột liên tiếp, định thức mới sẽ nhân với hệ số <code>(-1)^k</code>.`,
+          `<strong>Hệ quả cực kỳ quan trọng:</strong> Nếu ma trận có 2 dòng (hoặc 2 cột) GIỐNG NHAU hoặc TỈ LỆ VỚI NHAU, định thức của ma trận đó chắc chắn bằng 0 (vì đổi chỗ 2 dòng giống nhau thì det(A) = -det(A) ⇒ 2·det(A) = 0 ⇒ det(A) = 0).`
+        ],
+        evidence: `Mục 2. Tính chất: 'Đổi chỗ 2 dòng → đổi dấu định thức' trên slide Chương 1.`
+      };
+    }
+
+    // 4. Một dòng nhân k → định thức nhân k
+    if (t.includes("nhân k") || t.includes("nhân hằng số") || (t.includes("một dòng nhân") && t.includes("định thức"))) {
+      return {
+        summary: `<strong>Tính chất đa tuyến tính (Multilinear) của Định thức</strong> đối với từng dòng/cột:`,
+        keypoints: [
+          `<strong>Nhân một dòng:</strong> Khi nhân tất cả các phần tử của MỘT dòng (hoặc MỘT cột) với hằng số k, định thức của ma trận sẽ tăng gấp k lần: <code>det(B) = k · det(A)</code>. Cho phép rút thừa số chung của một dòng ra ngoài dấu định thức.`,
+          `<strong>Phân biệt với nhân toàn bộ ma trận:</strong> Nếu nhân toàn bộ ma trận A vuông cấp n với hằng số k (tức là mọi dòng đều nhân k), định thức sẽ bằng: <code>det(k·A) = k^n · det(A)</code>.`,
+          `<strong>Hệ quả:</strong> Nhân một dòng với 0 sẽ biến dòng đó thành dòng toàn số 0 và kéo theo định thức bằng 0.`
+        ],
+        evidence: `Mục 2. Tính chất: 'Một dòng nhân k → định thức nhân k' trên slide Chương 1.`
+      };
+    }
+
+    // 5. Một dòng toàn 0 → định thức = 0
+    if (t.includes("toàn 0") || t.includes("toàn số 0") || (t.includes("dòng toàn 0") && t.includes("định thức"))) {
+      return {
+        summary: `<strong>Tính chất suy biến của ma trận khi có dòng hoặc cột toàn số 0:</strong>`,
+        keypoints: [
+          `<strong>Định lý:</strong> Nếu ma trận vuông A có ít nhất một dòng toàn số 0 (hoặc một cột toàn số 0), thì giá trị định thức chắc chắn bằng 0: <code>det(A) = 0</code>.`,
+          `<strong>Chứng minh bằng khai triển:</strong> Khai triển Laplace theo dòng toàn số 0 đó, mọi số hạng đều có dạng <code>0 · A_ij = 0</code> nên tổng định thức bằng 0.`,
+          `<strong>Ý nghĩa đại số tuyến tính:</strong> Dòng toàn 0 thể hiện hệ vector dòng bị phụ thuộc tuyến tính, ma trận bị suy biến (Singular Matrix), không khả nghịch và không có ma trận nghịch đảo.`
+        ],
+        evidence: `Mục 2. Tính chất: 'Một dòng toàn 0 → định thức = 0' trên slide Chương 1.`
+      };
+    }
+
+    // 6. Định thức (Tổng quan)
+    if (t.includes("định thức") || t.includes("determinant") || t.includes("det")) {
+      return {
+        summary: `<strong>Định thức (Determinant)</strong> là một đại lượng vô hướng số thực gán cho mỗi ma trận vuông A, phản ánh độ co giãn thể tích và tính khả nghịch:`,
+        keypoints: [
+          `<strong>Điều kiện tồn tại:</strong> Chỉ có MA TRẬN VUÔNG (cấp n×n) mới có định thức, ma trận chữ nhật m×n (m ≠ n) không có định thức.`,
+          `<strong>Tính chất nhân:</strong> <code>det(A · B) = det(A) · det(B)</code> và <code>det(A^T) = det(A)</code>. Nếu A khả nghịch thì <code>det(A⁻¹) = 1 / det(A)</code>.`,
+          `<strong>Ứng dụng cốt lõi:</strong> Tính ma trận nghịch đảo A⁻¹ = (1/det(A)) · P_A^T, giải hệ phương trình tuyến tính bằng quy tắc Cramer và kiểm tra tính độc lập tuyến tính của n vector trong không gian R^n.`
+        ],
+        evidence: `Mục 2. 'Định thức' trên slide Chương 1.`
+      };
+    }
+
+    // 7. Ma trận chuyển vị A^T
+    if (t.includes("chuyển vị") || t.includes("a^t") || t.includes("transpose")) {
+      return {
+        summary: `<strong>Ma trận chuyển vị A^T (Transpose Matrix)</strong> là phép toán biến đổi hình học cơ bản trên ma trận:`,
+        keypoints: [
+          `<strong>Định nghĩa:</strong> Cho ma trận A kích thước m×n, ma trận chuyển vị A^T có kích thước n×m, thu được bằng cách đổi dòng thứ i của A thành cột thứ i của A^T (công thức phần tử: <code>a^T_ij = a_ji</code>).`,
+          `<strong>Các tính chất quan trọng:</strong><br>• <code>(A^T)^T = A</code><br>• <code>(A + B)^T = A^T + B^T</code><br>• <code>(k·A)^T = k·A^T</code><br>• <code>(A · B)^T = B^T · A^T</code> (chú ý: đảo ngược thứ tự nhân!)`,
+          `<strong>Phân loại ma trận đặc biệt:</strong><br>• Ma trận đối xứng: <code>A^T = A</code> (đối xứng qua đường chéo chính).<br>• Ma trận phản đối xứng: <code>A^T = -A</code> (các phần tử chéo chính bắt buộc bằng 0).`
+        ],
+        evidence: `Mục 1. 'Ma trận chuyển vị A^T' trên slide Chương 1.`
+      };
+    }
+
+    // 8. Các phép toán ma trận: cộng, trừ, nhân
+    if (t.includes("phép toán") || t.includes("cộng, trừ") || t.includes("nhân ma trận") || t.includes("phép nhân") || t.includes("cộng trừ")) {
+      return {
+        summary: `<strong>Các quy tắc và điều kiện thực hiện các phép toán đại số ma trận:</strong>`,
+        keypoints: [
+          `<strong>Phép cộng và trừ:</strong> CHỈ THỰC HIỆN ĐƯỢC khi hai ma trận có CÙNG KÍCH THƯỚC m×n. Phép tính thực hiện bằng cách cộng/trừ từng phần tử ở vị trí tương ứng: <code>C_ij = A_ij ± B_ij</code>.`,
+          `<strong>Phép nhân hai ma trận A_{m×k} · B_{k×n}:</strong> Điều kiện bắt buộc là SỐ CỘT CỦA A PHẢI BẰNG SỐ DÒNG CỦA B (cùng bằng k). Kết quả thu được ma trận C có kích thước m×n.`,
+          `<strong>Quy tắc dòng nhân cột:</strong> Phần tử <code>c_ij = a_i1·b_1j + a_i2·b_2j + ... + a_ik·b_kj</code> (tích vô hướng giữa dòng i của A và cột j của B).`,
+          `<strong>Lưu ý:</strong> Phép nhân ma trận KHÔNG CÓ TÍNH GIAO HOÁN (nói chung <code>A·B ≠ B·A</code>).`
+        ],
+        evidence: `Mục 1. 'Các phép toán: cộng, trừ, nhân ma trận' trên slide Chương 1.`
+      };
+    }
+
+    // 9. Khái niệm ma trận, kích thước m×n
+    if (t.includes("khái niệm ma trận") || t.includes("kích thước m×n") || t.includes("kích thước m") || (t.includes("ma trận") && (t.includes("m×n") || t.includes("khái niệm")))) {
+      return {
+        summary: `<strong>Ma trận</strong> là một bảng số chữ nhật gồm m hàng và n cột, ký hiệu A = [a_ij]_{m×n}:`,
+        keypoints: [
+          `<strong>Cấu trúc & Ký hiệu:</strong> Kích thước m×n đọc là "m nhân n" (m là số dòng, n là số cột). Phần tử <code>a_ij</code> nằm ở giao điểm giữa dòng i và cột j.`,
+          `<strong>Các dạng ma trận tiêu biểu:</strong><br>• Ma trận vuông: m = n (có đường chéo chính và đường chéo phụ).<br>• Ma trận dòng (1×n) và Ma trận cột (m×1 - vector cột).<br>• Ma trận đơn vị I_n: ma trận vuông có đường chéo chính toàn số 1, các vị trí khác bằng 0 (I·A = A·I = A).<br>• Ma trận không O: mọi phần tử đều bằng 0.`,
+          `<strong>Ý nghĩa thực tế:</strong> Biểu diễn dữ liệu đa chiều, bảng trọng số mạng nơ-ron (Neural Network Weights), và toán tử biến đổi tuyến tính trong không gian số.`
+        ],
+        evidence: `Mục 1. 'Khái niệm ma trận, kích thước m×n' trên slide Chương 1.`
+      };
+    }
+
+    // 10. Hạng ma trận & Rank
+    if (t.includes("hạng ma trận") || t.includes("hạng") || t.includes("rank") || t.includes("độc lập tuyến tính")) {
+      return {
+        summary: `<strong>Hạng của ma trận (Rank)</strong>, ký hiệu rank(A) hoặc r(A), là số lượng cực đại các vector dòng (hoặc cột) độc lập tuyến tính:`,
+        keypoints: [
+          `<strong>Bản chất đại số:</strong> Rank phản ánh số chiều (dimension) của không gian vector sinh bởi các dòng của ma trận.`,
+          `<strong>Cách tìm bằng biến đổi Gauss:</strong> Dùng 3 phép biến đổi sơ cấp trên dòng đưa ma trận A về dạng bậc thang. Khi đó: <code>rank(A) = Số dòng khác 0 của ma trận bậc thang</code>.`,
+          `<strong>Tính chất giới hạn:</strong> Với ma trận A kích thước m×n, ta luôn có <code>0 ≤ rank(A) ≤ min(m, n)</code> và <code>rank(A) = rank(A^T)</code>. Ma trận A vuông cấp n có rank(A) = n khi và chỉ khi det(A) ≠ 0 (ma trận đủ hạng / không suy biến).`,
+          `<strong>Ứng dụng:</strong> Xét điều kiện có nghiệm của hệ phương trình tuyến tính (Định lý Kronecker-Capelli) và xác định cơ sở không gian vector.`
+        ],
+        evidence: `Mục 3. 'Hạng ma trận' trên slide Chương 1.`
+      };
+    }
+
+    // 11. Biến đổi sơ cấp về dạng bậc thang
+    if (t.includes("bậc thang") || t.includes("dạng bậc thang") || t.includes("biến đổi sơ cấp về dạng")) {
+      return {
+        summary: `<strong>Thuật toán Khử Gauss biến đổi ma trận về Dạng Bậc Thang (Echelon Form):</strong>`,
+        keypoints: [
+          `<strong>3 phép biến đổi sơ cấp trên dòng:</strong><br>1. Đổi chỗ hai dòng: <code>d_i ↔ d_j</code><br>2. Nhân một dòng với số k ≠ 0: <code>d_i ← k·d_i</code><br>3. Cộng vào một dòng tích của dòng khác với số k: <code>d_i ← d_i + k·d_j</code>`,
+          `<strong>Đặc điểm nhận diện ma trận bậc thang:</strong><br>• Tất cả các dòng toàn số 0 (nếu có) luôn bị dồn xuống dưới cùng của ma trận.<br>• Phần tử khác 0 đầu tiên của mỗi dòng (gọi là phần tử cơ sở / Pivot) luôn nằm nghiêm ngặt về phía bên phải của phần tử cơ sở ở dòng phía trên.`,
+          `<strong>Bảo toàn hạng:</strong> Các phép biến đổi sơ cấp KHÔNG LÀM THAY ĐỔI hạng của ma trận, giúp tính rank(A) một cách dễ dàng và trực quan.`
+        ],
+        evidence: `Mục 3. 'Cách tìm: biến đổi sơ cấp về dạng bậc thang' trên slide Chương 1.`
+      };
+    }
+
+    // 12. Hệ có nghiệm ⇔ rank(A) = rank(A|b) (Định lý Kronecker-Capelli)
+    if (t.includes("rank(a) = rank(a|b)") || t.includes("hệ có nghiệm") || (t.includes("rank(a)") && t.includes("rank(a|b)"))) {
+      return {
+        summary: `<strong>Định lý Kronecker-Capelli về Điều Kiện Có Nghiệm của Hệ Phương Trình Tuyến Tính Ax = b:</strong>`,
+        keypoints: [
+          `<strong>Ký hiệu:</strong> A là ma trận hệ số (kích thước m×n) và <code>(A|b)</code> là ma trận mở rộng ghép thêm cột hệ số tự do b (kích thước m×(n+1)).`,
+          `<strong>Điều kiện có nghiệm (Tương thích):</strong> Hệ phương trình Ax = b có nghiệm KHI VÀ CHỈ KHI hạng của ma trận hệ số bằng hạng của ma trận mở rộng: <code>rank(A) = rank(A|b)</code>.`,
+          `<strong>Ý nghĩa hình học/đại số:</strong> Điều này tương đương với việc vector cột tự do b nằm trong không gian sinh bởi các vector cột của ma trận A (b là tổ hợp tuyến tính của các cột của A).`
+        ],
+        evidence: `Mục 4. 'Hệ phương trình tuyến tính' trên slide Chương 1.`
+      };
+    }
+
+    // 13. Hệ có nghiệm duy nhất ⇔ rank = số ẩn
+    if (t.includes("nghiệm duy nhất") || t.includes("rank = số ẩn") || t.includes("hệ có nghiệm duy nhất")) {
+      return {
+        summary: `<strong>Điều kiện để Hệ Phương Trình Tuyến Tính Ax = b có Nghiệm Duy Nhất:</strong>`,
+        keypoints: [
+          `<strong>Định lý:</strong> Hệ phương trình tuyến tính có nghiệm DUY NHẤT khi và chỉ khi: <code>rank(A) = rank(A|b) = n</code> (trong đó n là tổng số ẩn số của hệ).`,
+          `<strong>Bản chất:</strong> Khi rank = n, hệ không có bất kỳ ẩn tự do nào (số ẩn tự do = n - rank = 0). Quá trình giải Gauss đưa về dạng tam giác xác định rõ từng giá trị x₁, x₂, ..., x_n.`,
+          `<strong>Trường hợp hệ vuông (m = n):</strong> Tương đương với <code>det(A) ≠ 0</code>. Khi đó nghiệm được tính trực tiếp bằng ma trận nghịch đảo <code>x = A⁻¹·b</code> hoặc công thức nghiệm Cramer: <code>x_i = det(A_i) / det(A)</code>.`
+        ],
+        evidence: `Mục 4. 'Hệ có nghiệm duy nhất ⇔ rank = số ẩn' trên slide Chương 1.`
+      };
+    }
+
+    // 14. Vô nghiệm ⇔ rank(A) ≠ rank(A|b)
+    if (t.includes("vô nghiệm") || t.includes("rank(a) ≠ rank(a|b)") || t.includes("không có nghiệm")) {
+      return {
+        summary: `<strong>Điều kiện để Hệ Phương Trình Tuyến Tính Ax = b Vô Nghiệm (Không Tương Thích):</strong>`,
+        keypoints: [
+          `<strong>Định lý:</strong> Hệ phương trình vô nghiệm khi và chỉ khi: <code>rank(A) < rank(A|b)</code> (hạng của ma trận hệ số nhỏ hơn hạng của ma trận mở rộng).`,
+          `<strong>Biểu hiện trong thuật toán Gauss:</strong> Khi đưa ma trận mở rộng (A|b) về dạng bậc thang, xuất hiện một dòng có dạng: <code>[0  0  ...  0 | c]</code> với hằng số c ≠ 0. Dòng này tương ứng với phương trình vô lý: <code>0·x₁ + 0·x₂ + ... + 0·x_n = c ≠ 0</code> (tức 0 = c).`,
+          `<strong>Ý nghĩa hình học:</strong> Các siêu phẳng biểu diễn các phương trình trong hệ song song hoặc không cùng giao nhau tại bất kỳ điểm chung nào trong không gian.`
+        ],
+        evidence: `Mục 4. 'Vô nghiệm ⇔ rank(A) ≠ rank(A|b)' trên slide Chương 1.`
+      };
+    }
+
+    // 15. Hệ phương trình tuyến tính (Tổng quan)
+    if (t.includes("hệ phương trình") || t.includes("tuyến tính") || t.includes("hệ pt")) {
+      return {
+        summary: `<strong>Hệ phương trình đại số tuyến tính</strong> gồm m phương trình và n ẩn số, viết dưới dạng ma trận Ax = b:`,
+        keypoints: [
+          `<strong>Biểu diễn ma trận:</strong> A là ma trận hệ số cấp m×n, x là vector ẩn số n×1, và b là vector hệ số tự do m×1. Ma trận mở rộng là <code>(A|b)</code>.`,
+          `<strong>3 trạng thái nghiệm theo Kronecker-Capelli:</strong><br>1. <em>Vô nghiệm:</em> <code>rank(A) < rank(A|b)</code><br>2. <em>Nghiệm duy nhất:</em> <code>rank(A) = rank(A|b) = n</code> (bằng số ẩn)<br>3. <em>Vô số nghiệm:</em> <code>rank(A) = rank(A|b) = r < n</code> (hệ có n - r ẩn tự do)`,
+          `<strong>Các phương pháp giải chính:</strong> Phương pháp khử Gauss (Gauss-Jordan), phương pháp ma trận nghịch đảo x = A⁻¹b, và quy tắc định thức Cramer.`
+        ],
+        evidence: `Mục 4. 'Hệ phương trình tuyến tính' trên slide Chương 1.`
+      };
+    }
+
+    // 16. Phụ thuộc tuyến tính / độc lập tuyến tính
+    if (t.includes("phụ thuộc tuyến tính") || t.includes("xét phụ thuộc") || t.includes("tổ hợp tuyến tính")) {
+      return {
+        summary: `<strong>Khái niệm Độc lập tuyến tính & Phụ thuộc tuyến tính</strong> của hệ vector:`,
+        keypoints: [
+          `<strong>Định nghĩa:</strong> Hệ k vector {v₁, v₂, ..., v_k} độc lập tuyến tính nếu phương trình tổ hợp <code>c₁v₁ + c₂v₂ + ... + c_k v_k = 0</code> CHỈ CÓ NGHIỆM DUY NHẤT c₁ = c₂ = ... = c_k = 0. Nếu tồn tại ít nhất một hệ số c_i ≠ 0 thì hệ là phụ thuộc tuyến tính.`,
+          `<strong>Xét bằng Ma trận:</strong> Ghép các vector thành các dòng của ma trận A rồi tìm rank(A). Nếu rank(A) = k (đúng bằng số vector) thì hệ ĐỘC LẬP tuyến tính; nếu rank(A) < k thì hệ PHỤ THUỘC tuyến tính.`,
+          `<strong>Ý nghĩa:</strong> Độc lập tuyến tính đảm bảo không có thông tin dư thừa, các vector có thể làm cơ sở (Basis) sinh ra không gian vector.`
+        ],
+        evidence: `Mục 3. 'Ứng dụng: xét nghiệm hệ, xét phụ thuộc tuyến tính' trên slide Chương 1.`
+      };
+    }
+
+    // Fallback: Dynamic Smart Context Extractor
+    return {
+      summary: `<strong>Phân tích chuyên sâu về khái niệm "${term}"</strong> trong Đại số Tuyến tính:`,
+      keypoints: [
+        `<strong>Bản chất khái niệm:</strong> "${term}" là một nội dung kiến thức trọng tâm thuộc Chương 1: Ma trận, Định thức & Hệ phương trình.`,
+        `<strong>Ngữ cảnh & Mối tương quan trong bài học:</strong> Khái niệm này liên kết trực tiếp với cấu trúc bài giảng: <em>${slideContext.slice(0, 140)}...</em>`,
+        `<strong>Phương pháp áp dụng:</strong> Đòi hỏi kết hợp biến đổi sơ cấp ma trận, tính toán định thức và suy luận logic về số chiều không gian nghiệm.`
+      ],
+      evidence: `Trích xuất từ nội dung Trang ${pageNum} (${state.pdfFileName || "Bài giảng"}).`
+    };
   }
 
   btnCloseFeature1.addEventListener('click', () => { popoverFeature1.style.display = 'none'; });
@@ -2007,7 +2683,7 @@ Trả về định dạng JSON thuần:
     const term = state.selectedText || "Nội dung bôi đen";
     state.questionHistoryCounter++;
 
-    feat2SelectedTerm.textContent = `Câu hỏi dựa trên: "${term}" (Lần #${state.questionHistoryCounter})`;
+    feat2SelectedTerm.textContent = `1 Câu hỏi trắc nghiệm cho phần bôi đen: "${term.length > 40 ? term.slice(0, 40) + '...' : term}"`;
 
     // Position modal
     const sel = window.getSelection();
@@ -2021,13 +2697,13 @@ Trả về định dạng JSON thuần:
       feat2Loading.style.display = 'flex';
       feat2ContentArea.style.display = 'none';
 
-      const systemPrompt = `Bạn là chuyên gia ra đề thi và kiểm tra kiến thức học tập. Nhiệm vụ của bạn là dựa vào slide bài giảng và từ khóa bôi đen để tạo ra một câu hỏi trắc nghiệm 4 đáp án (A, B, C, D) hoàn toàn mới mẻ, hấp dẫn và kiểm tra sâu hiểu biết của học viên.
-Lưu ý:
-- Phải có đúng 1 đáp án ĐÚNG và 3 đáp án SAI nhưng hợp lý (distractors).
-- Mỗi lần sinh câu hỏi hãy tiếp cận dưới một góc độ khác nhau (ví dụ: Khái niệm, Phân tích biểu đồ, Bài toán thực tiễn, So sánh, Trường hợp ngoại lệ). Lần sinh hiện tại: #${state.questionHistoryCounter}.
+      const systemPrompt = `Bạn là chuyên gia ra đề thi và kiểm tra kiến thức học tập. Nhiệm vụ của bạn là dựa vào slide bài giảng và đoạn văn bản được bôi đen để tạo ra ĐÚNG 1 CÂU HỎI TRẮC NGHIỆM DUY NHẤT (gồm 4 đáp án A, B, C, D) tập trung trực tiếp và sâu sắc vào đoạn bôi đen này.
+Lưu ý quan trọng:
+- CHỈ TẠO ĐÚNG 1 CÂU HỎI TRẮC NGHIỆM DUY NHẤT cho 1 phần bôi đen này (tuyệt đối không tạo danh sách nhiều câu hỏi).
+- Phải có đúng 1 đáp án ĐÚNG và 3 đáp án SAI nhưng có tính thuyết phục (distractors).
 - Trả về JSON theo cấu trúc:
 {
-  "question": "Nội dung câu hỏi trắc nghiệm rõ ràng",
+  "question": "Nội dung 1 câu hỏi trắc nghiệm",
   "options": [
     { "id": "A", "text": "Đáp án A", "isCorrect": false, "explanation": "Giải thích vì sao sai" },
     { "id": "B", "text": "Đáp án B", "isCorrect": true, "explanation": "Giải thích vì sao đúng theo slide" },
@@ -2040,10 +2716,10 @@ Lưu ý:
       const userPrompt = `Nội dung Slide Trang ${state.currentPage} (${state.pdfFileName}):
 "${state.currentSlideFullText}"
 
-Từ khóa/cụm từ bôi đen:
+Đoạn văn bản bôi đen:
 "${term}"
 
-Hãy tạo 1 câu hỏi trắc nghiệm 4 đáp án mới lạ.`;
+Hãy tạo đúng 1 câu hỏi trắc nghiệm 4 đáp án cho đoạn bôi đen trên.`;
 
       const response = await callOpenAI({ systemPrompt, userPrompt, jsonMode: true });
       feat2Loading.style.display = 'none';
@@ -2075,78 +2751,151 @@ Hãy tạo 1 câu hỏi trắc nghiệm 4 đáp án mới lạ.`;
     refreshIcons();
   }
 
-  // Dynamic Question Generator Engine (Fallback)
+  // Dynamic Question Generator Engine (Fallback - Accurate for Matrix Chapter)
   function generateDiverseQuiz(term, slideText, pageNum, seed) {
-    const questionTemplates = [
-      {
-        question: `[Khái niệm & Bản chất] Nhận định nào sau đây là ĐÚNG NHẤT về "${term}" theo nội dung Trang ${pageNum}?`,
-        correct: `Là một khái niệm trọng tâm thể hiện sự tác động tương quan trực tiếp trong bối cảnh Trang ${pageNum}.`,
-        distractors: [
-          `Là trường hợp không bao giờ xuất hiện trong phân tích lý thuyết và thực tiễn.`,
-          `Khái niệm này có giá trị cố định bằng 0 và không chịu ảnh hưởng của các yếu tố ngoại cảnh.`,
-          `Hoàn toàn trái ngược với các nguyên lý được trình bày trong toàn bộ slide bài giảng.`
-        ],
-        rationale: `Theo toàn bộ nội dung Trang ${pageNum}, nhận định này phản ánh chính xác nhất bản chất của "${term}".`
-      },
-      {
-        question: `[Ứng dụng Thực tiễn] Khi áp dụng "${term}" vào việc phân tích thực tế tại Trang ${pageNum}, hệ quả nào sau đây sẽ xảy ra?`,
-        correct: `Ảnh hưởng trực tiếp đến việc ra quyết định tối ưu và phân tích xu hướng biến động.`,
-        distractors: [
-          `Doanh thu và sản lượng sẽ không có bất kỳ sự thay đổi nào.`,
-          `Mọi đối tượng tham gia đều bị thiệt hại tối đa và thị trường ngừng hoạt động.`,
-          `Chỉ áp dụng được khi không có sự tham gia của quy luật cung cầu.`
-        ],
-        rationale: `Trong bối cảnh bài học, "${term}" là cơ sở then chốt để đưa ra các phân tích tối ưu.`
-      },
-      {
-        question: `[So sánh & Phân loại] Điểm KHÁC BIỆT cốt lõi của "${term}" so với các nội dung khác trong slide Trang ${pageNum} là gì?`,
-        correct: `Có tính chất đặc thù về phản ứng và điều kiện cân bằng so với các trường hợp thông thường.`,
-        distractors: [
-          `Không có bất kỳ điểm khác biệt nào, hoàn toàn tương đồng với mọi khái niệm khác.`,
-          `Không thể biểu diễn hoặc mô tả được bằng bất kỳ công cụ lý thuyết nào.`,
-          `Chỉ được xét đến trong các bài thi nhưng không có ý nghĩa thực tiễn.`
-        ],
-        rationale: `Slide Trang ${pageNum} nhấn mạnh tính đặc thù và vai trò quan trọng của "${term}".`
-      },
-      {
-        question: `[Suy luận Tình huống] Giả sử xuất hiện yếu tố "${term}" tại Trang ${pageNum}, nhận định nào sau đây là SAI?`,
-        correct: `Thị trường sẽ hoàn toàn vô hiệu hóa và biến mất vĩnh viễn.`,
-        distractors: [
-          `Người tham gia thị trường sẽ điều chỉnh hành vi theo quy luật tương ứng.`,
-          `Mức độ nhạy cảm của các biến số có thể thay đổi đáng kể.`,
-          `Cần căn cứ vào các giả định của bài học để đưa ra dự báo phù hợp.`
-        ],
-        rationale: `Câu hỏi yêu cầu tìm nhận định SAI. Việc cho rằng thị trường biến mất vĩnh viễn là nhận định hoàn toàn không có căn cứ trong bài giảng.`
-      }
-    ];
+    const t = term.toLowerCase().trim();
 
-    const chosen = questionTemplates[(seed - 1) % questionTemplates.length];
-    
-    const optionsRaw = [
-      { text: chosen.correct, isCorrect: true, explanation: chosen.rationale },
-      { text: chosen.distractors[0], isCorrect: false, explanation: "Nhận định này không phù hợp với giả định của bài học." },
-      { text: chosen.distractors[1], isCorrect: false, explanation: "Nhận định này trái ngược với bản chất được nêu trong slide." },
-      { text: chosen.distractors[2], isCorrect: false, explanation: "Nhận định này thiếu căn cứ lý thuyết trong bài giảng." }
-    ];
-
-    // Shuffle options
-    for (let i = optionsRaw.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [optionsRaw[i], optionsRaw[j]] = [optionsRaw[j], optionsRaw[i]];
+    if (t.includes("định thức cấp 2") || t.includes("định thức cấp 3") || (t.includes("định thức") && (t.includes("2") || t.includes("3") || t.includes("cấp")))) {
+      return {
+        question: `Cho ma trận vuông A = [[2, 3], [1, 5]]. Giá trị định thức det(A) bằng bao nhiêu và ý nghĩa hình học của nó là gì?`,
+        options: [
+          { id: 'A', text: `det(A) = 7, biểu diễn diện tích hình bình hành tạo bởi 2 vector cột trong mặt phẳng 2D.`, isCorrect: true, explanation: `Chính xác! det(A) = (2)(5) - (3)(1) = 10 - 3 = 7. Về hình học, |det(A)| là diện tích hình bình hành tạo bởi 2 vector cột.` },
+          { id: 'B', text: `det(A) = 13, biểu diễn tổng chiều dài 2 đường chéo.`, isCorrect: false, explanation: `Sai công thức tính định thức cấp 2: det = ad - bc chứ không phải ad + bc.` },
+          { id: 'C', text: `det(A) = 0, ma trận bị suy biến.`, isCorrect: false, explanation: `Sai, ma trận A có 2 dòng độc lập tuyến tính nên det(A) = 7 ≠ 0.` },
+          { id: 'D', text: `det(A) = -7, do các phần tử đường chéo phụ lớn hơn đường chéo chính.`, isCorrect: false, explanation: `Sai dấu, tích chéo chính là 10, chéo phụ là 3, hiệu bằng +7.` }
+        ],
+        overallExplanation: `Định thức cấp 2: det(A) = ad - bc.`
+      };
     }
 
-    const letters = ['A', 'B', 'C', 'D'];
-    const formattedOptions = optionsRaw.map((opt, idx) => ({
-      id: letters[idx],
-      text: opt.text,
-      isCorrect: opt.isCorrect,
-      explanation: opt.explanation
-    }));
+    if (t.includes("đổi chỗ 2 dòng") || t.includes("đổi dấu định thức") || (t.includes("đổi chỗ") && t.includes("dòng"))) {
+      return {
+        question: `Khi thực hiện đổi chỗ 2 dòng bất kỳ của một ma trận vuông A để được ma trận B, khẳng định nào sau đây là ĐÚNG?`,
+        options: [
+          { id: 'A', text: `det(B) = -det(A) (định thức đổi dấu).`, isCorrect: true, explanation: `Chính xác! Theo tính chất phản xứng của định thức: Đổi chỗ 2 dòng → đổi dấu định thức.` },
+          { id: 'B', text: `det(B) = det(A) (giá trị định thức không thay đổi).`, isCorrect: false, explanation: `Sai, chỉ phép cộng dòng d_i ← d_i + k·d_j mới giữ nguyên định thức.` },
+          { id: 'C', text: `det(B) = 0.`, isCorrect: false, explanation: `Sai, định thức chỉ đổi dấu chứ không triệt tiêu về 0.` },
+          { id: 'D', text: `det(B) = 1 / det(A).`, isCorrect: false, explanation: `Sai, đó là định thức của ma trận nghịch đảo A⁻¹.` }
+        ],
+        overallExplanation: `Theo Mục 2 slide: 'Đổi chỗ 2 dòng → đổi dấu định thức'.`
+      };
+    }
 
+    if (t.includes("nhân k") || t.includes("một dòng nhân")) {
+      return {
+        question: `Cho ma trận vuông A cấp 3 có det(A) = 4. Nếu nhân tất cả các phần tử của DÒNG THỨ NHẤT với 3, định thức ma trận mới bằng:`,
+        options: [
+          { id: 'A', text: `12 (chỉ một dòng nhân 3 nên định thức nhân 3: 4 × 3 = 12).`, isCorrect: true, explanation: `Chính xác! Theo tính chất: Một dòng nhân k → định thức nhân k.` },
+          { id: 'B', text: `108 (vì 4 × 3³ = 108).`, isCorrect: false, explanation: `Sai, 108 là kết quả khi nhân TOÀN BỘ ma trận cấp 3 với 3 (det(3A) = 3³ det(A)).` },
+          { id: 'C', text: `4 (không đổi giá trị).`, isCorrect: false, explanation: `Sai, nhân một dòng với k thì định thức phải nhân k.` },
+          { id: 'D', text: `0.`, isCorrect: false, explanation: `Sai, k = 3 ≠ 0 nên định thức không bằng 0.` }
+        ],
+        overallExplanation: `Theo Mục 2 slide: 'Một dòng nhân k → định thức nhân k'.`
+      };
+    }
+
+    if (t.includes("toàn 0") || t.includes("toàn số 0")) {
+      return {
+        summary: `Tính chất định thức khi có dòng toàn 0.`,
+        question: `Nếu ma trận vuông A có ít nhất một dòng toàn số 0, khẳng định nào sau đây luôn ĐÚNG?`,
+        options: [
+          { id: 'A', text: `det(A) = 0 và ma trận A không khả nghịch.`, isCorrect: true, explanation: `Chính xác! Dòng toàn 0 khiến định thức bằng 0 và ma trận bị suy biến.` },
+          { id: 'B', text: `det(A) = 1 và A là ma trận đơn vị.`, isCorrect: false, explanation: `Sai, ma trận đơn vị có đường chéo bằng 1, không có dòng toàn 0.` },
+          { id: 'C', text: `rank(A) = số ẩn.`, isCorrect: false, explanation: `Sai, dòng toàn 0 làm giảm hạng của ma trận.` },
+          { id: 'D', text: `det(A) không xác định được.`, isCorrect: false, explanation: `Sai, định thức luôn xác định và bằng đúng 0.` }
+        ],
+        overallExplanation: `Theo Mục 2 slide: 'Một dòng toàn 0 → định thức = 0'.`
+      };
+    }
+
+    if (t.includes("hạng ma trận") || t.includes("hạng") || t.includes("rank") || t.includes("độc lập tuyến tính")) {
+      return {
+        question: `Hạng của ma trận (Rank) được xác định chính xác bằng phương pháp nào sau đây?`,
+        options: [
+          { id: 'A', text: `Biến đổi sơ cấp về dạng bậc thang, rank bằng số dòng khác 0 của ma trận bậc thang.`, isCorrect: true, explanation: `Chính xác! Rank bằng số dòng khác 0 sau khi khử Gauss về dạng bậc thang.` },
+          { id: 'B', text: `Tổng tất cả các phần tử trên đường chéo chính của ma trận.`, isCorrect: false, explanation: `Sai, đó là Vết (Trace) của ma trận.` },
+          { id: 'C', text: `Tích của số hàng và số cột của ma trận (m × n).`, isCorrect: false, explanation: `Sai, đó là kích thước (cấp) của ma trận.` },
+          { id: 'D', text: `Số lượng phần tử có giá trị bằng 0 trong ma trận.`, isCorrect: false, explanation: `Sai, số 0 không phản ánh số dòng độc lập tuyến tính.` }
+        ],
+        overallExplanation: `Theo Mục 3 slide: 'Rank = số dòng (hoặc cột) độc lập tuyến tính'.`
+      };
+    }
+
+    if (t.includes("bậc thang") || t.includes("dạng bậc thang")) {
+      return {
+        question: `Trong quá trình biến đổi Gauss đưa ma trận về dạng bậc thang, phát biểu nào sau đây là ĐÚNG?`,
+        options: [
+          { id: 'A', text: `Các phép biến đổi sơ cấp trên dòng không làm thay đổi hạng (rank) của ma trận.`, isCorrect: true, explanation: `Chính xác! Biến đổi sơ cấp bảo toàn không gian sinh bởi các vector dòng nên rank(A) không đổi.` },
+          { id: 'B', text: `Mọi ma trận đều có thể biến đổi về ma trận đơn vị.`, isCorrect: false, explanation: `Sai, chỉ ma trận vuông không suy biến (det ≠ 0) mới đưa về ma trận đơn vị.` },
+          { id: 'C', text: `Các dòng toàn số 0 phải nằm ở dòng trên cùng.`, isCorrect: false, explanation: `Sai, dòng toàn số 0 bắt buộc phải nằm ở dưới cùng trong ma trận bậc thang.` },
+          { id: 'D', text: `Định thức luôn được bảo toàn nguyên vẹn qua mọi phép nhân dòng.`, isCorrect: false, explanation: `Sai, nhân dòng với k làm định thức nhân k.` }
+        ],
+        overallExplanation: `Mục 3: 'Biến đổi sơ cấp về dạng bậc thang'.`
+      };
+    }
+
+    if (t.includes("nghiệm duy nhất") || t.includes("rank = số ẩn")) {
+      return {
+        question: `Cho hệ phương trình tuyến tính Ax = b gồm m phương trình và n ẩn số. Hệ có NGHIỆM DUY NHẤT khi và chỉ khi:`,
+        options: [
+          { id: 'A', text: `rank(A) = rank(A|b) = n (hạng bằng đúng số ẩn).`, isCorrect: true, explanation: `Chính xác! Theo định lý Kronecker-Capelli: Hệ có nghiệm duy nhất ⇔ rank = số ẩn.` },
+          { id: 'B', text: `rank(A) < rank(A|b).`, isCorrect: false, explanation: `Sai, trường hợp này hệ vô nghiệm.` },
+          { id: 'C', text: `rank(A) = rank(A|b) < n.`, isCorrect: false, explanation: `Sai, trường hợp này hệ có vô số nghiệm (với n - rank ẩn tự do).` },
+          { id: 'D', text: `rank(A) = 0.`, isCorrect: false, explanation: `Sai, rank = 0 là ma trận toàn số 0.` }
+        ],
+        overallExplanation: `Theo Mục 4 slide: 'Hệ có nghiệm duy nhất ⇔ rank = số ẩn'.`
+      };
+    }
+
+    if (t.includes("vô nghiệm") || t.includes("rank(a) ≠ rank(a|b)")) {
+      return {
+        question: `Khi giải hệ phương trình tuyến tính Ax = b bằng phương pháp Gauss, dấu hiệu nào cho biết hệ VÔ NGHIỆM?`,
+        options: [
+          { id: 'A', text: `rank(A) < rank(A|b) (xuất hiện dòng có dạng [0 0 ... 0 | c] với c ≠ 0 trong ma trận mở rộng).`, isCorrect: true, explanation: `Chính xác! Phương trình 0 = c (với c ≠ 0) là mâu thuẫn, dẫn đến hệ vô nghiệm.` },
+          { id: 'B', text: `rank(A) = rank(A|b) = n.`, isCorrect: false, explanation: `Sai, đây là điều kiện để hệ có nghiệm duy nhất.` },
+          { id: 'C', text: `Ma trận A có định thức det(A) ≠ 0.`, isCorrect: false, explanation: `Sai, khi det(A) ≠ 0 thì hệ vuông chắc chắn có nghiệm duy nhất.` },
+          { id: 'D', text: `Số phương trình m lớn hơn số ẩn n.`, isCorrect: false, explanation: `Sai, số phương trình nhiều hơn vẫn có thể có nghiệm nếu các phương trình phụ thuộc tuyến tính.` }
+        ],
+        overallExplanation: `Theo Mục 4 slide: 'Vô nghiệm ⇔ rank(A) ≠ rank(A|b)'.`
+      };
+    }
+
+    if (t.includes("hệ có nghiệm") || (t.includes("rank(a)") && t.includes("rank(a|b)"))) {
+      return {
+        question: `Theo Định lý Kronecker-Capelli, điều kiện cần và đủ để hệ phương trình Ax = b CÓ NGHIỆM là gì?`,
+        options: [
+          { id: 'A', text: `rank(A) = rank(A|b).`, isCorrect: true, explanation: `Chính xác! Hệ có nghiệm ⇔ rank(A) = rank(A|b).` },
+          { id: 'B', text: `rank(A) > rank(A|b).`, isCorrect: false, explanation: `Sai, rank(A) luôn luôn ≤ rank(A|b).` },
+          { id: 'C', text: `det(A) = 0.`, isCorrect: false, explanation: `Sai, det(A) = 0 không đảm bảo hệ có nghiệm hay vô nghiệm.` },
+          { id: 'D', text: `Số ẩn bằng số phương trình.`, isCorrect: false, explanation: `Sai, số ẩn bằng số phương trình vẫn có thể vô nghiệm.` }
+        ],
+        overallExplanation: `Mục 4: 'Hệ có nghiệm ⇔ rank(A) = rank(A|b)'.`
+      };
+    }
+
+    if (t.includes("chuyển vị") || t.includes("a^t")) {
+      return {
+        question: `Cho hai ma trận A và B khả tích (nhân được với nhau). Tính chất nào sau đây của ma trận chuyển vị là ĐÚNG?`,
+        options: [
+          { id: 'A', text: `(A · B)^T = B^T · A^T (đảo ngược thứ tự nhân).`, isCorrect: true, explanation: `Chính xác! Phép chuyển vị của một tích bằng tích các ma trận chuyển vị theo thứ tự đảo ngược.` },
+          { id: 'B', text: `(A · B)^T = A^T · B^T.`, isCorrect: false, explanation: `Sai, đây là lỗi sai phổ biến nhất do không đảo thứ tự nhân.` },
+          { id: 'C', text: `(A^T)^T = -A.`, isCorrect: false, explanation: `Sai, chuyển vị 2 lần trở về ma trận gốc: (A^T)^T = A.` },
+          { id: 'D', text: `Chỉ ma trận vuông mới có ma trận chuyển vị.`, isCorrect: false, explanation: `Sai, ma trận kích thước m×n bất kỳ đều có ma trận chuyển vị n×m.` }
+        ],
+        overallExplanation: `Mục 1: 'Ma trận chuyển vị A^T'.`
+      };
+    }
+
+    // Default concept quiz template
     return {
-      question: chosen.question,
-      options: formattedOptions,
-      overallExplanation: chosen.rationale
+      question: `Theo nội dung bài giảng Chương 1, nhận định nào sau đây là CHÍNH XÁC NHẤT về "${term}"?`,
+      options: [
+        { id: 'A', text: `Là một khái niệm trọng tâm thể hiện mối quan hệ logic và điều kiện đại số trong slide Chương 1.`, isCorrect: true, explanation: `Chính xác theo nội dung và cấu trúc bài giảng Chương 1.` },
+        { id: 'B', text: `Khái niệm này hoàn toàn không thể áp dụng trong tính toán ma trận và hệ phương trình.`, isCorrect: false, explanation: `Sai, đây là công cụ cốt lõi trong giải hệ phương trình và không gian vector.` },
+        { id: 'C', text: `Luôn có giá trị bằng 0 trong mọi trường hợp.`, isCorrect: false, explanation: `Sai, giá trị phụ thuộc vào các phần tử của ma trận.` },
+        { id: 'D', text: `Chỉ có ý nghĩa trang trí trên slide bài giảng.`, isCorrect: false, explanation: `Sai, đây là kiến thức nền tảng trong kỳ thi.` }
+      ],
+      overallExplanation: `Nội dung Chương 1: Ma Trận - Định Thức - Hệ Phương Trình.`
     };
   }
 
@@ -2192,6 +2941,235 @@ Hãy tạo 1 câu hỏi trắc nghiệm 4 đáp án mới lạ.`;
     }
 
     feat2FeedbackCard.style.display = 'block';
+
+    // Auto-save answered question to Quiz History Storage (Tab 3)
+    saveAnsweredQuiz(quizData, selectedOpt);
+
+    refreshIcons();
+  }
+
+  // ----------------------------------------------------
+  // ANSWERED QUIZ STORAGE & REVIEW ENGINE (TAB 3)
+  // ----------------------------------------------------
+  function setupQuizHistoryListeners() {
+    if (tabBtnHistory) {
+      tabBtnHistory.addEventListener('click', () => switchSidebarTab('history'));
+    }
+
+    if (btnFilterAll) {
+      btnFilterAll.addEventListener('click', () => setQuizHistoryFilter('all'));
+    }
+    if (btnFilterCorrect) {
+      btnFilterCorrect.addEventListener('click', () => setQuizHistoryFilter('correct'));
+    }
+    if (btnFilterIncorrect) {
+      btnFilterIncorrect.addEventListener('click', () => setQuizHistoryFilter('incorrect'));
+    }
+
+    if (btnClearHistory) {
+      btnClearHistory.addEventListener('click', () => {
+        if (state.quizHistory.length === 0) return;
+        if (confirm(`Bạn có chắc chắn muốn xóa toàn bộ ${state.quizHistory.length} câu hỏi đã lưu trong lịch sử?`)) {
+          state.quizHistory = [];
+          localStorage.removeItem('saved_quiz_history');
+          renderQuizHistory();
+          showToastNotification("Đã xóa lịch sử câu hỏi", "Toàn bộ câu hỏi trắc nghiệm đã trả lời đã được dọn sạch.");
+        }
+      });
+    }
+  }
+
+  function setQuizHistoryFilter(filter) {
+    state.quizHistoryFilter = filter;
+    [btnFilterAll, btnFilterCorrect, btnFilterIncorrect].forEach(b => {
+      if (b) b.classList.toggle('active', b.getAttribute('data-filter') === filter);
+    });
+    renderQuizHistory();
+  }
+
+  function saveAnsweredQuiz(quizData, selectedOpt) {
+    if (!quizData || !selectedOpt) return;
+
+    const timeNow = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+    const correctOpt = quizData.options.find(o => o.isCorrect) || { id: "?", text: "N/A" };
+
+    const historyItem = {
+      id: `qh-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      question: quizData.question,
+      term: state.selectedText || "Đoạn bôi đen",
+      page: state.currentPage,
+      fileName: state.pdfFileName || "Slide",
+      options: quizData.options,
+      selectedOption: { id: selectedOpt.id, text: selectedOpt.text },
+      correctOption: { id: correctOpt.id, text: correctOpt.text },
+      isCorrect: selectedOpt.isCorrect,
+      explanation: selectedOpt.explanation || quizData.overallExplanation || "",
+      timestamp: timeNow
+    };
+
+    // Add to beginning of array
+    state.quizHistory.unshift(historyItem);
+    try {
+      localStorage.setItem('saved_quiz_history', JSON.stringify(state.quizHistory));
+    } catch (e) {
+      console.warn("Storage write error:", e);
+    }
+
+    renderQuizHistory();
+
+    // Show visual confirmation toast
+    showToastNotification(
+      selectedOpt.isCorrect ? "Đã lưu câu trả lời đúng ✅" : "Đã lưu câu trả lời vào Lịch sử 📝",
+      `"${quizData.question.slice(0, 45)}..." (Trang ${state.currentPage})`
+    );
+  }
+
+  function renderQuizHistory() {
+    const total = state.quizHistory.length;
+    const correctCount = state.quizHistory.filter(q => q.isCorrect).length;
+    const incorrectCount = total - correctCount;
+    const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+    if (historyCountBadge) historyCountBadge.textContent = total;
+    if (statTotalAnswered) statTotalAnswered.textContent = total;
+    if (statCorrectCount) statCorrectCount.textContent = correctCount;
+    if (statIncorrectCount) statIncorrectCount.textContent = incorrectCount;
+    if (statAccuracyPercent) statAccuracyPercent.textContent = `${accuracy}%`;
+
+    if (!quizHistoryList) return;
+    quizHistoryList.innerHTML = '';
+
+    if (total === 0) {
+      quizHistoryList.innerHTML = `
+        <div class="empty-history-box">
+          <i data-lucide="help-circle" style="width: 32px; height: 32px; opacity: 0.4; color: #10b981;"></i>
+          <p>Chưa có câu hỏi trắc nghiệm nào được trả lời.</p>
+          <span style="font-size: 11px; color: var(--text-muted);">Bôi đen văn bản trên slide và chọn <strong>"Tạo câu hỏi"</strong> để luyện tập và lưu kết quả tại đây.</span>
+        </div>
+      `;
+      refreshIcons();
+      return;
+    }
+
+    // Filter
+    let displayedList = state.quizHistory;
+    if (state.quizHistoryFilter === 'correct') {
+      displayedList = state.quizHistory.filter(q => q.isCorrect);
+    } else if (state.quizHistoryFilter === 'incorrect') {
+      displayedList = state.quizHistory.filter(q => !q.isCorrect);
+    }
+
+    if (displayedList.length === 0) {
+      quizHistoryList.innerHTML = `
+        <div class="empty-history-box">
+          <p>Không có câu hỏi nào thuộc bộ lọc này.</p>
+        </div>
+      `;
+      refreshIcons();
+      return;
+    }
+
+    displayedList.forEach(item => {
+      const card = document.createElement('div');
+      card.className = `quiz-history-card ${item.isCorrect ? 'card-correct' : 'card-incorrect'}`;
+      card.innerHTML = `
+        <div class="quiz-hist-top">
+          <span class="quiz-hist-badge ${item.isCorrect ? 'badge-correct' : 'badge-incorrect'}">
+            ${item.isCorrect ? '✅ Chính xác' : '❌ Chưa chính xác'}
+          </span>
+          <span class="quiz-hist-time">Trang ${item.page} &bull; ${item.timestamp}</span>
+        </div>
+
+        <div class="quiz-hist-question">${item.question}</div>
+
+        <div class="quiz-hist-answers-box">
+          <div class="quiz-hist-choice-row" style="color: ${item.isCorrect ? '#34d399' : '#f87171'}; font-weight: 600;">
+            <span>Bạn chọn:</span>
+            <span><strong>${item.selectedOption.id}.</strong> ${item.selectedOption.text}</span>
+          </div>
+          ${!item.isCorrect ? `
+            <div class="quiz-hist-choice-row" style="color: #34d399; font-weight: 600;">
+              <span>Đáp án đúng:</span>
+              <span><strong>${item.correctOption.id}.</strong> ${item.correctOption.text}</span>
+            </div>
+          ` : ''}
+        </div>
+
+        ${item.explanation ? `
+          <div class="quiz-hist-explanation-box">
+            ${item.explanation}
+          </div>
+        ` : ''}
+
+        <div class="quiz-hist-actions">
+          <button class="btn-hist-retry" data-retry-id="${item.id}" title="Làm lại câu hỏi này">
+            <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i>
+            <span>Thử lại</span>
+          </button>
+          <div style="display: flex; gap: 6px;">
+            <button class="btn-action-send-gv" data-gv-id="${item.id}" style="padding: 4px 8px; font-size: 11px;" title="Lưu thắc mắc về câu này để gửi giảng viên">
+              <i data-lucide="bookmark-plus" style="width: 12px; height: 12px;"></i>
+              <span>Gửi GV</span>
+            </button>
+            <button class="btn-hist-delete" data-delete-id="${item.id}" title="Xóa câu này khỏi lịch sử">
+              <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Event: Retry
+      card.querySelector('[data-retry-id]').addEventListener('click', () => {
+        retryQuizQuestion(item);
+      });
+
+      // Event: Gửi GV
+      card.querySelector('[data-gv-id]').addEventListener('click', () => {
+        saveToBookmarks(
+          item.term || "Câu hỏi trắc nghiệm",
+          `Em muốn hỏi thêm về câu trắc nghiệm tại Trang ${item.page}: "${item.question}". Em đã chọn [${item.selectedOption.id}] (${item.isCorrect ? "Đúng" : "Sai"}), xin thầy cô giải thích thêm.`
+        );
+      });
+
+      // Event: Delete
+      card.querySelector('[data-delete-id]').addEventListener('click', () => {
+        deleteQuizHistoryItem(item.id);
+      });
+
+      quizHistoryList.appendChild(card);
+    });
+
+    refreshIcons();
+  }
+
+  function deleteQuizHistoryItem(id) {
+    state.quizHistory = state.quizHistory.filter(q => q.id !== id);
+    try {
+      localStorage.setItem('saved_quiz_history', JSON.stringify(state.quizHistory));
+    } catch (e) {}
+    renderQuizHistory();
+  }
+
+  function retryQuizQuestion(historyItem) {
+    if (!historyItem) return;
+    state.selectedText = historyItem.term;
+    feat2SelectedTerm.textContent = `Làm lại câu hỏi (Trang ${historyItem.page}): "${(historyItem.term || "").slice(0, 35)}"`;
+
+    const rect = pdfCanvas.getBoundingClientRect();
+    positionPopup(popoverFeature2, rect);
+
+    feat2Loading.style.display = 'none';
+    feat2ContentArea.style.display = 'block';
+    feat2QuestionText.textContent = historyItem.question;
+    feat2FeedbackCard.className = 'quiz-feedback-card';
+    feat2FeedbackCard.style.display = 'none';
+
+    renderQuizOptions({
+      question: historyItem.question,
+      options: historyItem.options,
+      overallExplanation: historyItem.explanation
+    });
+
     refreshIcons();
   }
 
@@ -2232,27 +3210,87 @@ Hãy tạo 1 câu hỏi trắc nghiệm 4 đáp án mới lạ.`;
     showToastNotification(term, state.currentPage);
   }
 
-  function showToastNotification(term, pageNum) {
+  function showToastNotification(param1, param2, type = 'info') {
+    if (!toastContainer) return;
+
+    // STRICT RULE: Tối đa 3 thông báo cùng một lúc
+    const MAX_TOASTS = 3;
+    while (toastContainer.children.length >= MAX_TOASTS) {
+      const oldestToast = toastContainer.firstElementChild;
+      if (oldestToast) {
+        oldestToast.remove();
+      } else {
+        break;
+      }
+    }
+
+    let title = "";
+    let message = "";
+    let icon = "sparkles";
+    let borderColor = "rgba(99, 102, 241, 0.4)";
+    let iconColor = "#818cf8";
+
+    if (typeof param2 === 'number') {
+      // Called from saveToBookmarks(term, pageNum)
+      title = "Đã lưu vào danh sách thắc mắc";
+      message = `Đã ghi nhận <strong>"${param1}"</strong> tại Trang ${param2}. Cuối giờ bạn có thể xem lại trước khi gửi.`;
+      icon = "bookmark-check";
+      borderColor = "rgba(16, 185, 129, 0.5)";
+      iconColor = "#10b981";
+    } else {
+      // Called with (title, message)
+      title = String(param1 || "Thông báo");
+      message = String(param2 || "");
+      const titleLower = title.toLowerCase();
+      if (titleLower.includes("lỗi") || titleLower.includes("thất bại") || titleLower.includes("cảnh báo")) {
+        icon = "alert-circle";
+        borderColor = "rgba(239, 68, 68, 0.5)";
+        iconColor = "#ef4444";
+      } else if (titleLower.includes("thành công") || titleLower.includes("đã lưu") || titleLower.includes("đã gửi")) {
+        icon = "check-circle-2";
+        borderColor = "rgba(16, 185, 129, 0.5)";
+        iconColor = "#10b981";
+      } else if (titleLower.includes("gom")) {
+        icon = "layers";
+        borderColor = "rgba(192, 132, 252, 0.5)";
+        iconColor = "#c084fc";
+      }
+    }
+
     const toast = document.createElement('div');
     toast.className = 'toast-message';
+    toast.style.borderColor = borderColor;
     toast.innerHTML = `
       <div class="toast-icon">
-        <i data-lucide="bookmark-check" style="width: 20px; height: 20px;"></i>
+        <i data-lucide="${icon}" style="width: 20px; height: 20px; color: ${iconColor};"></i>
       </div>
-      <div class="toast-content">
-        <h4>Đã lưu vào danh sách thắc mắc</h4>
-        <p>Đã ghi nhận <strong>"${term}"</strong> tại Trang ${pageNum}. Cuối giờ bạn có thể xem lại trước khi gửi.</p>
-        <div class="toast-meta">Trang ${pageNum} &bull; File: ${state.pdfFileName}</div>
+      <div class="toast-content" style="flex: 1;">
+        <h4 style="color: ${iconColor};">${title}</h4>
+        <p>${message}</p>
       </div>
+      <button class="btn-toast-close" style="background: transparent; border: none; color: rgba(255,255,255,0.4); cursor: pointer; padding: 2px; margin-left: 4px; display: flex; align-items: center;" title="Đóng">
+        <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+      </button>
     `;
+
+    const closeBtn = toast.querySelector('.btn-toast-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 250);
+      });
+    }
 
     toastContainer.appendChild(toast);
     refreshIcons();
 
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
-      setTimeout(() => toast.remove(), 300);
+      if (toast && toast.parentNode) {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 250);
+      }
     }, 4500);
   }
 
@@ -2355,25 +3393,10 @@ Hãy tạo 1 câu hỏi trắc nghiệm 4 đáp án mới lạ.`;
       state.bookmarks = [];
       updateBookmarkBadge();
 
-      const toast = document.createElement('div');
-      toast.className = 'toast-message';
-      toast.style.borderColor = '#10b981';
-      toast.innerHTML = `
-        <div class="toast-icon">
-          <i data-lucide="check-circle-2" style="width: 22px; height: 22px; color: #10b981;"></i>
-        </div>
-        <div class="toast-content">
-          <h4>Đã gửi thành công ${count} câu hỏi!</h4>
-          <p>Bản tổng hợp kèm số trang slide PDF và ngữ cảnh đã được chuyển tới Giảng viên.</p>
-        </div>
-      `;
-      toastContainer.appendChild(toast);
-      refreshIcons();
-
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 300);
-      }, 5000);
+      showToastNotification(
+        `Đã gửi thành công ${count} câu hỏi!`,
+        "Bản tổng hợp kèm số trang slide PDF và ngữ cảnh đã được chuyển tới Giảng viên."
+      );
     }
   });
 
